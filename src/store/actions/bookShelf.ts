@@ -24,7 +24,7 @@ export const fetchBooks = () => async (dispatch: Dispatch) => {
       cover: el.volumeInfo.imageLinks?.thumbnail || '',
       description: el.volumeInfo.description?.slice(0, 120) || '',
       year: el.volumeInfo.publishedDate || '',
-      rating: (Math.random() * 10).toFixed(2),
+      rating: (Math.random() * 5).toFixed(),
       ownerId: 'mock',
     }));
     if (books) {

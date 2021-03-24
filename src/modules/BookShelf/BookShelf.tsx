@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 
 import BookCard from '../../components/BookCard/BookCard';
-import { fetchBooks } from '../../store/actions/index';
+import { fetchBooks, sortBookShelf } from '../../store/actions/index';
 import { Book } from '../../types/bookshelf';
 import Filter from '../../components/Filter/Filter';
 
 type Props = {
   books: Array<Book>;
   onFetchBooks: () => void;
+  onSortBooks: (sortBy: string) => void;
 };
 
-const BookShelf: FC<Props> = ({ books, onFetchBooks }: Props) => {
+const BookShelf: FC<Props> = ({ books, onFetchBooks, onSortBooks }: Props) => {
   useEffect(() => {
     onFetchBooks();
   }, [onFetchBooks]);
@@ -20,7 +21,7 @@ const BookShelf: FC<Props> = ({ books, onFetchBooks }: Props) => {
   return (
     <Container fluid className="px-4">
       <Row>
-        <Filter />
+        <Filter onSort={onSortBooks} />
       </Row>
       <Row>
         {books && books.map((el) => <BookCard key={el.id} book={el} />)}
@@ -35,6 +36,7 @@ const mapStateToProps = (state: Array<Book>) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   onFetchBooks: () => dispatch(fetchBooks()),
+  onSortBooks: (sortBy: string) => dispatch(sortBookShelf(sortBy)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookShelf);
