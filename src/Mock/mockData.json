@@ -1,0 +1,821 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 523,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "tDjrDwAAQBAJ",
+      "etag": "W0+e08OyjG0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/tDjrDwAAQBAJ",
+      "volumeInfo": {
+        "title": "Learning React",
+        "subtitle": "Modern Patterns for Developing React Apps",
+        "authors": [
+          "Alex Banks",
+          "Eve Porcello"
+        ],
+        "publisher": "O'Reilly Media",
+        "publishedDate": "2020-06-12",
+        "description": "If you want to learn how to build efficient React applications, this is your book. Ideal for web developers and software engineers who understand how JavaScript, CSS, and HTML work in the browser, this updated edition provides best practices and patterns for writing modern React code. No prior knowledge of React or functional JavaScript is necessary. With their learning road map, authors Alex Banks and Eve Porcello show you how to create UIs that can deftly display changes without page reloads on large-scale, data-driven websites. You’ll also discover how to work with functional programming and the latest ECMAScript features. Once you learn how to build React components with this hands-on guide, you’ll understand just how useful React can be in your organization. Understand key functional programming concepts with JavaScriptLook under the hood to learn how React runs in the browserCreate application presentation layers with React componentsManage data and reduce the time you spend debugging applicationsIncorporate React Hooks to manage state and fetch dataUse a routing solution for single-page application featuresLearn how to structure React applications with servers in mind",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781492051695"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1492051691"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 310,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=tDjrDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=tDjrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ru/books?id=tDjrDwAAQBAJ&pg=PA3&dq=react&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.ru/books?id=tDjrDwAAQBAJ&dq=react&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Learning_React.html?hl=&id=tDjrDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=tDjrDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "month, \u003cb\u003eReact\u003c/b\u003e Native, a library for building mobile applications using \u003cb\u003eReact\u003c/b\u003e, was \u003cbr\u003e\nreleased. Facebook also released ReactVR, another tool that brought \u003cb\u003eReact\u003c/b\u003e to a \u003cbr\u003e\nbroader range of rendering targets. In 2015 and 2016, a huge number of popular\u003cbr\u003e\n&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "n8iWfVM6wKkC",
+      "etag": "xCFwLLwnaRU",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/n8iWfVM6wKkC",
+      "volumeInfo": {
+        "title": "It's time to react",
+        "subtitle": "reauthorizing executive authority to consolidate task : establishing results and sunset commissions : hearing before the Subcommittee on the Federal Workforce and Agency Organization of the Committee on Government Reform, House of Representatives, One Hundred Ninth Congress, first session, on H.R. 3276 ... and on H.R. 3277 ... September 27, 2005",
+        "authors": [
+          "United States",
+          "United States. Congress. House. Committee on Appropriations. Subcommittee on Military Quality of Life and Veterans Affairs, and Related Agencies",
+          "United States. Congress. House. Committee on Government Reform. Subcommittee on the Federal Workforce and Agency Organization"
+        ],
+        "publishedDate": "2006",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "PSU:000056564150"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 100,
+        "printType": "BOOK",
+        "categories": [
+          "Administrative agencies"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.1.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=n8iWfVM6wKkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=n8iWfVM6wKkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ru/books?id=n8iWfVM6wKkC&pg=PA63&dq=react&hl=&cd=2&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=n8iWfVM6wKkC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=n8iWfVM6wKkC"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FREE",
+        "isEbook": true,
+        "buyLink": "https://play.google.com/store/books/details?id=n8iWfVM6wKkC&rdid=book-n8iWfVM6wKkC&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": true,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.ru/books/download/It_s_time_to_react.epub?id=n8iWfVM6wKkC&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=n8iWfVM6wKkC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Keeping it under the homeland security roof not only increases the odds that the \u003cbr\u003e\ndepartment can \u003cb\u003ereact\u003c/b\u003e with strength after the next disaster , it allows FEMA to bring \u003cbr\u003e\nits valuable expertise to bear on how the department plans for the many&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "VmGLDwAAQBAJ",
+      "etag": "OGpM02bDNqk",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/VmGLDwAAQBAJ",
+      "volumeInfo": {
+        "title": "React в действии",
+        "authors": [
+          "Тиленс Томас Марк"
+        ],
+        "publisher": "\"Издательский дом \"\"Питер\"\"\"",
+        "publishedDate": "2018-11-07",
+        "description": "Книга \"React в действии\" знакомит фронтенд-разработчиков с фреймворком React и смежными инструментами. Сначала вы познакомитесь с библиотекой React, затем освежите материал о некоторых фундаментальных идеях в данном контексте и узнаете о работе с компонентами. Вы на практике освоите чистый React (без транспиляции, без синтаксических помощников), перейдете от простейших статических компонентов к динамическим и интерактивным. Во второй половине книги рассмотрены различные способы взаимодействия с React. Вы изучите базовые методы жизненного цикла, научитесь создавать поток данных, формы, а также тестировать приложения. На закуску вас ждет материал об архитектуре React-приложения, взаимодействии с Redux, экскурс в серверный рендеринг и обзор React Native.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9785446109999"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "5446109996"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 368,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.2.3.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=VmGLDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=VmGLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "ru",
+        "previewLink": "http://books.google.ru/books?id=VmGLDwAAQBAJ&pg=PA59&dq=react&hl=&cd=3&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=VmGLDwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=VmGLDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 550,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 550,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=VmGLDwAAQBAJ&rdid=book-VmGLDwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 550000000,
+              "currencyCode": "RUB"
+            },
+            "retailPrice": {
+              "amountInMicros": 550000000,
+              "currencyCode": "RUB"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=VmGLDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Как вы, вероятно, уже поняли, использование только элементов \u003cb\u003eReact\u003c/b\u003e и \u003cbr\u003e\nфункции \u003cb\u003eReact\u003c/b\u003e.createElement для создания частей пользовательского \u003cbr\u003e\nинтерфейса не дает вам ничего, кроме управления DOM. Вы по-прежнему \u003cbr\u003e\nможете&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "JQ5BDwAAQBAJ",
+      "etag": "ukHIvzmLXJM",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/JQ5BDwAAQBAJ",
+      "volumeInfo": {
+        "title": "React и Redux: функциональная веб-разработка",
+        "authors": [
+          "Бэнкс Алекс"
+        ],
+        "publisher": "\"Издательский дом \"\"Питер\"\"\"",
+        "publishedDate": "2017-11-17",
+        "description": "Хотите научиться писать эффективные пользовательские интерфейсы при помощи React? Тогда вы нашли нужную книгу. Авторы расскажут, как создавать пользовательские интерфейсы при помощи этой компактной библиотеки и писать сайты, на которых можно обрабатывать огромные объемы данных без перезагрузки страниц. Также вы изучите новейшие возможности стандарта ECMAScript и функционального программирования.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9785446106684"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "5446106687"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 336,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 4,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.3.2.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=JQ5BDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=JQ5BDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "ru",
+        "previewLink": "http://books.google.ru/books?id=JQ5BDwAAQBAJ&pg=PA77&dq=react&hl=&cd=4&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=JQ5BDwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=JQ5BDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 550,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 550,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=JQ5BDwAAQBAJ&rdid=book-JQ5BDwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 550000000,
+              "currencyCode": "RUB"
+            },
+            "retailPrice": {
+              "amountInMicros": 550000000,
+              "currencyCode": "RUB"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=JQ5BDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Неупорядоченный список в качестве элементов \u003cb\u003eReact React\u003c/b\u003e.createElement( &quot;\u003cbr\u003e\nul&quot;, null ... \u003cb\u003eReact\u003c/b\u003e создает массив из таких элементов и устанавливает его в \u003cbr\u003e\nкачестве значения для свойства props.children. Если изучить полученный в&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "euweEAAAQBAJ",
+      "etag": "c9iVfvQfB/A",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/euweEAAAQBAJ",
+      "volumeInfo": {
+        "title": "React быстро. Веб-приложения на React, JSX, Redux и GraphQL",
+        "authors": [
+          "Мардан Азат"
+        ],
+        "publisher": "\"Издательский дом \"\"Питер\"\"\"",
+        "publishedDate": "2019-01-17",
+        "description": "Как решить проблемы front-end-разработчиков и сделать их жизнь более счастливой? Нужно всего лишь познакомиться с возможностями React! Только так вы сможете быстро выйти на новый уровень и получить не только моральное, но и материальное удовлетворение от веб-разработки. Успешные пользовательские интерфейсы должны быть визуально интересными, быстрыми и гибкими. React ускоряет тяжелые веб-приложения, улучшая поток данных между компонентами UI. Сайты начинают эффективно и плавно обновлять визуальные элементы, сводя к минимуму время на перезагрузку страниц. Перед вами труд, над которым на протяжении полутора лет работало более дюжины человек. Тщательно отобранные примеры и подробные комментарии позволяют разработчикам перейти на React быстро, чтобы затем эффективно создавать веб-приложения, используя всю мощь JavaScript. ВНУТРИ: • Основы React • Создание полнофункциональных веб-приложений с маршрутизацией • Тестирование • Оптимизация приложений React «Эта книга — лучший способ разобраться в React.js». Джон Сонмез, автора книги \"Путь программиста\" «Азат — один из самых авторитетных источников в области программирования. Эта книга выходит за рамки начального уровня и глубоко погружает в основы и архитектуру React». Эрик Хэнчетт, автор книги «Ember.js Cookbook» «React быстро — универсальный источник информации для читателя, который желает освоить React с его экосистемой инструментов, концепций и библиотек». Питер Купер, редактор «JavaScript Weekly» «Эта книга — отличный ресурс для изучения React. Четко и по делу. Я буду пользоваться ей в работе над своим следующим приложением». Натан Бэйли, полностековый разработчик, SpringboardAuto.com",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9785446109524"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "544610952X"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 560,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.1.1.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=euweEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=euweEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "ru",
+        "previewLink": "http://books.google.ru/books?id=euweEAAAQBAJ&pg=PA48&dq=react&hl=&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=euweEAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=euweEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 1452,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 1452,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=euweEAAAQBAJ&rdid=book-euweEAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 1452000000,
+              "currencyCode": "RUB"
+            },
+            "retailPrice": {
+              "amountInMicros": 1452000000,
+              "currencyCode": "RUB"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React_%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE_%D0%92%D0%B5%D0%B1_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5-sample-epub.acsm?id=euweEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React_%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE_%D0%92%D0%B5%D0%B1_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5-sample-pdf.acsm?id=euweEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=euweEAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "❍Как UI-библиотека в одностраничных приложениях на базе стека, \u003cbr\u003e\nсвязанного с \u003cb\u003eReact\u003c/b\u003e, например \u003cb\u003eReact\u003c/b\u003e+\u003cb\u003eReact\u003c/b\u003e или Router+Redux. ❍Как UI-\u003cbr\u003e\nбиблиотека (V в аббревиатуре MVC) в одностраничных приложениях на \u003cbr\u003e\nбазе стека,&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "g79TDgAAQBAJ",
+      "etag": "tk2yEtUS6ds",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/g79TDgAAQBAJ",
+      "volumeInfo": {
+        "title": "React.js. Быстрый старт",
+        "subtitle": "",
+        "authors": [
+          "Стоян Стефанов"
+        ],
+        "publisher": "\"Издательский дом \"\"Питер\"\"\"",
+        "publishedDate": "2017-03-13",
+        "description": "Незаменимая вводная книга по технологии React для взыскательных JavaScript-разработчиков. Все самое интересное о сверхпопулярном инструменте от компании Facebook. В книге рассмотрены основные концепции высокопроизводительного программирования при помощи React, реальные примеры кода и доступные блок-схемы. Прочитав ее, вы научитесь: • Создавать и использовать собственные компоненты React наряду с универсальными компонентами DOM • Писать компоненты для таблиц данных, позволяющие редактировать, сортировать таблицу, выполнять в ней поиск и экспортировать ее содержимое • Использовать дополнительный синтаксис JSX в качестве альтернативы для вызовов функций • Запускать низкоуровневый гибкий процесс сборки, который освободит вам время и поможет сосредоточиться на работе с React • Работать с инструментами ESLint, Flow и Jest, позволяющими проверять и тестировать код по мере разработки приложения • Обеспечивать коммуникацию между компонентами при помощи Flux В итоге у вас получится полноценное веб-приложение, позволяющее сохранять данные на стороне клиента.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9785496030038"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "549603003X"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 304,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.9.6.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=g79TDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=g79TDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "ru",
+        "previewLink": "http://books.google.ru/books?id=g79TDgAAQBAJ&pg=PA1&dq=react&hl=&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=g79TDgAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=g79TDgAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 610,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 610,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=g79TDgAAQBAJ&rdid=book-g79TDgAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 610000000,
+              "currencyCode": "RUB"
+            },
+            "retailPrice": {
+              "amountInMicros": 610000000,
+              "currencyCode": "RUB"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React_js_%D0%91%D1%8B%D1%81%D1%82%D1%80%D1%8B%D0%B9_%D1%81%D1%82%D0%B0%D1%80%D1%82-sample-epub.acsm?id=g79TDgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React_js_%D0%91%D1%8B%D1%81%D1%82%D1%80%D1%8B%D0%B9_%D1%81%D1%82%D0%B0%D1%80%D1%82-sample-pdf.acsm?id=g79TDgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=g79TDgAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Незаменимая вводная книга по технологии React для взыскательных JavaScript-разработчиков. Все самое интересное о сверхпопулярном ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "mfvyDwAAQBAJ",
+      "etag": "1fvTO0CRO2U",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/mfvyDwAAQBAJ",
+      "volumeInfo": {
+        "title": "500 React JS Interview Questions and Answers - Free Book",
+        "authors": [
+          "Vamsee Puligadda"
+        ],
+        "publisher": "Vamsee Puligadda",
+        "description": "Knowledge for Free... Get that job, you aspire for! Want to switch to that high paying job? Or are you already been preparing hard to give interview the next weekend? Do you know how many people get rejected in interviews by preparing only concepts but not focusing on actually which questions will be asked in the interview? Don't be that person this time. This is the most comprehensive React JS interview questions book that you can ever find out. It contains: 500 most frequently asked and important React JS interview questions and answers Wide range of questions which cover not only basics in React JS but also most advanced and complex questions which will help freshers, experienced professionals, senior developers, testers to crack their interviews.",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=mfvyDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=mfvyDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ru/books?id=mfvyDwAAQBAJ&pg=PA1&dq=react&hl=&cd=7&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=mfvyDwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=mfvyDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 0,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 0,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=mfvyDwAAQBAJ&rdid=book-mfvyDwAAQBAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/500_React_JS_Interview_Questions_and_Ans-sample-pdf.acsm?id=mfvyDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=mfvyDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Don&#39;t be that person this time. This is the most comprehensive React JS interview questions book that you can ever find out."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "yc2YZFRjcAQC",
+      "etag": "UG4N5CLEcqs",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/yc2YZFRjcAQC",
+      "volumeInfo": {
+        "title": "React",
+        "authors": [
+          "Jacob Dotson"
+        ],
+        "publisher": "Jacob Dotson",
+        "publishedDate": "2009-07-09",
+        "description": "In today's society, teenagers are confronted with issues that no other generation has encountered. These pressures of life often seem unbearable. React challenges readers to look to God in times of trouble and seek His strength and guidance.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781442178120"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1442178124"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 112,
+        "printType": "BOOK",
+        "averageRating": 5,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.1.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=yc2YZFRjcAQC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=yc2YZFRjcAQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ru/books?id=yc2YZFRjcAQC&pg=PA47&dq=react&hl=&cd=8&source=gbs_api",
+        "infoLink": "http://books.google.ru/books?id=yc2YZFRjcAQC&dq=react&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/React.html?hl=&id=yc2YZFRjcAQC"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React-sample-epub.acsm?id=yc2YZFRjcAQC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=yc2YZFRjcAQC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "u1CsDwAAQBAJ",
+      "etag": "kVOeNwU0EOg",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/u1CsDwAAQBAJ",
+      "volumeInfo": {
+        "title": "React JS Fundamental",
+        "subtitle": "Learn fundamental React JS Single Page Application with Fetching Data from API and UseContext",
+        "authors": [
+          "Onesinus SPT"
+        ],
+        "publisher": "Onesinus Saut Parulian",
+        "publishedDate": "2019-08-31",
+        "description": "In this ebooks we will learn basic Single Page Application with React JS 1. How to Install React JS with create-react-app 2. Fetching data from API 3. Using Global Context with useContext 4. Unit Testing with JEST [Ongoing]",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 42,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.1.0.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=u1CsDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=u1CsDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "id",
+        "previewLink": "http://books.google.ru/books?id=u1CsDwAAQBAJ&printsec=frontcover&dq=react&hl=&cd=9&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=u1CsDwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=u1CsDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 0,
+          "currencyCode": "RUB"
+        },
+        "retailPrice": {
+          "amount": 0,
+          "currencyCode": "RUB"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=u1CsDwAAQBAJ&rdid=book-u1CsDwAAQBAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/React_JS_Fundamental-sample-pdf.acsm?id=u1CsDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=u1CsDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "In this ebooks we will learn basic Single Page Application with React JS 1. How to Install React JS with create-react-app 2. Fetching data from API 3. Using Global Context with useContext 4. Unit Testing with JEST [Ongoing]"
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "5bnbGOsuUuYC",
+      "etag": "CdoVUJO51qE",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/5bnbGOsuUuYC",
+      "volumeInfo": {
+        "title": "The Must-React System",
+        "authors": [
+          "Kraig Kleeman"
+        ],
+        "publisher": "iUniverse",
+        "publishedDate": "2008-09",
+        "description": "Every company that wants to continue growth needs their sales team to be proficient in finding and closing net-new opportunities. But, unfortunately, most sales persons are not good at gaining new business, much less performing even the most basic prospecting practices. There are a multitude of reasons for this phenomenon. But the biggest reason is that sales professionals are untrained in vital cold-calling techniques. Especially in the realm of cold-calling and prospecting. Further, there is a culture of sales resistance that exists, and few sales professionals are equipped to penetrate it. The Must-React System is written help all sales professionals master the art of persuasion, and especially in the important area of cold-calling, prospecting, sales pipeline development.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780595489428"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0595489427"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 120,
+        "printType": "BOOK",
+        "categories": [
+          "Business & Economics"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=5bnbGOsuUuYC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=5bnbGOsuUuYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.ru/books?id=5bnbGOsuUuYC&pg=PA1&dq=react&hl=&cd=10&source=gbs_api",
+        "infoLink": "http://books.google.ru/books?id=5bnbGOsuUuYC&dq=react&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/The_Must_React_System.html?hl=&id=5bnbGOsuUuYC"
+      },
+      "saleInfo": {
+        "country": "RU",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "RU",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.ru/books/download/The_Must_React_System-sample-epub.acsm?id=5bnbGOsuUuYC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=5bnbGOsuUuYC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "While helpful for all selling environments, this book emphasizes The Must—\u003cbr\u003e\n\u003cb\u003eReact\u003c/b\u003e System as applied to complex, enterpriseclass sales. My next book will \u003cbr\u003e\nanalyze applying our methodology to transactional sales. Prospecting is broken&nbsp;..."
+      }
+    }
+  ]
+}
