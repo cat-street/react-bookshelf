@@ -1,6 +1,6 @@
-import BookShelf from '../BookShelf/BookShelf';
-import Filter from '../Filter/Filter';
-import Navigation from '../Navigation/Navigation';
+import BookShelf from './modules/BookShelf/BookShelf';
+import Filter from './components/Filter/Filter';
+import Navigation from './components/Navigation/Navigation';
 import './App.css';
 
 function App() {
