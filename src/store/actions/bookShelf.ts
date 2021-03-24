@@ -10,16 +10,9 @@ const setBooks = (books: Array<Book>) => ({
   books,
 });
 
-export const sortByTitle = () => ({
-  type: actionTypes.SORT_TITLE,
-});
-
-export const sortByAuthor = () => ({
-  type: actionTypes.SORT_AUTHOR,
-});
-
-export const sortByRating = () => ({
-  type: actionTypes.SORT_RATING,
+export const sortBookShelf = (sortBy: string) => ({
+  type: actionTypes.SORT_BOOKS,
+  sortBy,
 });
 
 export const fetchBooks = () => async (dispatch: Dispatch) => {

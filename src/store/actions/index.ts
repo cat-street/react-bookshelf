@@ -1,6 +1,4 @@
 export {
   fetchBooks,
-  sortByTitle,
-  sortByAuthor,
-  sortByRating,
+  sortBookShelf,
 } from './bookShelf';

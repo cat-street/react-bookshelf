@@ -5,28 +5,18 @@ import { sortBooks } from '../../utils/actionHelpers';
 
 const initialState: Array<Book> = [];
 
-const sortByTitle = (state: Array<Book>) => sortBooks(state, 'title');
-
-const sortByAuthor = (state: Array<Book>) => sortBooks(state, 'author');
-
-const sortByRating = (state: Array<Book>) => sortBooks(state, 'rating');
+const sortBookShelf = (state: Array<Book>, sortBy: string) => sortBooks(state, sortBy);
 
 export default (
   state = initialState,
-  { type, books }: AnyAction,
+  { type, books, sortBy }: AnyAction,
 ): Array<Book> => {
   switch (type) {
     case actionTypes.SET_BOOKS:
       return state.concat(books);
 
-    case actionTypes.SORT_TITLE:
-      return sortByTitle(state);
-
-    case actionTypes.SORT_AUTHOR:
-      return sortByAuthor(state);
-
-    case actionTypes.SORT_RATING:
-      return sortByRating(state);
+    case actionTypes.SORT_BOOKS:
+      return sortBookShelf(state, sortBy);
 
     default:
       return state;
