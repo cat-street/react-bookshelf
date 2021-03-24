@@ -3,27 +3,23 @@ import { Dispatch } from 'redux';
 import actionTypes from './actionTypes';
 import * as mockData from '../../mock/mockData.json';
 import { Book } from '../../types/bookshelf';
-
-const fillAuthor = (authors: string | Array<string> | undefined): string => {
-  if (authors) {
-    return typeof authors === 'string' ? authors : authors.join(', ');
-  }
-  return 'No Author';
-};
-
-const sortBooks = (arr: Array<Book>, arg: string) => [...arr].sort((a, b) => {
-  if (a[arg] > b[arg]) {
-    return 1;
-  }
-  if (a[arg] < b[arg]) {
-    return -1;
-  }
-  return 0;
-});
+import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
 
 const setBooks = (books: Array<Book>) => ({
   type: actionTypes.SET_BOOKS,
   books,
+});
+
+export const sortByTitle = () => ({
+  type: actionTypes.SORT_TITLE,
+});
+
+export const sortByAuthor = () => ({
+  type: actionTypes.SORT_AUTHOR,
+});
+
+export const sortByRating = () => ({
+  type: actionTypes.SORT_RATING,
 });
 
 export const fetchBooks = () => async (dispatch: Dispatch) => {
@@ -46,7 +42,3 @@ export const fetchBooks = () => async (dispatch: Dispatch) => {
     throw new Error(err.message);
   }
 };
-
-export const sortName = () => ({
-  type: actionTypes.SORT_TITLE,
-});

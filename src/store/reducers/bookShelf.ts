@@ -1,18 +1,9 @@
 import { AnyAction } from 'redux';
 import actionTypes from '../actions/actionTypes';
 import { Book } from '../../types/bookshelf';
+import { sortBooks } from '../../utils/actionHelpers';
 
 const initialState: Array<Book> = [];
-
-const sortBooks = (arr: Array<Book>, arg: string) => [...arr].sort((a, b) => {
-  if (a[arg] > b[arg]) {
-    return 1;
-  }
-  if (a[arg] < b[arg]) {
-    return -1;
-  }
-  return 0;
-});
 
 const sortByTitle = (state: Array<Book>) => sortBooks(state, 'title');
 

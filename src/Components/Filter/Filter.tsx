@@ -4,7 +4,7 @@ import './Filter.css';
 
 const Filter: FC = () => (
   <Nav className="justify-content-center filter" activeKey="name">
-    <p className="m-0 pt-2 pr-2">Filter by:</p>
+    <p className="m-0 pt-2 pr-2">Sort by:</p>
     <Nav.Item>
       <Nav.Link eventKey="name">Name</Nav.Link>
     </Nav.Item>
