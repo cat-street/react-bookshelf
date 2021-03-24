@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Book } from '../../types/bookshelf';
+import './BookCard.css';
 
 type Props = {
   book: Book;
@@ -15,11 +16,11 @@ const BookCard: FC<Props> = ({ book }: Props) => (
     xl="2"
     className="px-1 mb-3 d-flex align-items-stretch"
   >
-    <Card className="bookshelf__card">
+    <Card>
       <Card.Img
         variant="top"
         src={book.cover || '/images/cover.jpg'}
-        className="w-75 mx-auto mt-3"
+        className="w-75 mx-auto mt-3 card__image"
       />
       <Card.Body>
         <Card.Title className="text-uppercase">{book.title}</Card.Title>
