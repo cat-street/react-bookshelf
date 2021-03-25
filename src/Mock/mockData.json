@@ -178,7 +178,7 @@
               },
               "printType": "BOOK",
               "categories": [
-                  "TypeScript (Computer program language)"
+                  "Computers"
               ],
               "maturityRating": "NOT_MATURE",
               "allowAnonLogging": false,
@@ -3415,7 +3415,7 @@
               },
               "printType": "BOOK",
               "categories": [
-                  "World War, 1939-1945"
+                  "History"
               ],
               "maturityRating": "NOT_MATURE",
               "allowAnonLogging": false,
@@ -3475,7 +3475,7 @@
               },
               "printType": "BOOK",
               "categories": [
-                  "Mormon Church"
+                  "Religion"
               ],
               "maturityRating": "NOT_MATURE",
               "allowAnonLogging": false,
