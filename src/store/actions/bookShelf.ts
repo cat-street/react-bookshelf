@@ -2,10 +2,10 @@ import { Dispatch } from 'redux';
 
 import actionTypes from './actionTypes';
 import * as mockData from '../../mock/mockData.json';
-import { Book } from '../../types/bookshelf';
+import { BooksArray } from '../../types/bookshelf';
 import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
 
-const setBooks = (books: Array<Book>) => ({
+const setBooks = (books: BooksArray) => ({
   type: actionTypes.SET_BOOKS,
   books,
 });
@@ -19,6 +19,11 @@ export const updateRating = (id: string, rating: number) => ({
   type: actionTypes.UPDATE_RATING,
   id,
   rating,
+});
+
+export const searchBook = (query: string) => ({
+  type: actionTypes.SEARCH_BOOK,
+  query,
 });
 
 export const fetchBooks = () => async (dispatch: Dispatch) => {

@@ -1,13 +1,16 @@
 import { AnyAction } from 'redux';
 import actionTypes from '../actions/actionTypes';
-import { Book } from '../../types/bookshelf';
+import { BooksState, BooksArray } from '../../types/bookshelf';
 import { sortBooks } from '../../utils/actionHelpers';
 
-const initialState: Array<Book> = [];
+const initialState: BooksState = {
+  initialBooks: [],
+  searchResults: [],
+};
 
-const sortBookShelf = (state: Array<Book>, sortBy: string) => sortBooks(state, sortBy);
+const sortBookShelf = (state: BooksArray, sortBy: string) => sortBooks(state, sortBy);
 
-const updateRating = (state: Array<Book>, id: string, rating: number) => {
+const updateRating = (state: BooksArray, id: string, rating: number) => {
   const newState = [...state];
   const chosenBookIndex = newState.findIndex((el) => el.id === id);
   if (chosenBookIndex >= 0) {
@@ -21,12 +24,16 @@ const updateRating = (state: Array<Book>, id: string, rating: number) => {
   return newState;
 };
 
+const searchBook = (state: BooksArray, query: string) => state.filter((el) => (
+  el.title.toLowerCase().includes(query) || el.author.toLowerCase().includes(query)
+));
+
 export default (
   state = initialState,
   {
-    type, books, sortBy, id, rating,
+    type, books, sortBy, id, rating, query,
   }: AnyAction,
-): Array<Book> => {
+): BooksArray => {
   switch (type) {
     case actionTypes.SET_BOOKS:
       return state.concat(books);
@@ -36,6 +43,9 @@ export default (
 
     case actionTypes.UPDATE_RATING:
       return updateRating(state, id, rating);
+
+    case actionTypes.SEARCH_BOOK:
+      return searchBook(state, query);
 
     default:
       return state;

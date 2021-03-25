@@ -10,3 +10,10 @@ export interface Book {
   votes: number,
   ownerId: string,
 }
+
+export interface BooksArray extends Array<Book> {}
+
+export interface BooksState {
+  initialBooks: BooksArray,
+  searchResults: BooksArray,
+}

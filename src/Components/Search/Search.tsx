@@ -1,8 +1,13 @@
 import { FC, SyntheticEvent, useState } from 'react';
+import { connect } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
+import { searchBook } from '../../store/actions/index';
 
-// eslint-disable-next-line arrow-body-style
-const Search: FC = () => {
+type Props = {
+  onSearchBook: (query: string) => void;
+};
+
+const Search: FC<Props> = ({ onSearchBook }: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleChange = (evt: SyntheticEvent) => {
@@ -12,7 +17,7 @@ const Search: FC = () => {
 
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
-    console.log(searchQuery);
+    onSearchBook(searchQuery);
   };
 
   return (
@@ -25,6 +30,7 @@ const Search: FC = () => {
         onChange={handleChange}
       />
       <Button
+        type="submit"
         variant="outline-info"
         className="mx-auto px-5 mt-1 mx-sm-0 mt-sm-0 px-sm-3"
       >
@@ -34,4 +40,10 @@ const Search: FC = () => {
   );
 };
 
-export default Search;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  onSearchBook: (query: string) => dispatch(searchBook(query)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
