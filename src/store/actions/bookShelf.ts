@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 
 import actionTypes from './actionTypes';
 import * as mockData from '../../mock/mockData.json';
-import { BooksArray } from '../../types/bookshelf';
+import { BooksArray, Sort } from '../../types/bookshelf';
 import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
 
 const setBooks = (books: BooksArray) => ({
@@ -40,7 +40,7 @@ export const fetchBooks = () => async (dispatch: Dispatch) => {
       ownerId: 'mock',
     }));
     if (books) {
-      const sortedBooks = sortBooks(books, 'title');
+      const sortedBooks = sortBooks(books, 'title', Sort.ASC);
       dispatch(setBooks(sortedBooks));
     }
   } catch (err) {

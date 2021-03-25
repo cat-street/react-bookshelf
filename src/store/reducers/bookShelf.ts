@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import actionTypes from '../actions/actionTypes';
-import { BooksState, BooksArray } from '../../types/bookshelf';
+import { BooksState, BooksArray, Sort } from '../../types/bookshelf';
 import { sortBooks } from '../../utils/actionHelpers';
 
 const initialState: BooksState = {
@@ -9,32 +9,35 @@ const initialState: BooksState = {
   currentBooks: [],
   searching: false,
   page: 1,
+  sort: Sort.ASC,
+  sortBy: 'title',
+  booksPerPage: 10,
 };
-
-const BOOKS_PER_PAGE: number = 10;
 
 const setBooks = (state: BooksState, books: BooksArray) => {
   const newState = {
     initialBooks: state.initialBooks.concat(books),
     searchResults: [],
-    currentBooks: books.slice(0, BOOKS_PER_PAGE),
+    currentBooks: books.slice(0, state.booksPerPage),
   };
   return { ...state, ...newState };
 };
 
 const sortBookShelf = (state: BooksState, sortBy: string) => {
-  const sortedBooks = sortBooks(state.initialBooks, sortBy);
+  const sortOrder = sortBy === 'rating' ? Sort.DESC : Sort.ASC;
+  const sortedBooks = sortBooks(state.initialBooks, sortBy, sortOrder);
   const searchResults = state.searchResults.length > 0
-    ? sortBooks(state.searchResults, sortBy)
+    ? sortBooks(state.searchResults, sortBy, state.sort)
     : [];
   const currentBooks = state.searching
-    ? searchResults.slice(0, BOOKS_PER_PAGE)
-    : sortedBooks.slice(0, BOOKS_PER_PAGE);
+    ? searchResults.slice(0, state.booksPerPage)
+    : sortedBooks.slice(0, state.booksPerPage);
   const newState = {
     initialBooks: sortedBooks,
     searchResults,
     currentBooks,
     page: 1,
+    sortBy,
   };
   return { ...state, ...newState };
 };
@@ -66,7 +69,7 @@ const searchBook = (state: BooksState, query: string) => {
   if (!query) {
     newState = {
       searchResults: [],
-      currentBooks: state.initialBooks.slice(0, BOOKS_PER_PAGE),
+      currentBooks: state.initialBooks.slice(0, state.booksPerPage),
       searching: false,
     };
   } else {
@@ -74,7 +77,7 @@ const searchBook = (state: BooksState, query: string) => {
       (el) => el.title.toLowerCase().includes(query)
         || el.author.toLowerCase().includes(query),
     );
-    const currentBooks = searchResults.slice(0, BOOKS_PER_PAGE);
+    const currentBooks = searchResults.slice(0, state.booksPerPage);
     newState = {
       searchResults,
       currentBooks,

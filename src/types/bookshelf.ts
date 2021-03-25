@@ -13,10 +13,15 @@ export interface Book {
 
 export interface BooksArray extends Array<Book> {}
 
+export enum Sort { ASC, DESC }
+
 export interface BooksState {
   initialBooks: BooksArray,
   searchResults: BooksArray,
   currentBooks: BooksArray,
   searching: boolean,
   page: number,
+  sort: Sort,
+  sortBy: string,
+  booksPerPage: number,
 }
