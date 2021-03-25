@@ -2,9 +2,9 @@ import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 
-import BookCard from '../../components/BookCard/BookCard';
 import { fetchBooks, sortBookShelf } from '../../store/actions/index';
 import { Book } from '../../types/bookshelf';
+import BookCard from '../../components/BookCard/BookCard';
 import Filter from '../../components/Filter/Filter';
 
 type Props = {
@@ -24,7 +24,10 @@ const BookShelf: FC<Props> = ({ books, onFetchBooks, onSortBooks }: Props) => {
         <Filter onSort={onSortBooks} />
       </Row>
       <Row>
-        {books && books.map((el) => <BookCard key={el.id} book={el} />)}
+        {books
+          && books.map((el) => (
+            <BookCard key={el.id} book={el} />
+          ))}
       </Row>
     </Container>
   );
