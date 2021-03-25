@@ -6,37 +6,93 @@ import { sortBooks } from '../../utils/actionHelpers';
 const initialState: BooksState = {
   initialBooks: [],
   searchResults: [],
+  currentBooks: [],
+  searching: false,
+  page: 1,
 };
 
-const sortBookShelf = (state: BooksArray, sortBy: string) => sortBooks(state, sortBy);
+const BOOKS_PER_PAGE: number = 10;
 
-const updateRating = (state: BooksArray, id: string, rating: number) => {
-  const newState = [...state];
-  const chosenBookIndex = newState.findIndex((el) => el.id === id);
-  if (chosenBookIndex >= 0) {
-    const chosenBook = newState[chosenBookIndex];
-    chosenBook.rating = parseFloat(((
-      chosenBook.rating * chosenBook.votes + rating
-    ) / (chosenBook.votes + 1)).toFixed(1));
-    chosenBook.votes += 1;
-    newState[chosenBookIndex] = chosenBook;
+const setBooks = (state: BooksState, books: BooksArray) => {
+  const newState = {
+    initialBooks: state.initialBooks.concat(books),
+    searchResults: [],
+    currentBooks: books.slice(0, BOOKS_PER_PAGE),
+  };
+  return { ...state, ...newState };
+};
+
+const sortBookShelf = (state: BooksState, sortBy: string) => {
+  const sortedBooks = sortBooks(state.initialBooks, sortBy);
+  const searchResults = state.searchResults.length > 0
+    ? sortBooks(state.searchResults, sortBy)
+    : [];
+  const currentBooks = state.searching
+    ? searchResults.slice(0, BOOKS_PER_PAGE)
+    : sortedBooks.slice(0, BOOKS_PER_PAGE);
+  const newState = {
+    initialBooks: sortedBooks,
+    searchResults,
+    currentBooks,
+    page: 1,
+  };
+  return { ...state, ...newState };
+};
+
+const updateRating = (state: BooksState, id: string, rating: number) => {
+  const updatedBooks = [...state.initialBooks];
+  const chosenBookIndex = updatedBooks.findIndex((el) => el.id === id);
+  const chosenBook = updatedBooks[chosenBookIndex];
+  chosenBook.rating = parseFloat(
+    (
+      (chosenBook.rating * chosenBook.votes + rating)
+      / (chosenBook.votes + 1)
+    ).toFixed(1),
+  );
+  chosenBook.votes += 1;
+  updatedBooks[chosenBookIndex] = chosenBook;
+  const currentBooks = [...state.currentBooks];
+  const currentBookIndex = currentBooks.findIndex((el) => el.id === id);
+  currentBooks[currentBookIndex].rating = chosenBook.rating;
+  const newState = {
+    initialBooks: updatedBooks,
+    currentBooks,
+  };
+  return { ...state, ...newState };
+};
+
+const searchBook = (state: BooksState, query: string) => {
+  let newState: Record<string, any>;
+  if (!query) {
+    newState = {
+      searchResults: [],
+      currentBooks: state.initialBooks.slice(0, BOOKS_PER_PAGE),
+      searching: false,
+    };
+  } else {
+    const searchResults = state.initialBooks.filter(
+      (el) => el.title.toLowerCase().includes(query)
+        || el.author.toLowerCase().includes(query),
+    );
+    const currentBooks = searchResults.slice(0, BOOKS_PER_PAGE);
+    newState = {
+      searchResults,
+      currentBooks,
+      searching: true,
+    };
   }
-  return newState;
+  return { ...state, ...newState };
 };
-
-const searchBook = (state: BooksArray, query: string) => state.filter((el) => (
-  el.title.toLowerCase().includes(query) || el.author.toLowerCase().includes(query)
-));
 
 export default (
   state = initialState,
   {
     type, books, sortBy, id, rating, query,
   }: AnyAction,
-): BooksArray => {
+): BooksState => {
   switch (type) {
     case actionTypes.SET_BOOKS:
-      return state.concat(books);
+      return setBooks(state, books);
 
     case actionTypes.SORT_BOOKS:
       return sortBookShelf(state, sortBy);

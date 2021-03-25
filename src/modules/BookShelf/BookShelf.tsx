@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 
 import { fetchBooks, sortBookShelf } from '../../store/actions/index';
-import { BooksArray } from '../../types/bookshelf';
+import { BooksArray, BooksState } from '../../types/bookshelf';
 import BookCard from '../../components/BookCard/BookCard';
 import Filter from '../../components/Filter/Filter';
 
@@ -33,8 +33,8 @@ const BookShelf: FC<Props> = ({ books, onFetchBooks, onSortBooks }: Props) => {
   );
 };
 
-const mapStateToProps = (state: BooksArray) => ({
-  books: state,
+const mapStateToProps = (state: BooksState) => ({
+  books: state.currentBooks,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

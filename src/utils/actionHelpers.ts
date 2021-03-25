@@ -1,10 +1,5 @@
 import { BooksArray } from '../types/bookshelf';
 
-const updateObject = (
-  oldObject: Record<string, any>,
-  updatedValues: Record<string, any>,
-) => ({ ...oldObject, ...updatedValues });
-
 const fillAuthor = (authors: string | Array<string> | undefined): string => {
   if (authors) {
     return typeof authors === 'string' ? authors : authors.join(', ');
@@ -22,4 +17,4 @@ const sortBooks = (arr: BooksArray, arg: string) => [...arr].sort((a, b) => {
   return 0;
 });
 
-export { updateObject, fillAuthor, sortBooks };
+export { fillAuthor, sortBooks };

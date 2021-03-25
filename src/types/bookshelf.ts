@@ -16,4 +16,7 @@ export interface BooksArray extends Array<Book> {}
 export interface BooksState {
   initialBooks: BooksArray,
   searchResults: BooksArray,
+  currentBooks: BooksArray,
+  searching: boolean,
+  page: number,
 }
