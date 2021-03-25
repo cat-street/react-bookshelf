@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
-import { fetchBooks, sortBookShelf } from '../../store/actions/index';
+import { fetchBooks, sortBookShelf, setPage } from '../../store/actions/index';
 import { BooksArray, BooksState } from '../../types/bookshelf';
 import BookCard from '../../components/BookCard/BookCard';
 import Filter from '../../components/Filter/Filter';
@@ -10,26 +10,38 @@ import Filter from '../../components/Filter/Filter';
 type Props = {
   allBooks: BooksArray;
   books: BooksArray;
+  searchResults: BooksArray;
   page: number;
   booksPerPage: number;
+  searching: boolean;
   onFetchBooks: () => void;
   onSortBooks: (sortBy: string) => void;
+  onSetPage: (page: number) => void;
 };
 
 const BookShelf: FC<Props> = ({
   allBooks,
   books,
+  searchResults,
   page,
   booksPerPage,
+  searching,
   onFetchBooks,
   onSortBooks,
+  onSetPage,
 }: Props) => {
   const setPages = () => {
     const items = [];
-    const pageCount = Math.ceil(allBooks.length / booksPerPage);
+    const currentBooks = searching ? searchResults : allBooks;
+    const pageCount = Math.ceil(currentBooks.length / booksPerPage);
+    if (pageCount === 1) return null;
     for (let number = 1; number <= pageCount; number += 1) {
       items.push(
-        <Pagination.Item key={number} active={page === number}>
+        <Pagination.Item
+          key={number}
+          active={page === number}
+          onClick={() => onSetPage(number)}
+        >
           {number}
         </Pagination.Item>,
       );
@@ -59,13 +71,16 @@ const BookShelf: FC<Props> = ({
 const mapStateToProps = (state: BooksState) => ({
   allBooks: state.initialBooks,
   books: state.currentBooks,
+  searchResults: state.searchResults,
   page: state.page,
   booksPerPage: state.booksPerPage,
+  searching: state.searching,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   onFetchBooks: () => dispatch(fetchBooks()),
   onSortBooks: (sortBy: string) => dispatch(sortBookShelf(sortBy)),
+  onSetPage: (page: number) => dispatch(setPage(page)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookShelf);

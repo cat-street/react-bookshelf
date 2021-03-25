@@ -3,4 +3,5 @@ export {
   sortBookShelf,
   updateRating,
   searchBook,
+  setPage,
 } from './bookShelf';

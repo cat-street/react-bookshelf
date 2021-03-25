@@ -26,6 +26,11 @@ export const searchBook = (query: string) => ({
   query,
 });
 
+export const setPage = (page: number) => ({
+  type: actionTypes.SET_PAGE,
+  page,
+});
+
 export const fetchBooks = () => async (dispatch: Dispatch) => {
   try {
     const books = mockData.items.map((el) => ({

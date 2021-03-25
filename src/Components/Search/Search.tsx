@@ -23,6 +23,7 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
   return (
     <Form inline onSubmit={handleSubmit}>
       <FormControl
+        name="search"
         type="text"
         placeholder="Author, Title"
         className="mr-sm-2"
