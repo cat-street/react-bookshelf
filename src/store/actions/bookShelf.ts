@@ -34,6 +34,11 @@ export const setPage = (page: number) => ({
   page,
 });
 
+export const getBook = (id: string) => ({
+  type: actionTypes.GET_BOOK,
+  id,
+});
+
 export const fetchBooks = () => async (dispatch: Dispatch) => {
   try {
     const books = mockData.items.map((el) => ({
@@ -41,7 +46,7 @@ export const fetchBooks = () => async (dispatch: Dispatch) => {
       title: el.volumeInfo.title,
       author: fillAuthor(el.volumeInfo.authors),
       cover: el.volumeInfo.imageLinks?.thumbnail || '',
-      description: el.volumeInfo.description?.slice(0, 120) || '',
+      description: el.volumeInfo.description || '',
       year: el.volumeInfo.publishedDate || '',
       categories: el.volumeInfo.categories || ['Uncategorized'],
       rating: parseFloat((Math.random() * 4 + 1).toFixed(1)),

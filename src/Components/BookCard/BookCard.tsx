@@ -33,7 +33,9 @@ const BookCard: FC<Props> = ({ book }: Props) => (
       <Card.Body>
         <Card.Title className="text-uppercase">{book.title}</Card.Title>
         <Card.Subtitle className="text-muted mb-3">{book.author}</Card.Subtitle>
-        <Card.Text>{`${book.description}...`}</Card.Text>
+        <Card.Text>
+          {book.description && `${book.description.slice(0, 120)}...`}
+        </Card.Text>
         <Link to={`/${book.categories[0]}/${book.id}`}>
           Read more...
         </Link>

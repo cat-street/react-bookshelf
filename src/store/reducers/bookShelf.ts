@@ -20,6 +20,7 @@ const initialState: BooksState = {
   sort: Sort.ASC,
   sortBy: 'title',
   booksPerPage: 10,
+  currentBook: {},
 };
 
 const setBooks = (state: BooksState, books: BooksArray) => {
@@ -110,6 +111,15 @@ const setPage = (state: BooksState, page: number) => {
   return { ...state, ...newState };
 };
 
+const getBook = (state: BooksState, id: string) => {
+  const currentBook = state.currentBooks.find((el) => el.id === id);
+  if (currentBook) {
+    const newState = { currentBook };
+    return { ...state, ...newState };
+  }
+  return state;
+};
+
 export default (
   state = initialState,
   {
@@ -138,6 +148,9 @@ export default (
 
     case actionTypes.SET_PAGE:
       return setPage(state, page);
+
+    case actionTypes.GET_BOOK:
+      return getBook(state, id);
 
     default:
       return state;

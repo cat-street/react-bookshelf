@@ -4,6 +4,7 @@ enum BookShelfActionTypes {
   UPDATE_RATING = 'UPDATE_RATING',
   SEARCH_BOOK = 'SEARCH_BOOK',
   SET_PAGE = 'SET_PAGE',
+  GET_BOOK = 'GET_BOOK',
 }
 
 export default BookShelfActionTypes;

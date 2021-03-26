@@ -4,4 +4,5 @@ export {
   updateRating,
   searchBook,
   setPage,
+  getBook,
 } from './bookShelf';
