@@ -1,6 +1,6 @@
 import { BooksArray, Sort } from '../types/bookshelf';
 
-const fillAuthor = (authors: string | Array<string> | undefined): string => {
+const fillAuthor = (authors: string | string[] | undefined): string => {
   if (authors) {
     return typeof authors === 'string' ? authors : authors.join(', ');
   }

@@ -2,7 +2,9 @@ import { Dispatch } from 'redux';
 
 import actionTypes from './actionTypes';
 import * as mockData from '../../mock/mockData.json';
-import { BooksArray, Sort, SortBy } from '../../types/bookshelf';
+import {
+  BooksArray, Sort, SortBy, SearchType,
+} from '../../types/bookshelf';
 import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
 
 const setBooks = (books: BooksArray) => ({
@@ -21,9 +23,10 @@ export const updateRating = (id: string, rating: number) => ({
   rating,
 });
 
-export const searchBook = (query: string) => ({
+export const searchBook = (query: string, searchType: SearchType) => ({
   type: actionTypes.SEARCH_BOOK,
   query,
+  searchType,
 });
 
 export const setPage = (page: number) => ({
@@ -40,6 +43,7 @@ export const fetchBooks = () => async (dispatch: Dispatch) => {
       cover: el.volumeInfo.imageLinks?.thumbnail || '',
       description: el.volumeInfo.description?.slice(0, 120) || '',
       year: el.volumeInfo.publishedDate || '',
+      categories: el.volumeInfo.categories || ['Uncategorized'],
       rating: parseFloat((Math.random() * 4 + 1).toFixed(1)),
       votes: Math.round(Math.random() * 10),
       ownerId: 'mock',

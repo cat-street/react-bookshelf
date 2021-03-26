@@ -1,10 +1,12 @@
 // import { AnyAction } from 'redux';
 import actionTypes from '../actions/actionTypes';
 import {
+  Book,
   BooksState,
   BooksArray,
   Sort,
   SortBy,
+  SearchType,
   Reducer,
 } from '../../types/bookshelf';
 import { sortBooks } from '../../utils/actionHelpers';
@@ -70,7 +72,9 @@ const updateRating = (state: BooksState, id: string, rating: number) => {
   return { ...state, ...newState };
 };
 
-const searchBook = (state: BooksState, query: string) => {
+const searchBook = (
+  state: BooksState, query: string, searchType: SearchType,
+) => {
   let newState: Record<string, any>;
   if (!query) {
     newState = {
@@ -79,10 +83,11 @@ const searchBook = (state: BooksState, query: string) => {
       searching: false,
     };
   } else {
-    const searchResults = state.initialBooks.filter(
-      (el) => el.title.toLowerCase().includes(query.toLowerCase())
-        || el.author.toLowerCase().includes(query.toLowerCase()),
-    );
+    const cb = searchType === 'title'
+      ? (el: Book) => el.title.toLowerCase().includes(query.toLowerCase())
+        || el.author.toLowerCase().includes(query.toLowerCase())
+      : (el: Book) => el.categories.includes(query);
+    const searchResults = state.initialBooks.filter(cb);
     const currentBooks = searchResults.slice(0, state.booksPerPage);
     newState = {
       searchResults,
@@ -108,7 +113,14 @@ const setPage = (state: BooksState, page: number) => {
 export default (
   state = initialState,
   {
-    type, books, sortBy, id, rating, query, page,
+    type,
+    books,
+    sortBy,
+    id,
+    rating,
+    query,
+    searchType,
+    page,
   }: Reducer,
 ): BooksState => {
   switch (type) {
@@ -122,7 +134,7 @@ export default (
       return updateRating(state, id, rating);
 
     case actionTypes.SEARCH_BOOK:
-      return searchBook(state, query);
+      return searchBook(state, query, searchType);
 
     case actionTypes.SET_PAGE:
       return setPage(state, page);

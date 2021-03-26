@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
 import { fetchBooks, sortBookShelf, setPage } from '../../store/actions/index';
-import { BooksArray, BooksState, SortBy } from '../../types/bookshelf';
+import {
+  BooksArray,
+  BooksState,
+  SortBy,
+} from '../../types/bookshelf';
 import BookCard from '../../components/BookCard/BookCard';
 import Filter from '../../components/Filter/Filter';
 

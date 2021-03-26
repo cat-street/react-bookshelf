@@ -2,9 +2,10 @@ import { FC, SyntheticEvent, useState } from 'react';
 import { connect } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { searchBook } from '../../store/actions/index';
+import { SearchType } from '../../types/bookshelf';
 
 type Props = {
-  onSearchBook: (query: string) => void;
+  onSearchBook: (query: string, searchType: SearchType) => void;
 };
 
 const Search: FC<Props> = ({ onSearchBook }: Props) => {
@@ -17,7 +18,7 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
 
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
-    onSearchBook(searchQuery);
+    onSearchBook(searchQuery, 'title');
   };
 
   return (
@@ -44,7 +45,9 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onSearchBook: (query: string) => dispatch(searchBook(query)),
+  onSearchBook: (
+    query: string, searchType: SearchType,
+  ) => dispatch(searchBook(query, searchType)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
