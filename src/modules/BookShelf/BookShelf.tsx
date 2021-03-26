@@ -1,8 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
-import { fetchBooks, sortBookShelf, setPage } from '../../store/actions/index';
+import { sortBookShelf, setPage } from '../../store/actions/index';
 import {
   BooksArray,
   BooksState,
@@ -18,7 +18,6 @@ type Props = {
   page: number;
   booksPerPage: number;
   searching: boolean;
-  onFetchBooks: () => void;
   onSortBooks: (sortBy: SortBy) => void;
   onSetPage: (page: number) => void;
 };
@@ -30,7 +29,6 @@ const BookShelf: FC<Props> = ({
   page,
   booksPerPage,
   searching,
-  onFetchBooks,
   onSortBooks,
   onSetPage,
 }: Props) => {
@@ -52,10 +50,6 @@ const BookShelf: FC<Props> = ({
     }
     return items;
   };
-
-  useEffect(() => {
-    onFetchBooks();
-  }, [onFetchBooks]);
 
   return (
     <Container fluid className="px-4">
@@ -82,7 +76,6 @@ const mapStateToProps = (state: BooksState) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onFetchBooks: () => dispatch(fetchBooks()),
   onSortBooks: (sortBy: SortBy) => dispatch(sortBookShelf(sortBy)),
   onSetPage: (page: number) => dispatch(setPage(page)),
 });
