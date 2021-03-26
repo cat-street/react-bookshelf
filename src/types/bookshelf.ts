@@ -29,7 +29,7 @@ export interface BooksState {
   sort: Sort,
   sortBy: SortBy,
   booksPerPage: number,
-  currentBook: Book | {},
+  currentBook: Book,
 }
 
 export interface Reducer {

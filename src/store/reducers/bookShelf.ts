@@ -20,7 +20,7 @@ const initialState: BooksState = {
   sort: Sort.ASC,
   sortBy: 'title',
   booksPerPage: 10,
-  currentBook: {},
+  currentBook: {} as Book,
 };
 
 const setBooks = (state: BooksState, books: BooksArray) => {

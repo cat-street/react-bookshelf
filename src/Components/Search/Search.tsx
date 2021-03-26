@@ -1,6 +1,8 @@
 import { FC, SyntheticEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
+
 import { searchBook } from '../../store/actions/index';
 import { SearchType } from '../../types/bookshelf';
 
@@ -10,6 +12,7 @@ type Props = {
 
 const Search: FC<Props> = ({ onSearchBook }: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const history = useHistory();
 
   const handleChange = (evt: SyntheticEvent) => {
     const target = evt.target as HTMLInputElement;
@@ -19,6 +22,7 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
     onSearchBook(searchQuery, 'title');
+    history.push('/');
   };
 
   return (
