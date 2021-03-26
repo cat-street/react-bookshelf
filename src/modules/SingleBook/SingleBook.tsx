@@ -48,7 +48,9 @@ const SingleBook: FC<Props> = ({
             <Badge variant="info" className="ml-2 mr-3">
               {currentBook.categories}
             </Badge>
-            <Button size="sm" variant="outline-success">Edit</Button>
+            <Button size="sm" variant="outline-success">
+              Edit
+            </Button>
           </h2>
           <h4 className="text-muted">
             <Button
@@ -61,7 +63,11 @@ const SingleBook: FC<Props> = ({
               {currentBook.author}
             </Button>
           </h4>
-          <BookRating rating={currentBook.rating} id={currentBook.id} />
+          <BookRating
+            rating={currentBook.rating}
+            id={currentBook.id}
+            votes={currentBook.votes}
+          />
           <p className="my-4">{currentBook.description}</p>
           <p>
             <strong>Published:</strong>

@@ -42,7 +42,7 @@ const BookCard: FC<Props> = ({ book }: Props) => (
       </Card.Body>
       <ListGroup variant="flush">
         <ListGroup.Item>
-          <BookRating rating={book.rating} id={book.id} />
+          <BookRating rating={book.rating} votes={book.votes} id={book.id} />
         </ListGroup.Item>
       </ListGroup>
     </Card>

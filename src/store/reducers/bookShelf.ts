@@ -55,12 +55,7 @@ const updateRating = (state: BooksState, id: string, rating: number) => {
   const updatedBooks = [...state.initialBooks];
   const chosenBookIndex = updatedBooks.findIndex((el) => el.id === id);
   const chosenBook = updatedBooks[chosenBookIndex];
-  chosenBook.rating = parseFloat(
-    (
-      (chosenBook.rating * chosenBook.votes + rating)
-        / (chosenBook.votes + 1)
-    ).toFixed(1),
-  );
+  chosenBook.rating = rating;
   chosenBook.votes += 1;
   updatedBooks[chosenBookIndex] = chosenBook;
   const currentBooks = [...state.currentBooks];

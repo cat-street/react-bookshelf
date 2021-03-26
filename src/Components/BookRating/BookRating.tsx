@@ -8,22 +8,28 @@ import { updateRating } from '../../store/actions/index';
 import './BookRating.css';
 
 type Props = {
-  rating: number;
   id: string;
+  rating: number;
+  votes: number;
   onUpdateRating: (id: string, rating: number) => void;
 };
 
-const BookRating: FC<Props> = ({ rating, id, onUpdateRating }: Props) => {
+const BookRating: FC<Props> = ({
+  id, rating, votes, onUpdateRating,
+}: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
+  const [stateRating, setStateRating] = useState(0);
+  const [stateVotes, setStateVotes] = useState(0);
 
   const setRating: Array<number> = useMemo(() => {
     const ratingArr = Array(5).fill(0);
-    const ratingInt = Math.floor(rating);
-    const remainder = rating - ratingInt;
-    if (remainder >= 0.5) ratingArr[ratingInt] = 1;
+    const ratingInt = Math.floor(stateRating);
+    const remainder = stateRating - ratingInt;
+    if (remainder >= 0.45 && remainder <= 0.95) ratingArr[ratingInt] = 1;
+    else if (remainder > 0.95) ratingArr[ratingInt] = 2;
     ratingArr.fill(2, 0, ratingInt);
     return ratingArr;
-  }, [rating]);
+  }, [stateRating]);
 
   let timeOut: number;
 
@@ -40,6 +46,18 @@ const BookRating: FC<Props> = ({ rating, id, onUpdateRating }: Props) => {
     }, 100);
   };
 
+  const calculateRating = (score: number) => {
+    const newRating = ((stateRating * stateVotes + score) / (stateVotes + 1));
+    setStateRating(newRating);
+    setStateVotes(stateVotes + 1);
+    onUpdateRating(id, newRating);
+  };
+
+  useEffect(() => {
+    setStateRating(rating);
+    setStateVotes(votes);
+  }, [rating, votes]);
+
   useEffect(() => {
     setStars(setRating);
   }, [setRating]);
@@ -55,7 +73,7 @@ const BookRating: FC<Props> = ({ rating, id, onUpdateRating }: Props) => {
                 key={Math.random()}
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
-                onClick={() => onUpdateRating(id, (i + 1))}
+                onClick={() => calculateRating(i + 1)}
                 className="star"
               />
             );
@@ -66,7 +84,7 @@ const BookRating: FC<Props> = ({ rating, id, onUpdateRating }: Props) => {
                 key={Math.random()}
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
-                onClick={() => onUpdateRating(id, (i + 1))}
+                onClick={() => calculateRating(i + 1)}
                 className="star"
               />
             );
@@ -77,14 +95,14 @@ const BookRating: FC<Props> = ({ rating, id, onUpdateRating }: Props) => {
                 key={Math.random()}
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
-                onClick={() => onUpdateRating(id, (i + 1))}
+                onClick={() => calculateRating(i + 1)}
                 className="star"
               />
             );
         }
       })}
       {' '}
-      <strong className="ml-2">{rating}</strong>
+      <strong className="ml-2">{stateRating && stateRating.toFixed(1)}</strong>
     </div>
   );
 };
