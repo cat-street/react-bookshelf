@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 
 import actionTypes from './actionTypes';
 import * as mockData from '../../mock/mockData.json';
-import { BooksArray, Sort } from '../../types/bookshelf';
+import { BooksArray, Sort, SortBy } from '../../types/bookshelf';
 import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
 
 const setBooks = (books: BooksArray) => ({
@@ -10,7 +10,7 @@ const setBooks = (books: BooksArray) => ({
   books,
 });
 
-export const sortBookShelf = (sortBy: string) => ({
+export const sortBookShelf = (sortBy: SortBy) => ({
   type: actionTypes.SORT_BOOKS,
   sortBy,
 });

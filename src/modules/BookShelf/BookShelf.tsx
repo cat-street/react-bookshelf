@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
 import { fetchBooks, sortBookShelf, setPage } from '../../store/actions/index';
-import { BooksArray, BooksState } from '../../types/bookshelf';
+import { BooksArray, BooksState, SortBy } from '../../types/bookshelf';
 import BookCard from '../../components/BookCard/BookCard';
 import Filter from '../../components/Filter/Filter';
 
@@ -15,7 +15,7 @@ type Props = {
   booksPerPage: number;
   searching: boolean;
   onFetchBooks: () => void;
-  onSortBooks: (sortBy: string) => void;
+  onSortBooks: (sortBy: SortBy) => void;
   onSetPage: (page: number) => void;
 };
 
@@ -79,7 +79,7 @@ const mapStateToProps = (state: BooksState) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   onFetchBooks: () => dispatch(fetchBooks()),
-  onSortBooks: (sortBy: string) => dispatch(sortBookShelf(sortBy)),
+  onSortBooks: (sortBy: SortBy) => dispatch(sortBookShelf(sortBy)),
   onSetPage: (page: number) => dispatch(setPage(page)),
 });
 

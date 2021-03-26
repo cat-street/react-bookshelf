@@ -1,15 +1,16 @@
 import { FC, useState } from 'react';
 import { Nav } from 'react-bootstrap';
+import { SortBy } from '../../types/bookshelf';
 import './Filter.css';
 
 type Props = {
-  onSort: (sortBy: string) => void;
+  onSort: (sortBy: SortBy) => void;
 };
 
 const Filter: FC<Props> = ({ onSort }: Props) => {
   const [active, setActive] = useState<string>('title');
 
-  const sortBooks = (sortBy: string): void => {
+  const sortBooks = (sortBy: SortBy): void => {
     setActive(sortBy);
     onSort(sortBy);
   };

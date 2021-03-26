@@ -1,6 +1,12 @@
-import { AnyAction } from 'redux';
+// import { AnyAction } from 'redux';
 import actionTypes from '../actions/actionTypes';
-import { BooksState, BooksArray, Sort } from '../../types/bookshelf';
+import {
+  BooksState,
+  BooksArray,
+  Sort,
+  SortBy,
+  Reducer,
+} from '../../types/bookshelf';
 import { sortBooks } from '../../utils/actionHelpers';
 
 const initialState: BooksState = {
@@ -23,7 +29,7 @@ const setBooks = (state: BooksState, books: BooksArray) => {
   return { ...state, ...newState };
 };
 
-const sortBookShelf = (state: BooksState, sortBy: string) => {
+const sortBookShelf = (state: BooksState, sortBy: SortBy) => {
   const sortOrder = sortBy === 'rating' ? Sort.DESC : Sort.ASC;
   const sortedBooks = sortBooks(state.initialBooks, sortBy, sortOrder);
   const searchResults = state.searchResults.length > 0
@@ -103,7 +109,7 @@ export default (
   state = initialState,
   {
     type, books, sortBy, id, rating, query, page,
-  }: AnyAction,
+  }: Reducer,
 ): BooksState => {
   switch (type) {
     case actionTypes.SET_BOOKS:
