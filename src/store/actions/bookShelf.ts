@@ -10,9 +10,10 @@ export const sortBookShelf = (sortBy: SortBy) => ({
   sortBy,
 });
 
-export const updateRating = (id: string, user: UserStar) => ({
+export const updateRating = (id: string, rating: number, user: UserStar) => ({
   type: actionTypes.UPDATE_RATING,
   id,
+  rating,
   user,
 });
 

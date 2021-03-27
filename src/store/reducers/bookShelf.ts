@@ -11,6 +11,7 @@ import {
 } from '../../types/bookShelf';
 import { sortBooks } from '../../utils/actionHelpers';
 import * as mockData from '../../mock/mockDB.json';
+import { calculateRating } from '../../utils/bookShelfHelpers';
 
 const initialState: BooksState = {
   initialBooks: [],
@@ -35,6 +36,7 @@ const setBooks = (state: BooksState) => {
     ownerId: el.ownerId,
     category: el.category || 'uncategorized',
     votes: el.votes,
+    rating: calculateRating(el.votes),
     comments: el.comments,
   }));
   const sortedBooks = sortBooks(books, 'title', Sort.ASC);
@@ -70,6 +72,7 @@ const sortBookShelf = (state: BooksState, sortBy: SortBy) => {
 const updateRating = (
   state: BooksState,
   id: string,
+  rating: number,
   { user, vote }: UserStar,
 ) => {
   const updatedBooks = [...state.initialBooks];
@@ -77,6 +80,7 @@ const updateRating = (
   const chosenBook = updatedBooks[chosenBookIndex];
 
   chosenBook.votes[user] = vote;
+  chosenBook.rating = rating;
   updatedBooks[chosenBookIndex] = chosenBook;
   const currentBooks = [...state.currentBooks];
   const currentBookIndex = currentBooks.findIndex((el) => el.id === id);
@@ -129,8 +133,10 @@ const setPage = (state: BooksState, page: number) => {
 };
 
 const getBook = (state: BooksState, id: string) => {
-  const currentBook = mockData.items.find((el) => el.id === id);
-  if (currentBook) {
+  const fetchedBook = mockData.items.find((el) => el.id === id);
+  if (fetchedBook) {
+    const rating = calculateRating(fetchedBook.votes);
+    const currentBook = { ...fetchedBook, rating };
     const newState = { currentBook };
     return { ...state, ...newState };
   }
@@ -143,6 +149,7 @@ export default (
     type,
     sortBy,
     id,
+    rating,
     user,
     query,
     searchType,
@@ -157,7 +164,7 @@ export default (
       return sortBookShelf(state, sortBy);
 
     case actionTypes.UPDATE_RATING:
-      return updateRating(state, id, user);
+      return updateRating(state, id, rating, user);
 
     case actionTypes.SEARCH_BOOK:
       return searchBook(state, query, searchType);

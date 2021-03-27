@@ -16,7 +16,7 @@ type Props = {
   currentBook: Book;
   onGetBook: (id: string) => void;
   onSearchBook: (query: string, searchType: SearchType) => void;
-  onUpdateRating: (id: string, user: UserStar) => void;
+  onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
 const SingleBook: FC<Props> = ({
@@ -33,8 +33,8 @@ const SingleBook: FC<Props> = ({
     history.push('/');
   };
 
-  const handleUpdateRating = (vote: number) => {
-    onUpdateRating(currentBook.id, { user: 'test-user', vote });
+  const handleUpdateRating = (vote: number, rating: number) => {
+    onUpdateRating(currentBook.id, rating, { user: 'test-user', vote });
   };
 
   useEffect(() => {
@@ -104,8 +104,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   onGetBook: (id: string) => dispatch(getBook(id)),
   onSearchBook: (query: string, searchType: SearchType) =>
     dispatch(searchBook(query, searchType)),
-  onUpdateRating: (id: string, user: UserStar) =>
-    dispatch(updateRating(id, user)),
+  onUpdateRating: (id: string, rating: number, user: UserStar) =>
+    dispatch(updateRating(id, rating, user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);

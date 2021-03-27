@@ -11,12 +11,12 @@ import './BookCard.css';
 
 type Props = {
   book: Book;
-  onUpdateRating: (id: string, user: UserStar) => void;
+  onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
 const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
-  const handleUpdateRating = (vote: number) => {
-    onUpdateRating(book.id, { user: 'test-user', vote });
+  const handleUpdateRating = (vote: number, rating: number) => {
+    onUpdateRating(book.id, rating, { user: 'test-user', vote });
   };
 
   return (
@@ -64,8 +64,8 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onUpdateRating: (id: string, user: UserStar) =>
-    dispatch(updateRating(id, user)),
+  onUpdateRating: (id: string, rating: number, user: UserStar) =>
+    dispatch(updateRating(id, rating, user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));

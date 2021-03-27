@@ -9,7 +9,7 @@ type Props = {
   rating: number;
   votes: number;
   ownVote: number;
-  onUpdate: (vote: number) => void;
+  onUpdate: (vote: number, rating: number) => void;
 };
 
 const BookRating: FC<Props> = ({
@@ -64,7 +64,7 @@ const BookRating: FC<Props> = ({
       votes: currentVotes,
       previousVote: vote,
     }));
-    onUpdate(vote);
+    onUpdate(vote, newRating);
   };
 
   useEffect(() => {
