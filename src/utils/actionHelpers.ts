@@ -1,11 +1,4 @@
-import { BooksArray, Sort } from '../types/bookshelf';
-
-const fillAuthor = (authors: string | string[] | undefined): string => {
-  if (authors) {
-    return typeof authors === 'string' ? authors : authors.join(', ');
-  }
-  return 'No Author';
-};
+import { BooksArray, Sort } from '../types/bookShelf';
 
 const sortBooks = (arr: BooksArray, arg: string, sort: Sort) => {
   const order = sort === Sort.ASC ? [1, -1] : [-1, 1];
@@ -20,4 +13,5 @@ const sortBooks = (arr: BooksArray, arg: string, sort: Sort) => {
   });
 };
 
-export { fillAuthor, sortBooks };
+// eslint-disable-next-line import/prefer-default-export
+export { sortBooks };

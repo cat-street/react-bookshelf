@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap';
 
 import { getBook, searchBook } from '../../store/actions/index';
-import { Book, BooksState, SearchType } from '../../types/bookshelf';
+import { Book, BooksState, SearchType } from '../../types/bookShelf';
 import BookRating from '../../components/BookRating/BookRating';
 
 type Props = {
@@ -66,7 +66,7 @@ const SingleBook: FC<Props> = ({
           <BookRating
             rating={currentBook.rating}
             id={currentBook.id}
-            votes={currentBook.votes}
+            votes={currentBook.voters.length}
           />
           <p className="my-4">{currentBook.description}</p>
           <p>

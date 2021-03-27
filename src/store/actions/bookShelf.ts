@@ -1,15 +1,8 @@
-import { Dispatch } from 'redux';
-
 import actionTypes from './actionTypes';
-import * as mockData from '../../mock/mockData.json';
-import {
-  BooksArray, Sort, SortBy, SearchType,
-} from '../../types/bookshelf';
-import { fillAuthor, sortBooks } from '../../utils/actionHelpers';
+import { SortBy, SearchType } from '../../types/bookShelf';
 
-const setBooks = (books: BooksArray) => ({
+export const setBooks = () => ({
   type: actionTypes.SET_BOOKS,
-  books,
 });
 
 export const sortBookShelf = (sortBy: SortBy) => ({
@@ -38,26 +31,3 @@ export const getBook = (id: string) => ({
   type: actionTypes.GET_BOOK,
   id,
 });
-
-export const fetchBooks = () => async (dispatch: Dispatch) => {
-  try {
-    const books = mockData.items.map((el) => ({
-      id: el.id,
-      title: el.volumeInfo.title,
-      author: fillAuthor(el.volumeInfo.authors),
-      cover: el.volumeInfo.imageLinks?.thumbnail || '',
-      description: el.volumeInfo.description || '',
-      year: el.volumeInfo.publishedDate || '',
-      categories: el.volumeInfo.categories || ['Uncategorized'],
-      rating: parseFloat((Math.random() * 4 + 1).toFixed(1)),
-      votes: Math.round(Math.random() * 10),
-      ownerId: 'mock',
-    }));
-    if (books) {
-      const sortedBooks = sortBooks(books, 'title', Sort.ASC);
-      dispatch(setBooks(sortedBooks));
-    }
-  } catch (err) {
-    throw new Error(err.message);
-  }
-};

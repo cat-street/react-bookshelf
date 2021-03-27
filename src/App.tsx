@@ -2,20 +2,20 @@ import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { fetchBooks } from './store/actions/index';
+import { setBooks } from './store/actions/index';
 import BookShelf from './modules/BookShelf/BookShelf';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './modules/SingleBook/SingleBook';
 import './App.css';
 
 type Props = {
-  onFetchBooks: () => void;
+  onSetBooks: () => void;
 };
 
-const App: FC<Props> = ({ onFetchBooks }: Props) => {
+const App: FC<Props> = ({ onSetBooks }: Props) => {
   useEffect(() => {
-    onFetchBooks();
-  }, [onFetchBooks]);
+    onSetBooks();
+  }, [onSetBooks]);
 
   return (
     <div className="app">
@@ -32,7 +32,7 @@ const App: FC<Props> = ({ onFetchBooks }: Props) => {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onFetchBooks: () => dispatch(fetchBooks()),
+  onSetBooks: () => dispatch(setBooks()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

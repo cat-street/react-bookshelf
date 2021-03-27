@@ -1,17 +1,18 @@
 import actionTypes from '../store/actions/actionTypes';
 
 export interface Book {
-  [key: string]: string | number | string[],
+  [key: string]: string | number | any[],
   id: string,
   title: string,
   author: string,
   cover: string,
   description: string,
-  year: string,
-  categories: string[],
-  rating: number,
-  votes: number,
+  published: string,
   ownerId: string,
+  category: string,
+  rating: number,
+  voters: string[],
+  comments: Record<string, string>[]
 }
 
 export interface BooksArray extends Array<Book> {}
@@ -34,10 +35,10 @@ export interface BooksState {
 
 export interface Reducer {
   type: actionTypes,
-  books: BooksArray,
   sortBy: SortBy,
   id: string,
   rating: number,
+  ownerId: string,
   query: string,
   searchType: SearchType,
   page: number,

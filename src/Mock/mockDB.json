@@ -1,0 +1,286 @@
+{
+  "items": [
+    {
+      "id": "wD63DwAAQBAJ",
+      "title": "JavaScript - The Definitive Guide: Master the World's Most-Used Programming Language",
+      "author": "David Flanagan",
+      "cover": "91hUer84PpL.jpg",
+      "description": "JavaScript is the programming language of the web and is used by more software developers today than any other programming language. For nearly 25 years this best seller has been the go-to guide for JavaScript programmers. The seventh edition is fully updated to cover the 2020 version of JavaScript, and new chapters cover classes, modules, iterators, generators, Promises, async/await, and metaprogramming. You'll find illuminating and engaging example code throughout. This book is for programmers who want to learn JavaScript and for web developers who want to take their understanding and mastery to the next level. It begins by explaining the JavaScript language itself, in detail, from the bottom up. It then builds on that foundation to cover the web platform and Node.js. Topics include: Types, values, variables, expressions, operators, statements, objects, and arrays Functions, classes, modules, iterators, generators, Promises, and async/await JavaScript's standard library: data structures, regular expressions, JSON, i18n, etc. The web platform: documents, components, graphics, networking, storage, and threads Node.js: buffers, files, streams, threads, child processes, web clients, and web servers Tools and language extensions that professional JavaScript developers rely on",
+      "published": "29 May 2020",
+      "category": "computers",
+      "ownerId": "test-user",
+      "rating": 5,
+      "voters": ["test-user", "jack", "jane"],
+      "comments": [
+        {
+          "id": "gKbQSB7rGVXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQSB7rGVX1",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "UfazHembxcjz",
+      "title": "The Ruby Programming Language: Everything You Need to Know",
+      "author": "David Flanagan",
+      "cover": "91BaPOa3R8L.jpg",
+      "description": "The Ruby Programming Language is the authoritative guide to Ruby and provides comprehensive coverage of versions 1.8 and 1.9 of the language. It was written (and illustrated!) by an all-star team: David Flanagan, bestselling author of programming language \"bibles\" (including JavaScript: The Definitive Guide and Java in a Nutshell) and committer to the Ruby Subversion repository.",
+      "published": "4 Feb. 2008",
+      "category": "computers",
+      "ownerId": "test-user",
+      "rating": 3.3,
+      "voters": ["jane", "ann", "max", "test-user", "mike"],
+      "comments": [
+        {
+          "id": "gKbQSB3rGVXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gK1QSB7rGVX1",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "5AFbpLdqxWl9",
+      "title": "Cycling In Ireland: A guide to the best of Irish cycling",
+      "author": "David Flanagan",
+      "cover": "A1U4OmglG9L.jpg",
+      "description": "This book documents the best cycling that Ireland has to offer. With eighty routes spread across the entire island, there is something for everyone; from gentle, traffic-free cycles, ideal for the whole family, to long challenging routes packed with relentless climbs. The routes range in length from 8km to 207km on a variety of surfaces including tarmac roads, gravel tracks, canal towpaths and singletrack. Each route description includes: - A full-colour map. - Turn-by-turn directions. - A route profile. - A detailed description of the route. - Advice on variations, extensions and shortcuts. - A downloadable GPX navigation file. The book also includes details of over fifty family-friendly greenways and trails, information on Ireland?s long-distance cycle routes and sixteen pages dedicated to cycling along the Wild Atlantic Way. This comprehensive guide is packed full of detailed information and inspiring photography that is sure to appeal to everyone interested in cycling in Ireland.",
+      "published": "18 May 2018",
+      "category": "travel",
+      "ownerId": "ann",
+      "rating": 4.6,
+      "voters": ["ann"],
+      "comments": [
+        {
+          "id": "gK1QSB7rGVXg",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "dMUVbnUYK5wA",
+      "title": "Canvas Pocket Reference: Scripted Graphics for HTML5",
+      "author": "David Flanagan",
+      "cover": "61qSNxJ896L.jpg",
+      "description": "The Canvas element is a revolutionary feature of HTML5 that enables powerful graphics for rich Internet applications, and this pocket reference provides the essentials you need to put this element to work. If you have working knowledge of JavaScript, this book will help you create detailed, interactive, and animated graphics -- from charts to animations to video games -- whether you're a web designer or a programmer interested in graphics.",
+      "published": "23 Dec. 2010",
+      "category": "computers",
+      "ownerId": "test-user",
+      "rating": 2.3,
+      "voters": ["ann", "test-user", "mike", "lenny"],
+      "comments": [
+        {
+          "id": "gKBQSB7rGzXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        }
+      ]
+    },
+    {
+      "id": "Y-mUDwAAQBAJ",
+      "title": "Van Gogh: Complete Works",
+      "author": "Rainer Metzger",
+      "cover": "81qnlhGC4mL.jpg",
+      "description": "Bold strokes of genius. This is the amazing work of a tormented soul. Vincent van Gogh's story is one of the most ironic in art history. He lived an unhappy and difficult life during which his work received almost no appreciation - finally killing himself by a bullet to the chest, so great was his despair - and is now widely considered one of the most important painters of all time, his works fetching record prices of tens of millions of dollars at auction. This comprehensive study of Vincent van Gogh (1853-1890) represents a rarity in art history: a detailed monograph on his life and art combined with a complete catalogue of his 871 paintings. These volumes also reproduce most of van Gogh's paintings in color.",
+      "published": "27 Oct. 2012",
+      "category": "art",
+      "ownerId": "jack",
+      "rating": 4.3,
+      "voters": ["jack", "jane", "ann", "max"],
+      "comments": [
+        {
+          "id": "gKbQSB7rGzXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQSB7rG1X1",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "vGOzK6YwSOBO",
+      "title": "Chagall: BA (Basic Art Album)",
+      "author": "Rainer Metzger",
+      "cover": "71JLJTMTJAL.jpg",
+      "description": "For Marc Chagall (1887 1985), painting was an intricate tapestry of dreams, tales, and traditions. His instantly recognizable visual language carved out a unique early 20th-century niche, often identified as one of the earliest expressions of psychic experience. Chagall s canvases are characterized by loose brushwork, deep colors, a particular fondness for blue, and a repertoire of recurring tropes including musicians, roosters, rooftops, flowers, and floating lovers. For all their ethereal charms, his compositions were often rich and complex in their references. They wove together not only colors and forms, but also his Jewish roots with his present encounters in Paris, markers of faith with gestures of love and symbols of hope with testimonies of trauma. Across scenes of birth, love, marriage, and death, this dependable artist introduction explores the many versions of Chagall s rich vocabulary. From visions of his native Vitebsk in modern-day Belarus to images of the Eiffel Tower, we explore the unique aesthetic of one of the most readily identifiable modern masters and one of the most influential Jewish artists of all time.",
+      "published": "6 Aug. 2016",
+      "category": "art",
+      "ownerId": "jack",
+      "rating": 4.3,
+      "voters": ["jack", "jane", "ann", "max"],
+      "comments": [
+        {
+          "id": "gKbQS37rGzXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        }
+      ]
+    },
+    {
+      "id": "aDYCyC6d-WgV",
+      "title": "Munich: Its Golden Age of Art and Culture 1890 - 1920",
+      "author": "Rainer Metzger",
+      "cover": "510F9oBQuBL.jpg",
+      "description": "As the 20th century dawned, Munich found itself at a high point in its cultural history. Often seen as provincial and parochial, it moved out of the shadow of Berlin and reinvented itself as a treasure house of art. A parade of artistic movements and breakaway groups took the limelight, from the innovative artists of the Munich Secession and the Jugendstil to the bold colours and expressive harmonies of Der Blaue Reiter: Kandinsky, Marc and Macke. Munich in 1900 was alive with a sense of celebration, buzzing with the seething life of its festivals and carnivals, theatres and cabarets. It became a haven and an inspiration to many: artists such as Paul Klee, Giorgio de Chirico and Marcel Duchamp, writers such as Thomas Mann and Stefan George, and political figures such as Lenin and Trotsky all spent time there. Munich 1900 is a profusely illustrated portrait of this vibrant cultural ferment and its most important protagonists.",
+      "published": "13 April 2009",
+      "category": "art",
+      "ownerId": "jack",
+      "rating": 3.7,
+      "voters": ["jack", "franz", "mike", "audrey", "jane", "ann", "max"],
+      "comments": [
+        {
+          "id": "gKbQS27rGzXO",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQ2B7rG1x1",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "Rz_7_ycfFs59",
+      "title": "Lonely Planet Pocket Prague (Travel Guide)",
+      "author": "Lonely Planet",
+      "cover": "91J1lbqOebL.jpg",
+      "description": "Lonely Planet's Pocket Prague is your passport to the most relevant, up-to-date advice on what to see and skip, and what hidden discoveries await you. Spend time at the historic buildings, museums and galleries at Prague Castle, take time out in peaceful Petrin Hill, or stroll the picturesque Old Town Square -all with your trusted travel companion. Get to the heart of the best of Prague and begin your journey now!",
+      "published": "10 Nov. 2017",
+      "category": "travel",
+      "ownerId": "ann",
+      "rating": 4.2,
+      "voters": ["jack", "franz", "ann", "test-user"],
+      "comments": [
+        {
+          "id": "gKbQS27rGzXe",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQ2B7rG1xe",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "KV62YFG0ry1M",
+      "title": "Epic Bike Rides of Europe (Lonely Planet)",
+      "author": "Lonely Planet",
+      "cover": "81fsoBHI0QL.jpg",
+      "description": "Explore Europe’s most thrilling cycling routes with the latest installment in the Epic series from Lonely Planet. From dreamy getaways on sun-dappled Mediterranean Islands to challenging alpine crossings, bike enthusiasts share stories from the best road, mountain, dirt and trail routes across the spiritual home of cycling.",
+      "published": "27 Aug. 2020",
+      "category": "travel",
+      "ownerId": "ann",
+      "rating": 3.9,
+      "voters": ["jack", "franz", "ann", "donald", "max", "jane", "audrey", "lenny"],
+      "comments": [
+        {
+          "id": "3KbQ2B7rG1xe",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "_cm-OUgW_72C",
+      "title": "Lonely Planet's Where To Go When Europe",
+      "author": "Lonely Planet",
+      "cover": "9199IefJb5L.jpg",
+      "description": "Where should you go next in Europe? Packed full with trip recommendations for every time of year - curated with weather, seasonal costs, crowds and events in mind - this book covers every flavour of the European travel experience, from culture-rich city breaks and sun-kissed beach escapes to scenic road trips and adrenaline-fuelled adventures.",
+      "published": "11 Sept. 2020",
+      "category": "travel",
+      "ownerId": "ann",
+      "rating": 2.9,
+      "voters": ["jack", "franz", "test-user"],
+      "comments": [
+        {
+          "id": "5KbQ2B7rG1xe",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "kX4GtnAhQC6X",
+      "title": "Effective TypeScript: 62 Specific Ways to Improve Your TypeScript",
+      "author": "Dan Vanderkam",
+      "cover": "81sJB+PbfEL.jpg",
+      "description": "TypeScript is a typed superset of JavaScript with the potential to solve many of the headaches for which JavaScript is famous. But TypeScript has a learning curve of its own, and understanding how to use it effectively can take time. This book guides you through 62 specific ways to improve your use of TypeScript. Author Dan Vanderkam, a principal software engineer at Sidewalk Labs, shows you how to apply these ideas, following the format popularized by Effective C++ and Effective Java (both from Addison-Wesley). You’ll advance from a beginning or intermediate user familiar with the basics to an advanced user who knows how to use the language well. Effective TypeScript is divided into eight chapters: Getting to Know TypeScript TypeScript’s Type System Type Inference Type Design Working with any Types Declarations and @types Writing and Running Your Code Migrating to TypeScript",
+      "published": "29 Oct. 2019",
+      "category": "computers",
+      "ownerId": "test-user",
+      "rating": 4.9,
+      "voters": ["test-user", "jack", "jane", "max", "batman"],
+      "comments": [
+        {
+          "id": "gKbQSB7rGV2O",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQSB7rGV21",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    },
+    {
+      "id": "YpkSGNbz4sff",
+      "title": "Full-Stack React, TypeScript, and Node: Build cloud-ready web applications using React 17 with Hooks and GraphQL",
+      "author": "David Choi",
+      "cover": "71m7dhO56ZL.jpg",
+      "description": "React sets the standard for building high-performance client-side web apps. Node.js is a scalable application server that is used in thousands of websites, while GraphQL is becoming the standard way for large websites to provide data and services to their users. Together, these technologies, when reinforced with the capabilities of TypeScript, provide a cutting-edge stack for complete web application development. This book takes a hands-on approach to implementing modern web technologies and the associated methodologies for building full-stack apps. You'll begin by gaining a strong understanding of TypeScript and how to use it to build high-quality web apps. The chapters that follow delve into client-side development with React using the new Hooks API and Redux. Next, you'll get to grips with server-side development with Express, including authentication with Redis-based sessions and accessing databases with TypeORM. The book will then show you how to use Apollo GraphQL to build web services for your full-stack app. Later, you'll learn how to build GraphQL schemas and integrate them with React using Hooks. Finally, you'll focus on how to deploy your application onto an NGINX server using the AWS cloud. By the end of this book, you'll be able to build and deploy complete high-performance web applications using React, Node, and GraphQL.",
+      "published": "18 Dec. 2020",
+      "category": "computers",
+      "ownerId": "test-user",
+      "rating": 3.3,
+      "voters": ["jack", "jane", "max", "donald", "lenny", "mike"],
+      "comments": [
+        {
+          "id": "gKbQ2B7rGV2O",
+          "ownerId": "jack",
+          "date": "Wed Dec 23 2020 09:51:22 GMT+0300 (GMT+03:00)",
+          "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt perferendis aliquid, voluptate voluptas repudiandae nobis, tempore dicta mollitia accusamus, perspiciatis ut. Culpa, ipsam sed!"
+        },
+        {
+          "id": "gKbQ2B7rGV21",
+          "ownerId": "test-user",
+          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
+          "text": "This works."
+        }
+      ]
+    }
+  ]
+}

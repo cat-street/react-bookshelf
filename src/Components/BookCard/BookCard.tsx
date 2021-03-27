@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
-import { Book } from '../../types/bookshelf';
+import { Book } from '../../types/bookShelf';
 import BookRating from '../BookRating/BookRating';
 import './BookCard.css';
 
@@ -21,7 +21,7 @@ const BookCard: FC<Props> = ({ book }: Props) => (
   >
     <Card>
       <Link
-        to={`/${book.categories[0]}/${book.id}`}
+        to={`/${book.category}/${book.id}`}
         className="w-75 mx-auto mt-3"
       >
         <Card.Img
@@ -36,13 +36,13 @@ const BookCard: FC<Props> = ({ book }: Props) => (
         <Card.Text>
           {book.description && `${book.description.slice(0, 120)}...`}
         </Card.Text>
-        <Link to={`/${book.categories[0]}/${book.id}`}>
+        <Link to={`/${book.category}/${book.id}`}>
           Read more...
         </Link>
       </Card.Body>
       <ListGroup variant="flush">
         <ListGroup.Item>
-          <BookRating rating={book.rating} votes={book.votes} id={book.id} />
+          <BookRating rating={book.rating} votes={book.voters.length} id={book.id} />
         </ListGroup.Item>
       </ListGroup>
     </Card>

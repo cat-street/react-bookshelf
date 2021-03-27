@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
 
 import { searchBook } from '../../store/actions/index';
-import { SearchType } from '../../types/bookshelf';
+import { SearchType } from '../../types/bookShelf';
 
 type Props = {
   onSearchBook: (query: string, searchType: SearchType) => void;

@@ -1,5 +1,5 @@
 export {
-  fetchBooks,
+  setBooks,
   sortBookShelf,
   updateRating,
   searchBook,
