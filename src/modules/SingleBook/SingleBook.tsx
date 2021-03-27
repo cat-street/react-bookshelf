@@ -5,20 +5,25 @@ import {
   Container, Col, Row, Image, Button, Badge,
 } from 'react-bootstrap';
 
-import { getBook, searchBook } from '../../store/actions/index';
-import { Book, BooksState, SearchType } from '../../types/bookShelf';
+import { getBook, searchBook, updateRating } from '../../store/actions/index';
+import {
+  Book, BooksState, SearchType, UserStar,
+} from '../../types/bookShelf';
 import BookRating from '../../components/BookRating/BookRating';
+import { calculateRating } from '../../utils/bookShelfHelpers';
 
 type Props = {
   currentBook: Book;
   onGetBook: (id: string) => void;
   onSearchBook: (query: string, searchType: SearchType) => void;
+  onUpdateRating: (id: string, user: UserStar) => void;
 };
 
 const SingleBook: FC<Props> = ({
   currentBook,
   onGetBook,
   onSearchBook,
+  onUpdateRating,
 }: Props) => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
@@ -26,6 +31,10 @@ const SingleBook: FC<Props> = ({
   const searchByAuthor = () => {
     onSearchBook(currentBook.author, 'title');
     history.push('/');
+  };
+
+  const handleUpdateRating = (vote: number) => {
+    onUpdateRating(currentBook.id, { user: 'test-user', vote });
   };
 
   useEffect(() => {
@@ -64,9 +73,9 @@ const SingleBook: FC<Props> = ({
             </Button>
           </h4>
           <BookRating
-            rating={currentBook.rating}
-            id={currentBook.id}
-            votes={currentBook.voters.length}
+            rating={calculateRating(currentBook.votes)}
+            votes={Object.keys(currentBook.votes).length}
+            onUpdate={handleUpdateRating}
           />
           <p className="my-4">{currentBook.description}</p>
           <p>
@@ -89,6 +98,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   onSearchBook: (
     query: string, searchType: SearchType,
   ) => dispatch(searchBook(query, searchType)),
+  onUpdateRating: (id: string, user: UserStar) =>
+    dispatch(updateRating(id, user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);

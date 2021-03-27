@@ -1,21 +1,18 @@
 import {
   FC, useEffect, useState, useMemo,
 } from 'react';
-import { connect } from 'react-redux';
 import { Star, StarFill, StarHalf } from 'react-bootstrap-icons';
 
-import { updateRating } from '../../store/actions/index';
 import './BookRating.css';
 
 type Props = {
-  id: string;
   rating: number;
   votes: number;
-  onUpdateRating: (id: string, rating: number) => void;
+  onUpdate: (vote: number) => void;
 };
 
 const BookRating: FC<Props> = ({
-  id, rating, votes, onUpdateRating,
+  rating, votes, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
   const [stateRating, setStateRating] = useState(0);
@@ -50,7 +47,7 @@ const BookRating: FC<Props> = ({
     const newRating = ((stateRating * stateVotes + score) / (stateVotes + 1));
     setStateRating(newRating);
     setStateVotes(stateVotes + 1);
-    onUpdateRating(id, newRating);
+    onUpdate(score);
   };
 
   useEffect(() => {
@@ -107,10 +104,4 @@ const BookRating: FC<Props> = ({
   );
 };
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  onUpdateRating: (id: string, rating: number) => dispatch(updateRating(id, rating)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BookRating);
+export default BookRating;

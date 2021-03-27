@@ -9,8 +9,18 @@
       "published": "29 May 2020",
       "category": "computers",
       "ownerId": "test-user",
-      "rating": 5,
-      "voters": ["test-user", "jack", "jane"],
+      "votes": {
+        "jack": 3,
+        "jane": 3,
+        "donald": 2,
+        "lenny": 5,
+        "mike": 2,
+        "test-user": 2,
+        "ann": 5,
+        "franz": 2,
+        "elodie": 5,
+        "alice": 5
+      },
       "comments": [
         {
           "id": "gKbQSB7rGVXO",
@@ -35,8 +45,15 @@
       "published": "4 Feb. 2008",
       "category": "computers",
       "ownerId": "test-user",
-      "rating": 3.3,
-      "voters": ["jane", "ann", "max", "test-user", "mike"],
+      "votes": {
+        "jack": 3,
+        "max": 2,
+        "lenny": 2,
+        "mike": 4,
+        "test-user": 4,
+        "franz": 5,
+        "elodie": 5
+      },
       "comments": [
         {
           "id": "gKbQSB3rGVXO",
@@ -61,8 +78,7 @@
       "published": "18 May 2018",
       "category": "travel",
       "ownerId": "ann",
-      "rating": 4.6,
-      "voters": ["ann"],
+      "votes": {},
       "comments": [
         {
           "id": "gK1QSB7rGVXg",
@@ -81,8 +97,7 @@
       "published": "23 Dec. 2010",
       "category": "computers",
       "ownerId": "test-user",
-      "rating": 2.3,
-      "voters": ["ann", "test-user", "mike", "lenny"],
+      "votes": {},
       "comments": [
         {
           "id": "gKBQSB7rGzXO",
@@ -101,8 +116,16 @@
       "published": "27 Oct. 2012",
       "category": "art",
       "ownerId": "jack",
-      "rating": 4.3,
-      "voters": ["jack", "jane", "ann", "max"],
+      "votes": {
+        "jack": 5,
+        "donald": 5,
+        "lenny": 4,
+        "mike": 4 ,
+        "ann": 5 ,
+        "sam": 2,
+        "elodie": 3 ,
+        "alice": 5
+      },
       "comments": [
         {
           "id": "gKbQSB7rGzXO",
@@ -127,8 +150,11 @@
       "published": "6 Aug. 2016",
       "category": "art",
       "ownerId": "jack",
-      "rating": 4.3,
-      "voters": ["jack", "jane", "ann", "max"],
+      "votes": {
+        "jack": 4,
+        "max": 3,
+        "mike": 5
+      },
       "comments": [
         {
           "id": "gKbQS37rGzXO",
@@ -147,8 +173,11 @@
       "published": "13 April 2009",
       "category": "art",
       "ownerId": "jack",
-      "rating": 3.7,
-      "voters": ["jack", "franz", "mike", "audrey", "jane", "ann", "max"],
+      "votes": {
+        "jack": 4,
+        "max": 3,
+        "mike": 5
+      },
       "comments": [
         {
           "id": "gKbQS27rGzXO",
@@ -173,8 +202,7 @@
       "published": "10 Nov. 2017",
       "category": "travel",
       "ownerId": "ann",
-      "rating": 4.2,
-      "voters": ["jack", "franz", "ann", "test-user"],
+      "votes": {"elodie": 2 },
       "comments": [
         {
           "id": "gKbQS27rGzXe",
@@ -199,16 +227,18 @@
       "published": "27 Aug. 2020",
       "category": "travel",
       "ownerId": "ann",
-      "rating": 3.9,
-      "voters": ["jack", "franz", "ann", "donald", "max", "jane", "audrey", "lenny"],
-      "comments": [
-        {
-          "id": "3KbQ2B7rG1xe",
-          "ownerId": "test-user",
-          "date": "Wed Dec 23 2020 11:51:22 GMT+0300 (GMT+03:00)",
-          "text": "This works."
-        }
-      ]
+
+      "votes": {
+        "jack": 5,
+        "franz": 3,
+        "ann": 3,
+        "donald": 1,
+        "max": 1,
+        "jane": 3,
+        "audrey": 5,
+        "lenny": 3
+      },
+      "comments": []
     },
     {
       "id": "_cm-OUgW_72C",
@@ -219,8 +249,7 @@
       "published": "11 Sept. 2020",
       "category": "travel",
       "ownerId": "ann",
-      "rating": 2.9,
-      "voters": ["jack", "franz", "test-user"],
+      "votes": { "elodie": 2 },
       "comments": [
         {
           "id": "5KbQ2B7rG1xe",
@@ -239,8 +268,7 @@
       "published": "29 Oct. 2019",
       "category": "computers",
       "ownerId": "test-user",
-      "rating": 4.9,
-      "voters": ["test-user", "jack", "jane", "max", "batman"],
+      "votes": { "test-user": 2 },
       "comments": [
         {
           "id": "gKbQSB7rGV2O",
@@ -265,8 +293,7 @@
       "published": "18 Dec. 2020",
       "category": "computers",
       "ownerId": "test-user",
-      "rating": 3.3,
-      "voters": ["jack", "jane", "max", "donald", "lenny", "mike"],
+      "votes": { "test-user": 3 },
       "comments": [
         {
           "id": "gKbQ2B7rGV2O",

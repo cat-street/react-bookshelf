@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { SortBy, SearchType } from '../../types/bookShelf';
+import { SortBy, SearchType, UserStar } from '../../types/bookShelf';
 
 export const setBooks = () => ({
   type: actionTypes.SET_BOOKS,
@@ -10,10 +10,10 @@ export const sortBookShelf = (sortBy: SortBy) => ({
   sortBy,
 });
 
-export const updateRating = (id: string, rating: number) => ({
+export const updateRating = (id: string, user: UserStar) => ({
   type: actionTypes.UPDATE_RATING,
   id,
-  rating,
+  user,
 });
 
 export const searchBook = (query: string, searchType: SearchType) => ({
