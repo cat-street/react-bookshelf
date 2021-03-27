@@ -45,6 +45,13 @@ const SingleBook: FC<Props> = ({
     onUpdateRating(currentBook.id, rating, { user: 'test-user', vote });
   };
 
+  const formatDate = (date: string) => {
+    const newDate = new Date(date);
+    return newDate.toLocaleDateString(
+      'en-US', { day: 'numeric', month: 'long', year: 'numeric' },
+    );
+  };
+
   useEffect(() => {
     onGetBook(id);
     setLoading(false);
@@ -61,7 +68,7 @@ const SingleBook: FC<Props> = ({
           </Row>
         ) : (
           <>
-            <Row>
+            <Row className="mb-4">
               <Col xs={12} sm={6} md={4} className="mb-3">
                 <Image
                   src={
@@ -75,15 +82,17 @@ const SingleBook: FC<Props> = ({
               </Col>
               <Col>
                 <h2>
-                  {currentBook.title}
-                  <Badge variant="info" className="ml-2 mr-3">
+                  <span className="mr-3">
+                    {currentBook.title}
+                  </span>
+                  <Badge variant="info" className="mr-3">
                     {currentBook.category}
                   </Badge>
                   <Button size="sm" variant="outline-success">
                     Edit
                   </Button>
                 </h2>
-                <h4 className="text-muted">
+                <h3 className="text-muted">
                   <Button
                     variant="link"
                     type="button"
@@ -93,7 +102,7 @@ const SingleBook: FC<Props> = ({
                   >
                     {currentBook.author}
                   </Button>
-                </h4>
+                </h3>
                 <BookRating
                   rating={calculateRating(currentBook.votes)}
                   votes={Object.keys(currentBook.votes).length}
@@ -109,16 +118,28 @@ const SingleBook: FC<Props> = ({
               </Col>
             </Row>
             <Row>
+              <h4 className="ml-4">Comments:</h4>
               {currentBook.comments.map((el) => (
-                <Card key={el.id}>
+                <Card key={el.id} bg="light" className="w-100 mb-2">
                   <Card.Body>
-                    <blockquote className="blockquote mb-0">
+                    <Card.Title>
+                      {el.ownerId}
+                      {' '}
+                      <small className="text-muted">
+                        {formatDate(el.date)}
+                      </small>
+                    </Card.Title>
+                    <Card.Text>
                       <p>{el.text}</p>
-                      <footer className="blockquote-footer">{el.ownerId}</footer>
-                    </blockquote>
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               ))}
+            </Row>
+            <Row>
+              <Button variant="outline-success" className="mx-auto">
+                Add comment
+              </Button>
             </Row>
           </>
         )}

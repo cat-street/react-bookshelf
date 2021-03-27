@@ -59,7 +59,7 @@ const BookShelf: FC<Props> = ({
       <Row>
         {books && books.map((el) => <BookCard key={el.id} book={el} />)}
       </Row>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center mb-3">
         <Pagination>{setPages()}</Pagination>
       </Row>
     </Container>
