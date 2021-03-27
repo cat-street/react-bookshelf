@@ -30,7 +30,7 @@ const setBooks = (state: BooksState) => {
     id: el.id,
     title: el.title,
     author: el.author,
-    cover: el.cover ? el.cover : '',
+    cover: el.cover ? `/images/books/${el.cover}` : '',
     description: el.description,
     published: el.published,
     ownerId: el.ownerId,
@@ -135,8 +135,9 @@ const setPage = (state: BooksState, page: number) => {
 const getBook = (state: BooksState, id: string) => {
   const fetchedBook = mockData.items.find((el) => el.id === id);
   if (fetchedBook) {
+    const cover = fetchedBook.cover ? `/images/books/${fetchedBook.cover}` : '';
     const rating = calculateRating(fetchedBook.votes);
-    const currentBook = { ...fetchedBook, rating };
+    const currentBook = { ...fetchedBook, cover, rating };
     const newState = { currentBook };
     return { ...state, ...newState };
   }

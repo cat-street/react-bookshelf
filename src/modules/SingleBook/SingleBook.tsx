@@ -72,9 +72,7 @@ const SingleBook: FC<Props> = ({
               <Col xs={12} sm={6} md={4} className="mb-3">
                 <Image
                   src={
-                    currentBook.cover
-                      ? `/images/books/${currentBook.cover}`
-                      : '/images/cover.jpg'
+                    currentBook.cover ? currentBook.cover : '/images/cover.jpg'
                   }
                   rounded
                   className="w-100"
