@@ -32,7 +32,7 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
         <Link to={`/${book.category}/${book.id}`} className="w-75 mx-auto mt-3">
           <Card.Img
             variant="top"
-            src={book.cover || '/images/cover.jpg'}
+            src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
             className="card__image"
           />
         </Link>

@@ -46,7 +46,11 @@ const SingleBook: FC<Props> = ({
       <Row>
         <Col xs={12} sm={6} md={4} className="mb-3">
           <Image
-            src={currentBook.cover || '/images/cover.jpg'}
+            src={
+              currentBook.cover
+                ? `/images/books/${currentBook.cover}`
+                : '/images/cover.jpg'
+            }
             rounded
             className="w-100"
           />
@@ -55,7 +59,7 @@ const SingleBook: FC<Props> = ({
           <h2>
             {currentBook.title}
             <Badge variant="info" className="ml-2 mr-3">
-              {currentBook.categories}
+              {currentBook.category}
             </Badge>
             <Button size="sm" variant="outline-success">
               Edit
@@ -72,16 +76,18 @@ const SingleBook: FC<Props> = ({
               {currentBook.author}
             </Button>
           </h4>
-          <BookRating
-            rating={calculateRating(currentBook.votes)}
-            votes={Object.keys(currentBook.votes).length}
-            onUpdate={handleUpdateRating}
-          />
+          {currentBook.votes && (
+            <BookRating
+              rating={calculateRating(currentBook.votes)}
+              votes={Object.keys(currentBook.votes).length}
+              onUpdate={handleUpdateRating}
+            />
+          )}
           <p className="my-4">{currentBook.description}</p>
           <p>
             <strong>Published:</strong>
             {' '}
-            {currentBook.year}
+            {currentBook.published}
           </p>
         </Col>
       </Row>
@@ -95,9 +101,8 @@ const mapStateToProps = (state: BooksState) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   onGetBook: (id: string) => dispatch(getBook(id)),
-  onSearchBook: (
-    query: string, searchType: SearchType,
-  ) => dispatch(searchBook(query, searchType)),
+  onSearchBook: (query: string, searchType: SearchType) =>
+    dispatch(searchBook(query, searchType)),
   onUpdateRating: (id: string, user: UserStar) =>
     dispatch(updateRating(id, user)),
 });
