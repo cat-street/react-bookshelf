@@ -8,11 +8,12 @@ import './BookRating.css';
 type Props = {
   rating: number;
   votes: number;
+  ownVote: number;
   onUpdate: (vote: number) => void;
 };
 
 const BookRating: FC<Props> = ({
-  rating, votes, onUpdate,
+  rating, votes, ownVote, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
   const [state, setState] = useState({
@@ -67,8 +68,8 @@ const BookRating: FC<Props> = ({
   };
 
   useEffect(() => {
-    setState((prevState) => ({ ...prevState, rating, votes }));
-  }, [rating, votes]);
+    setState({ rating, votes, previousVote: ownVote });
+  }, [rating, votes, ownVote]);
 
   useEffect(() => {
     setStars(setRating);

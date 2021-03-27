@@ -80,6 +80,7 @@ const SingleBook: FC<Props> = ({
             <BookRating
               rating={calculateRating(currentBook.votes)}
               votes={Object.keys(currentBook.votes).length}
+              ownVote={currentBook.votes['test-user'] || 0}
               onUpdate={handleUpdateRating}
             />
           )}

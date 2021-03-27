@@ -51,6 +51,7 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
             <BookRating
               rating={calculateRating(book.votes)}
               votes={Object.keys(book.votes).length}
+              ownVote={book.votes['test-user'] || 0}
               onUpdate={handleUpdateRating}
             />
           </ListGroup.Item>
