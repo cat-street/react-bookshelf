@@ -308,6 +308,30 @@
           "text": "This works."
         }
       ]
+    },
+    {
+      "id": "2pkSGNbz4sff",
+      "title": "English Grammar in Use Book with Answers: A Self-Study Reference and Practice Book for Intermediate Learners of English",
+      "author": "Raymond Murphy",
+      "cover": "715S4NQB1oL.jpg",
+      "description": "English Grammar in Use with Answers, authored by Raymond Murphy, is the first choice for intermediate (B1-B2) learners and covers all the grammar required at this level. It is a self-study book with simple explanations and lots of practice exercises, and has helped millions of people around the world to communicate in English. It is also trusted by teachers and can be used as a supplementary text in classrooms.",
+      "published": "23 Feb. 2012",
+      "category": "education",
+      "ownerId": "mike",
+      "votes": { "mike": 3 },
+      "comments": []
+    },
+    {
+      "id": "3gkSGsrz4sff",
+      "title": "Mathematics: A Complete Introduction: The Easy Way to Learn Maths",
+      "author": "Hugh Neill",
+      "cover": "61o11+8nGfL.jpg",
+      "description": "Maths does not have to be difficult. This book, complete with exercises and answers, forms a course which will take you from beginner or intermediate level to being a confident mathematician. This book includes: simple step-by-step explanations, to help you grasp new topics or those that have previously confused you; practice questions throughout, to help you embed your learning and improve your confidence; and end of chapter summaries, to help you remember the key points you've learned - all in one great-value book, so you don't need any separate workbooks or coursebooks. Chapters include: number; angles; fractions; two-dimensional shapes; decimals; statisticsl directed numbers; graphs; measurement; perimeter and area; algebraic expressions; approximations; equations; percentages; formulae; circles; probability; three-dimensional shapes; ratio and proportion; pythagoras' theorem and trigonometry; indices and standard form.",
+      "published": "21 Jun. 2018",
+      "category": "education",
+      "ownerId": "mike",
+      "votes": {},
+      "comments": []
     }
   ]
 }
