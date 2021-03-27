@@ -15,18 +15,21 @@ const BookRating: FC<Props> = ({
   rating, votes, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
-  const [stateRating, setStateRating] = useState(0);
-  const [stateVotes, setStateVotes] = useState(0);
+  const [state, setState] = useState({
+    rating: 0,
+    votes: 0,
+    previousVote: 0,
+  });
 
   const setRating: Array<number> = useMemo(() => {
     const ratingArr = Array(5).fill(0);
-    const ratingInt = Math.floor(stateRating);
-    const remainder = stateRating - ratingInt;
+    const ratingInt = Math.floor(state.rating);
+    const remainder = state.rating - ratingInt;
     if (remainder >= 0.45 && remainder <= 0.95) ratingArr[ratingInt] = 1;
     else if (remainder > 0.95) ratingArr[ratingInt] = 2;
     ratingArr.fill(2, 0, ratingInt);
     return ratingArr;
-  }, [stateRating]);
+  }, [state.rating]);
 
   let timeOut: number;
 
@@ -43,16 +46,28 @@ const BookRating: FC<Props> = ({
     }, 100);
   };
 
-  const calculateRating = (score: number) => {
-    const newRating = ((stateRating * stateVotes + score) / (stateVotes + 1));
-    setStateRating(newRating);
-    setStateVotes(stateVotes + 1);
-    onUpdate(score);
+  const calculateRating = (vote: number) => {
+    let newRating: number;
+    let currentVotes = state.votes;
+    if (state.previousVote) {
+      newRating = ((state.rating * currentVotes - state.previousVote + vote)
+        / currentVotes);
+    } else {
+      newRating = ((state.rating * currentVotes + vote)
+        / (currentVotes + 1));
+      currentVotes += 1;
+    }
+    setState((prevState) => ({
+      ...prevState,
+      rating: newRating,
+      votes: currentVotes,
+      previousVote: vote,
+    }));
+    onUpdate(vote);
   };
 
   useEffect(() => {
-    setStateRating(rating);
-    setStateVotes(votes);
+    setState((prevState) => ({ ...prevState, rating, votes }));
   }, [rating, votes]);
 
   useEffect(() => {
@@ -99,7 +114,7 @@ const BookRating: FC<Props> = ({
         }
       })}
       {' '}
-      <strong className="ml-2">{stateRating && stateRating.toFixed(1)}</strong>
+      <strong className="ml-2">{state.rating.toFixed(1)}</strong>
     </div>
   );
 };

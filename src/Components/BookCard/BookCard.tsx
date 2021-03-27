@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
@@ -18,8 +18,6 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
   const handleUpdateRating = (vote: number) => {
     onUpdateRating(book.id, { user: 'test-user', vote });
   };
-
-  console.log(book.votes);
 
   return (
     <Col
@@ -69,4 +67,4 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(updateRating(id, user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookCard);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));

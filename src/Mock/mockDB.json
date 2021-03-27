@@ -151,7 +151,7 @@
       "category": "art",
       "ownerId": "jack",
       "votes": {
-        "jack": 4,
+        "jack": 3,
         "max": 3,
         "mike": 5
       },
@@ -202,7 +202,7 @@
       "published": "10 Nov. 2017",
       "category": "travel",
       "ownerId": "ann",
-      "votes": {"elodie": 2 },
+      "votes": {"elodie": 2, "ann": 3 },
       "comments": [
         {
           "id": "gKbQS27rGzXe",
@@ -232,7 +232,7 @@
         "jack": 5,
         "franz": 3,
         "ann": 3,
-        "donald": 1,
+        "donald": 2,
         "max": 1,
         "jane": 3,
         "audrey": 5,
