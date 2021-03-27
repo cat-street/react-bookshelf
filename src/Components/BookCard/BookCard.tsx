@@ -19,6 +19,8 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
     onUpdateRating(book.id, { user: 'test-user', vote });
   };
 
+  console.log(book.votes);
+
   return (
     <Col
       xs="12"
