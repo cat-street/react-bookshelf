@@ -17,7 +17,7 @@ const Navigation: FC = () => (
       >
         <Nav className="pr-3">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="#link">Login</Nav.Link>
+          <Nav.Link href="/login">Login</Nav.Link>
         </Nav>
         <Search />
       </Navbar.Collapse>

@@ -1,8 +1,8 @@
 import { AuthActionTypes as actionTypes } from './actionTypes';
 
-export const login = (user: string, password: string) => ({
+export const login = (userId: string, password: string) => ({
   type: actionTypes.LOGIN,
-  user,
+  userId,
   password,
 });
 

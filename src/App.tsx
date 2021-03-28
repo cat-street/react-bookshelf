@@ -6,6 +6,7 @@ import { setBooks } from './store/actions/index';
 import BookShelf from './components/BookShelf/BookShelf';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
+import Login from './components/Login/Login';
 import './App.css';
 
 type Props = {
@@ -22,6 +23,7 @@ const App: FC<Props> = ({ onSetBooks }: Props) => {
       <Navigation />
       <Switch>
         <Route path="/:genre/:id" component={SingleBook} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/" component={BookShelf} />
         <Redirect to="/" />
       </Switch>

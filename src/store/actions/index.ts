@@ -7,3 +7,8 @@ export {
   getBook,
   addComment,
 } from './bookShelf';
+
+export {
+  login,
+  logout,
+} from './auth';
