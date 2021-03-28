@@ -16,7 +16,7 @@ const CommentCard: FC<Props> = ({ comment }: Props) => (
         <small className="text-muted">{formatDate(comment.date)}</small>
       </Card.Title>
       <Card.Text>
-        <p>{comment.text}</p>
+        {comment.text}
       </Card.Text>
     </Card.Body>
   </Card>

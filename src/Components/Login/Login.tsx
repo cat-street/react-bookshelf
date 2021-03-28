@@ -41,7 +41,6 @@ const Login: FC<Props> = ({
     if (input.userId) {
       onLogin(input.userId, input.password);
     }
-    history.push('/');
   };
 
   const hideToast = () => {
