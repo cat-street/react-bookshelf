@@ -54,12 +54,14 @@ const SingleBook: FC<Props> = ({
   };
 
   const handleUpdateRating = (vote: number, rating: number) => {
-    onUpdateRating(currentBook.id, rating, { user: 'test-user', vote });
+    onUpdateRating(currentBook.id, rating, { user: userId!, vote });
   };
 
   const handleAddComment = (comment: string) => {
-    onAddComment('test-user', comment);
-    setCommentOpen(false);
+    if (userId) {
+      onAddComment(userId, comment);
+      setCommentOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -115,9 +117,10 @@ const SingleBook: FC<Props> = ({
                   </Button>
                 </h3>
                 <BookRating
+                  userId={userId}
                   rating={calculateRating(currentBook.votes)}
                   votes={Object.keys(currentBook.votes).length}
-                  ownVote={currentBook.votes['test-user'] || 0}
+                  ownVote={currentBook.votes.userId || 0}
                   onUpdate={handleUpdateRating}
                 />
                 <p className="my-4">{currentBook.description}</p>

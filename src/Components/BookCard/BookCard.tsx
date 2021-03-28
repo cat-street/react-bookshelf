@@ -8,13 +8,15 @@ import { Book, UserStar } from '../../types/bookShelf';
 import BookRating from '../BookRating/BookRating';
 import { calculateRating } from '../../utils/bookShelfHelpers';
 import './BookCard.css';
+import { AuthState } from '../../types/auth';
 
 type Props = {
+  userId: string | null;
   book: Book;
   onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
-const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
+const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
   const handleUpdateRating = (vote: number, rating: number) => {
     onUpdateRating(book.id, rating, { user: 'test-user', vote });
   };
@@ -49,6 +51,7 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
         <ListGroup variant="flush">
           <ListGroup.Item>
             <BookRating
+              userId={userId}
               rating={calculateRating(book.votes)}
               votes={Object.keys(book.votes).length}
               ownVote={book.votes['test-user'] || 0}
@@ -61,7 +64,9 @@ const BookCard: FC<Props> = ({ book, onUpdateRating }: Props) => {
   );
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state: Record<string, AuthState>) => ({
+  userId: state.auth.userId,
+});
 
 const mapDispatchToProps = (dispatch: any) => ({
   onUpdateRating: (id: string, rating: number, user: UserStar) =>

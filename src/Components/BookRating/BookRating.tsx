@@ -6,6 +6,7 @@ import { Star, StarFill, StarHalf } from 'react-bootstrap-icons';
 import './BookRating.css';
 
 type Props = {
+  userId: string | null;
   rating: number;
   votes: number;
   ownVote: number;
@@ -13,7 +14,7 @@ type Props = {
 };
 
 const BookRating: FC<Props> = ({
-  rating, votes, ownVote, onUpdate,
+  userId, rating, votes, ownVote, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
   const [state, setState] = useState({
@@ -35,6 +36,7 @@ const BookRating: FC<Props> = ({
   let timeOut: number;
 
   const onHover = (ind: number) => {
+    if (!userId) return;
     clearTimeout(timeOut);
     const ratingArr = Array(5).fill(0);
     ratingArr.fill(2, 0, ind + 1);
@@ -48,6 +50,7 @@ const BookRating: FC<Props> = ({
   };
 
   const calculateRating = (vote: number) => {
+    if (!userId) return;
     let newRating: number;
     let currentVotes = state.votes;
     if (state.previousVote) {
@@ -87,7 +90,7 @@ const BookRating: FC<Props> = ({
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
                 onClick={() => calculateRating(i + 1)}
-                className="star"
+                className={userId ? 'star' : ''}
               />
             );
           case 1:
@@ -98,7 +101,7 @@ const BookRating: FC<Props> = ({
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
                 onClick={() => calculateRating(i + 1)}
-                className="star"
+                className={userId ? 'star' : ''}
               />
             );
           default:
@@ -109,7 +112,7 @@ const BookRating: FC<Props> = ({
                 onMouseEnter={() => onHover(i)}
                 onMouseLeave={onOut}
                 onClick={() => calculateRating(i + 1)}
-                className="star"
+                className={userId ? 'star' : ''}
               />
             );
         }
