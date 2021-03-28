@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# React Bookshelf
+**Test assignment project**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Anyway Kanban](./bookshelf_gh.png)
 
-## Available Scripts
+A frontend for a sample electronic library application with pagination, search, sorting and authentication.
 
-In the project directory, you can run:
+* Current live version at [https://cat-street.github.io/test-andrey-kudryavtsev/](https://cat-street.github.io/test-andrey-kudryavtsev/)
 
-### `npm start`
+---
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Books are loaded from a JSON file into a global state (database emulation)
+* If there are more than 10 books to load, a pagination at the bottom of the page appears
+* Users can search the library by an author or by a title (search for both fields in one query)
+* Users can sort the library by a title, by an author, or by rating
+* The main library page features a basic info of every book and a rating, authenticated users can vote here
+* A click on a cover or on a 'Read more' link leads to a single book page view
+* A single book is loaded from a JSON file (not from a state, hence edits are not saved globally)
+* There is a detailed info on a single book page, as well as comments section
+* Authenticated users can vote, leave comments or edit info of the book they added (user ID is set as 'owner' in the mock database)
+* Users can log in/log out by the link of the top of the page (test id: *test-user*, test password: *12345*). Credentials are hardcoded into a global state. Errors are shown, if the username or the password is incorrect.
+* Authentication is checked by a token created in a browser during the successful sign in.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technology
 
-### `npm test`
+* React (functional components, hooks, router)
+* Redux
+* TypeScript
+* JavaScript (ES6)
+* Bootstrap (bootstrap-react)
+* Airbnb-typescript ESLint codestyle
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## To Do
+* Ascending/Descending sorting by multiple clicks
+* A separate /search route
+* A /category route
+* Forms validation
+* Ability to delete comments
+* Refactoring
+* Design improvements
