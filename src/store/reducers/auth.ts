@@ -35,7 +35,7 @@ const login = (state: AuthState, userId: string, password: string) => {
 };
 
 const logout = (state: AuthState) => {
-  localStorage.removeItem('BookShelfId');
+  localStorage.removeItem('bookShelfId');
   const newState = {
     userId: null,
     error: null,

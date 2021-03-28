@@ -1,7 +1,9 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import {
+  Form, FormControl, Button, Col,
+} from 'react-bootstrap';
 
 import { searchBook } from '../../store/actions/index';
 import { SearchType } from '../../types/bookShelf';
@@ -27,21 +29,25 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
 
   return (
     <Form inline onSubmit={handleSubmit}>
-      <FormControl
-        name="search"
-        type="text"
-        placeholder="Author, Title"
-        className="mr-sm-2"
-        value={searchQuery}
-        onChange={handleChange}
-      />
-      <Button
-        type="submit"
-        variant="outline-info"
-        className="mx-auto px-5 mt-1 mx-sm-0 mt-sm-0 px-sm-3"
-      >
-        Search
-      </Button>
+      <Col xs={12} md={8} className="p-0 pb-2 pb-md-0">
+        <FormControl
+          name="search"
+          type="text"
+          placeholder="Author, Title"
+          className="w-100"
+          value={searchQuery}
+          onChange={handleChange}
+        />
+      </Col>
+      <Col xs={4} md={4} className="p-0 pl-md-2 mx-auto">
+        <Button
+          type="submit"
+          variant="outline-info"
+          className="m-0 w-100"
+        >
+          Search
+        </Button>
+      </Col>
     </Form>
   );
 };

@@ -5,10 +5,11 @@ import { Card, Col, ListGroup } from 'react-bootstrap';
 
 import { updateRating } from '../../store/actions/index';
 import { Book, UserStar } from '../../types/bookShelf';
+import { AuthState } from '../../types/auth';
+
 import BookRating from '../BookRating/BookRating';
 import { calculateRating } from '../../utils/bookShelfHelpers';
 import './BookCard.css';
-import { AuthState } from '../../types/auth';
 
 type Props = {
   userId: string | null;
