@@ -125,6 +125,7 @@ const setPage = (state: BooksState, page: number) => {
   const currentBooks = state.searching
     ? state.searchResults.slice(sliceStart, sliceStart + state.booksPerPage)
     : state.initialBooks.slice(sliceStart, sliceStart + state.booksPerPage);
+
   const newState = {
     currentBooks,
     page,
@@ -138,10 +139,32 @@ const getBook = (state: BooksState, id: string) => {
     const cover = fetchedBook.cover ? `/images/books/${fetchedBook.cover}` : '';
     const rating = calculateRating(fetchedBook.votes);
     const currentBook = { ...fetchedBook, cover, rating };
+
     const newState = { currentBook };
     return { ...state, ...newState };
   }
   return state;
+};
+
+// Comments are currently saved only on a single book view,
+// because of how getBook fetches a book from a 'database'
+const addComment = (
+  state: BooksState,
+  ownerId: string,
+  comment: string,
+) => {
+  const book = { ...state.currentBook };
+  book.comments.push({
+    id: Math.random().toString(36).substr(2, 9),
+    ownerId,
+    date: (new Date()).toDateString(),
+    text: comment,
+  });
+
+  const newState = {
+    currentBook: book,
+  };
+  return { ...state, ...newState };
 };
 
 export default (
@@ -152,9 +175,11 @@ export default (
     id,
     rating,
     user,
+    ownerId,
     query,
     searchType,
     page,
+    comment,
   }: Reducer,
 ): BooksState => {
   switch (type) {
@@ -175,6 +200,9 @@ export default (
 
     case actionTypes.GET_BOOK:
       return getBook(state, id);
+
+    case actionTypes.ADD_COMMENT:
+      return addComment(state, ownerId, comment);
 
     default:
       return state;

@@ -2,6 +2,13 @@ import actionTypes from '../store/actions/actionTypes';
 
 export type UserStar = { user: string, vote: number };
 
+export type Comment = {
+  id: string,
+  ownerId: string,
+  date: string,
+  text: string,
+};
+
 export interface Book {
   [key: string]: string | number | any[] | Record<string, any>,
   id: string,
@@ -14,7 +21,7 @@ export interface Book {
   category: string,
   rating: number,
   votes: Record<string, any>,
-  comments: Record<string, string>[]
+  comments: Comment[]
 }
 
 export interface BooksArray extends Array<Book> {}
@@ -45,4 +52,5 @@ export interface Reducer {
   query: string,
   searchType: SearchType,
   page: number,
+  comment: string,
 }

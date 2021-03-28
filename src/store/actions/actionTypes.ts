@@ -5,6 +5,7 @@ enum BookShelfActionTypes {
   SEARCH_BOOK = 'SEARCH_BOOK',
   SET_PAGE = 'SET_PAGE',
   GET_BOOK = 'GET_BOOK',
+  ADD_COMMENT = 'ADD_COMMENT',
 }
 
 export default BookShelfActionTypes;

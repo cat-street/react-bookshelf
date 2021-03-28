@@ -5,4 +5,5 @@ export {
   searchBook,
   setPage,
   getBook,
+  addComment,
 } from './bookShelf';

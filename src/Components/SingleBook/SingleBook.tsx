@@ -1,4 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useEffect, useState,
+} from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import {
@@ -12,11 +14,14 @@ import {
   Spinner,
 } from 'react-bootstrap';
 
-import { getBook, searchBook, updateRating } from '../../store/actions/index';
+import {
+  getBook, searchBook, updateRating, addComment,
+} from '../../store/actions/index';
 import {
   Book, BooksState, SearchType, UserStar,
 } from '../../types/bookShelf';
-import BookRating from '../../components/BookRating/BookRating';
+import BookRating from '../BookRating/BookRating';
+import CommentForm from '../CommentForm/CommentForm';
 import { calculateRating } from '../../utils/bookShelfHelpers';
 
 type Props = {
@@ -24,6 +29,7 @@ type Props = {
   onGetBook: (id: string) => void;
   onSearchBook: (query: string, searchType: SearchType) => void;
   onUpdateRating: (id: string, rating: number, user: UserStar) => void;
+  onAddComment: (ownerId: string, comment: string) => void;
 };
 
 const SingleBook: FC<Props> = ({
@@ -31,8 +37,10 @@ const SingleBook: FC<Props> = ({
   onGetBook,
   onSearchBook,
   onUpdateRating,
+  onAddComment,
 }: Props) => {
   const [loading, setLoading] = useState(true);
+  const [commentOpen, setCommentOpen] = useState(false);
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
@@ -50,6 +58,11 @@ const SingleBook: FC<Props> = ({
     return newDate.toLocaleDateString(
       'en-US', { day: 'numeric', month: 'long', year: 'numeric' },
     );
+  };
+
+  const handleAddComment = (comment: string) => {
+    onAddComment('test-user', comment);
+    setCommentOpen(false);
   };
 
   useEffect(() => {
@@ -135,9 +148,16 @@ const SingleBook: FC<Props> = ({
               ))}
             </Row>
             <Row>
-              <Button variant="outline-success" className="mx-auto">
-                Add comment
-              </Button>
+              {commentOpen ? <CommentForm onAdd={handleAddComment} />
+                : (
+                  <Button
+                    variant="outline-success"
+                    className="mx-auto px-5"
+                    onClick={() => setCommentOpen(true)}
+                  >
+                    Add comment
+                  </Button>
+                )}
             </Row>
           </>
         )}
@@ -155,6 +175,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(searchBook(query, searchType)),
   onUpdateRating: (id: string, rating: number, user: UserStar) =>
     dispatch(updateRating(id, rating, user)),
+  onAddComment: (ownerId: string, comment: string) =>
+    dispatch(addComment(ownerId, comment)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);

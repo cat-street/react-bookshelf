@@ -32,3 +32,9 @@ export const getBook = (id: string) => ({
   type: actionTypes.GET_BOOK,
   id,
 });
+
+export const addComment = (ownerId: string, comment: string) => ({
+  type: actionTypes.ADD_COMMENT,
+  ownerId,
+  comment,
+});

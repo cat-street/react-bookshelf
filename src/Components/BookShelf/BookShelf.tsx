@@ -8,8 +8,8 @@ import {
   BooksState,
   SortBy,
 } from '../../types/bookShelf';
-import BookCard from '../../components/BookCard/BookCard';
-import Filter from '../../components/Filter/Filter';
+import BookCard from '../BookCard/BookCard';
+import Filter from '../Filter/Filter';
 
 type Props = {
   allBooks: BooksArray;

@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { setBooks } from './store/actions/index';
-import BookShelf from './modules/BookShelf/BookShelf';
+import BookShelf from './components/BookShelf/BookShelf';
 import Navigation from './components/Navigation/Navigation';
-import SingleBook from './modules/SingleBook/SingleBook';
+import SingleBook from './components/SingleBook/SingleBook';
 import './App.css';
 
 type Props = {
