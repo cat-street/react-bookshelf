@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { checkId, logout, setBooks } from './store/actions/index';
 import BookShelf from './components/BookShelf/BookShelf';
