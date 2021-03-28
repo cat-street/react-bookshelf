@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { createStore, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import bookShelfReducer from './store/reducers/bookShelf';
@@ -29,9 +29,9 @@ const store = createStore(rootReducer, composeEnhancers());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <HashRouter basename="/">
         <App />
-      </Router>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
