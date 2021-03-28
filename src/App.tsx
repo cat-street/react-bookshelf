@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { checkId, logout, setBooks } from './store/actions/index';
 import BookShelf from './components/BookShelf/BookShelf';
@@ -40,6 +40,7 @@ const App: FC<Props> = ({
         <Route path="/:genre/:id" component={SingleBook} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={BookShelf} />
+        <Redirect to="/" />
       </Switch>
     </div>
   );
