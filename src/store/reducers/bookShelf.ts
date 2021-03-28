@@ -1,4 +1,4 @@
-import actionTypes from '../actions/actionTypes';
+import { BookShelfActionTypes as actionTypes } from '../actions/actionTypes';
 import {
   Book,
   BooksState,

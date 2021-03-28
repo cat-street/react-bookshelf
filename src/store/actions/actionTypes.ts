@@ -8,4 +8,9 @@ enum BookShelfActionTypes {
   ADD_COMMENT = 'ADD_COMMENT',
 }
 
-export default BookShelfActionTypes;
+enum AuthActionTypes {
+  LOGIN = 'LOGIN',
+  LOGOUT = 'LOGOUT',
+}
+
+export { BookShelfActionTypes, AuthActionTypes };

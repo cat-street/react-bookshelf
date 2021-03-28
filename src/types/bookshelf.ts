@@ -1,6 +1,8 @@
-import actionTypes from '../store/actions/actionTypes';
+export enum Sort { ASC, DESC }
 
 export type UserStar = { user: string, vote: number };
+export type SortBy = ('author' | 'title' | 'rating');
+export type SearchType = ('title' | 'genre');
 
 export type Comment = {
   id: string,
@@ -26,10 +28,6 @@ export interface Book {
 
 export interface BooksArray extends Array<Book> {}
 
-export enum Sort { ASC, DESC }
-export type SortBy = ('author' | 'title' | 'rating');
-export type SearchType = ('title' | 'genre');
-
 export interface BooksState {
   initialBooks: BooksArray,
   searchResults: BooksArray,
@@ -43,7 +41,7 @@ export interface BooksState {
 }
 
 export interface Reducer {
-  type: actionTypes,
+  type: string,
   sortBy: SortBy,
   id: string,
   rating: number,

@@ -66,13 +66,13 @@ const BookShelf: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: BooksState) => ({
-  allBooks: state.initialBooks,
-  books: state.currentBooks,
-  searchResults: state.searchResults,
-  page: state.page,
-  booksPerPage: state.booksPerPage,
-  searching: state.searching,
+const mapStateToProps = (state: Record<string, BooksState>) => ({
+  allBooks: state.bookShelf.initialBooks,
+  books: state.bookShelf.currentBooks,
+  searchResults: state.bookShelf.searchResults,
+  page: state.bookShelf.page,
+  booksPerPage: state.bookShelf.booksPerPage,
+  searching: state.bookShelf.searching,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

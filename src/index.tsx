@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, compose } from 'redux';
+import { createStore, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducers/bookShelf';
+import bookShelfReducer from './store/reducers/bookShelf';
+import authReducer from './store/reducers/auth';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,10 +16,15 @@ declare global {
   }
 }
 
+const rootReducer = combineReducers({
+  bookShelf: bookShelfReducer,
+  auth: authReducer,
+});
+
 const composeEnhancers = process.env.NODE_ENV === 'development'
   ? (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ as typeof compose)
   : null || compose;
-const store = createStore(reducer, composeEnhancers());
+const store = createStore(rootReducer, composeEnhancers());
 
 ReactDOM.render(
   <React.StrictMode>

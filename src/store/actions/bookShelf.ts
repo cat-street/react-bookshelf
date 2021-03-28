@@ -1,4 +1,4 @@
-import actionTypes from './actionTypes';
+import { BookShelfActionTypes as actionTypes } from './actionTypes';
 import { SortBy, SearchType, UserStar } from '../../types/bookShelf';
 
 export const setBooks = () => ({

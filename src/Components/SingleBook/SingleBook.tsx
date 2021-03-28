@@ -10,7 +10,6 @@ import {
   Image,
   Button,
   Badge,
-  Card,
   Spinner,
 } from 'react-bootstrap';
 
@@ -18,11 +17,15 @@ import {
   getBook, searchBook, updateRating, addComment,
 } from '../../store/actions/index';
 import {
-  Book, BooksState, SearchType, UserStar,
+  Book,
+  BooksState,
+  SearchType,
+  UserStar,
 } from '../../types/bookShelf';
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
 import { calculateRating } from '../../utils/bookShelfHelpers';
+import CommentCard from '../CommentCard/CommentCard';
 
 type Props = {
   currentBook: Book;
@@ -51,13 +54,6 @@ const SingleBook: FC<Props> = ({
 
   const handleUpdateRating = (vote: number, rating: number) => {
     onUpdateRating(currentBook.id, rating, { user: 'test-user', vote });
-  };
-
-  const formatDate = (date: string) => {
-    const newDate = new Date(date);
-    return newDate.toLocaleDateString(
-      'en-US', { day: 'numeric', month: 'long', year: 'numeric' },
-    );
   };
 
   const handleAddComment = (comment: string) => {
@@ -131,20 +127,7 @@ const SingleBook: FC<Props> = ({
             <Row>
               <h4 className="ml-4">Comments:</h4>
               {currentBook.comments.map((el) => (
-                <Card key={el.id} bg="light" className="w-100 mb-2">
-                  <Card.Body>
-                    <Card.Title>
-                      {el.ownerId}
-                      {' '}
-                      <small className="text-muted">
-                        {formatDate(el.date)}
-                      </small>
-                    </Card.Title>
-                    <Card.Text>
-                      <p>{el.text}</p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                <CommentCard key={el.id} comment={el} />
               ))}
             </Row>
             <Row>
@@ -165,8 +148,8 @@ const SingleBook: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: BooksState) => ({
-  currentBook: state.currentBook,
+const mapStateToProps = (state: Record<string, BooksState>) => ({
+  currentBook: state.bookShelf.currentBook,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
