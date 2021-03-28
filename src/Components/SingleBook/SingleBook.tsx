@@ -14,7 +14,7 @@ import {
 } from 'react-bootstrap';
 
 import {
-  getBook, searchBook, updateRating, addComment,
+  getBook, searchBook, updateRating, addComment, editBook,
 } from '../../store/actions/index';
 import {
   Book,
@@ -34,6 +34,7 @@ type Props = {
   onSearchBook: (query: string, searchType: SearchType) => void;
   onUpdateRating: (id: string, rating: number, user: UserStar) => void;
   onAddComment: (ownerId: string, comment: string) => void;
+  onEditBook: (book: Record<string, string>) => void;
 };
 
 const SingleBook: FC<Props> = ({
@@ -43,6 +44,7 @@ const SingleBook: FC<Props> = ({
   onSearchBook,
   onUpdateRating,
   onAddComment,
+  onEditBook,
 }: Props) => {
   const [loading, setLoading] = useState(true);
   const [commentOpen, setCommentOpen] = useState(false);
@@ -81,7 +83,13 @@ const SingleBook: FC<Props> = ({
 
   return (
     <Container className="p-4 pt-5">
-      {showModal && <EditBookModal book={currentBook} onHide={hideModal} />}
+      {showModal && (
+        <EditBookModal
+          book={currentBook}
+          onHide={hideModal}
+          onEdit={onEditBook}
+        />
+      )}
       {loading ? (
         <Row className="d-flex justify-content-center">
           <Spinner animation="border" role="status">
@@ -104,7 +112,7 @@ const SingleBook: FC<Props> = ({
               <h2>
                 <span className="mr-3">{currentBook.title}</span>
                 <Badge variant="info" className="mr-3">
-                  {currentBook.category}
+                  {currentBook.category || 'Uncategorized'}
                 </Badge>
                 {userId && userId === currentBook.ownerId ? (
                   <Button
@@ -181,6 +189,8 @@ const mapDispatchToProps = (dispatch: any) => ({
     dispatch(updateRating(id, rating, user)),
   onAddComment: (ownerId: string, comment: string) =>
     dispatch(addComment(ownerId, comment)),
+  onEditBook: (book: Record<string, string>) =>
+    dispatch(editBook(book)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);

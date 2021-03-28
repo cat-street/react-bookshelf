@@ -6,6 +6,7 @@ enum BookShelfActionTypes {
   SET_PAGE = 'SET_PAGE',
   GET_BOOK = 'GET_BOOK',
   ADD_COMMENT = 'ADD_COMMENT',
+  EDIT_BOOK = 'EDIT_BOOK',
 }
 
 enum AuthActionTypes {

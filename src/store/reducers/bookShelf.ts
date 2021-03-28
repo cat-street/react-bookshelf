@@ -146,8 +146,6 @@ const getBook = (state: BooksState, id: string) => {
   return state;
 };
 
-// Comments are currently saved only on a single book view,
-// because of how getBook fetches a book from a 'database'
 const addComment = (
   state: BooksState,
   ownerId: string,
@@ -167,6 +165,16 @@ const addComment = (
   return { ...state, ...newState };
 };
 
+// Edits are currently saved only on a single book view,
+// because of how getBook fetches a book from a mock 'database'
+const editBook = (state: BooksState, book: Record<string, string>) => {
+  const newBook = { ...state.currentBook, ...book };
+  const newState = {
+    currentBook: newBook,
+  };
+  return { ...state, ...newState };
+};
+
 export default (
   state = initialState,
   {
@@ -180,6 +188,7 @@ export default (
     searchType,
     page,
     comment,
+    book,
   }: Reducer,
 ): BooksState => {
   switch (type) {
@@ -203,6 +212,9 @@ export default (
 
     case actionTypes.ADD_COMMENT:
       return addComment(state, ownerId, comment);
+
+    case actionTypes.EDIT_BOOK:
+      return editBook(state, book);
 
     default:
       return state;

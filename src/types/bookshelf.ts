@@ -51,4 +51,5 @@ export interface Reducer {
   searchType: SearchType,
   page: number,
   comment: string,
+  book: Record<string, string>,
 }

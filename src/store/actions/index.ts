@@ -6,6 +6,7 @@ export {
   setPage,
   getBook,
   addComment,
+  editBook,
 } from './bookShelf';
 
 export {

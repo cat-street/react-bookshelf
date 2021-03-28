@@ -9,10 +9,12 @@ import { Book } from '../../types/bookShelf';
 type Props = {
   book: Book;
   onHide: () => void,
+  onEdit: (book: Record<string, string>) => void;
 };
 
-const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
+const EditBookModal: FC<Props> = ({ book, onHide, onEdit }: Props) => {
   const [currentBook, setCurrentBook] = useState({
+    id: '',
     title: '',
     author: '',
     cover: '',
@@ -24,6 +26,12 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
   const handleChange = (evt: SyntheticEvent) => {
     const { name, value } = evt.target as (HTMLInputElement | HTMLTextAreaElement);
     setCurrentBook((prevBook) => ({ ...prevBook, [name]: value }));
+  };
+
+  const handleSubmit = (evt: SyntheticEvent) => {
+    evt.preventDefault();
+    onEdit(currentBook);
+    onHide();
   };
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
         <Modal.Title id="contained-modal-title-vcenter">Edit book</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={handleSubmit} id="edit-form">
           <Form.Group controlId="book-title">
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -50,6 +58,7 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
               type="text"
               value={currentBook.title || ''}
               onChange={handleChange}
+              required
             />
           </Form.Group>
           <Row>
@@ -60,6 +69,7 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
                 type="text"
                 value={currentBook.author || ''}
                 onChange={handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="book-category" as={Col} xs={12} md={6}>
@@ -80,6 +90,7 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
               rows={4}
               value={currentBook.description || ''}
               onChange={handleChange}
+              required
             />
           </Form.Group>
           <Form.Group controlId="book-published">
@@ -89,13 +100,14 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
               type="text"
               value={currentBook.published || ''}
               onChange={handleChange}
+              required
             />
           </Form.Group>
           <Form.Group controlId="book-cover">
             <Form.Label>Cover URL</Form.Label>
             <Form.Control
-              name="published"
-              type="url"
+              name="cover"
+              type="text"
               value={currentBook.cover || ''}
               onChange={handleChange}
             />
@@ -103,8 +115,8 @@ const EditBookModal: FC<Props> = ({ book, onHide }: Props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info">Submit</Button>
-        <Button variant="danger" onClick={onHide}>Cancel</Button>
+        <Button type="submit" variant="info" form="edit-form">Submit</Button>
+        <Button type="button" variant="danger" onClick={onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   );

@@ -38,3 +38,8 @@ export const addComment = (ownerId: string, comment: string) => ({
   ownerId,
   comment,
 });
+
+export const editBook = (book: Record<string, string>) => ({
+  type: actionTypes.EDIT_BOOK,
+  book,
+});
