@@ -40,9 +40,6 @@ const App: FC<Props> = ({
         <Route path="/:genre/:id" component={SingleBook} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={BookShelf} />
-        <Route path="*">
-          <Redirect to="/" />
-        </Route>
       </Switch>
     </div>
   );
