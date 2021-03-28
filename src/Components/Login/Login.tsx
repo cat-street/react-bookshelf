@@ -41,6 +41,7 @@ const Login: FC<Props> = ({
     if (input.userId) {
       onLogin(input.userId, input.password);
     }
+    history.push('/');
   };
 
   const hideToast = () => {
@@ -52,7 +53,7 @@ const Login: FC<Props> = ({
     if (localStorage.getItem('bookShelfId')) {
       history.push('/');
     }
-  });
+  }, [history]);
 
   useEffect(() => {
     if (error) showToast(true);

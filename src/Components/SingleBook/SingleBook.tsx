@@ -18,7 +18,6 @@ import {
 } from '../../store/actions/index';
 import {
   Book,
-  BooksState,
   SearchType,
   UserStar,
 } from '../../types/bookShelf';
@@ -29,6 +28,7 @@ import CommentCard from '../CommentCard/CommentCard';
 
 type Props = {
   currentBook: Book;
+  userId: string | null;
   onGetBook: (id: string) => void;
   onSearchBook: (query: string, searchType: SearchType) => void;
   onUpdateRating: (id: string, rating: number, user: UserStar) => void;
@@ -37,6 +37,7 @@ type Props = {
 
 const SingleBook: FC<Props> = ({
   currentBook,
+  userId,
   onGetBook,
   onSearchBook,
   onUpdateRating,
@@ -95,9 +96,12 @@ const SingleBook: FC<Props> = ({
                   <Badge variant="info" className="mr-3">
                     {currentBook.category}
                   </Badge>
-                  <Button size="sm" variant="outline-success">
-                    Edit
-                  </Button>
+                  {userId
+                    && (
+                      <Button size="sm" variant="outline-success">
+                        Edit
+                      </Button>
+                    )}
                 </h2>
                 <h3 className="text-muted">
                   <Button
@@ -130,26 +134,30 @@ const SingleBook: FC<Props> = ({
                 <CommentCard key={el.id} comment={el} />
               ))}
             </Row>
-            <Row>
-              {commentOpen ? <CommentForm onAdd={handleAddComment} />
-                : (
-                  <Button
-                    variant="outline-success"
-                    className="mx-auto px-5"
-                    onClick={() => setCommentOpen(true)}
-                  >
-                    Add comment
-                  </Button>
-                )}
-            </Row>
+            {userId
+              && (
+                <Row>
+                  {commentOpen ? <CommentForm onAdd={handleAddComment} />
+                    : (
+                      <Button
+                        variant="outline-success"
+                        className="mx-auto px-5"
+                        onClick={() => setCommentOpen(true)}
+                      >
+                        Add comment
+                      </Button>
+                    )}
+                </Row>
+              )}
           </>
         )}
     </Container>
   );
 };
 
-const mapStateToProps = (state: Record<string, BooksState>) => ({
+const mapStateToProps = (state: Record<string, any>) => ({
   currentBook: state.bookShelf.currentBook,
+  userId: state.auth.userId,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
