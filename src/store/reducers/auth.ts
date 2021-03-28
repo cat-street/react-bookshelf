@@ -2,7 +2,6 @@ import { AuthState, Reducer } from '../../types/auth';
 import { AuthActionTypes as actionTypes } from '../actions/actionTypes';
 
 const initialState: AuthState = {
-  loggedIn: false,
   userId: null,
   error: null,
   users: [
@@ -43,6 +42,8 @@ const logout = (state: AuthState) => {
   return { ...state, ...newState };
 };
 
+const resetError = (state: AuthState) => ({ ...state, error: null });
+
 export default (
   state = initialState,
   {
@@ -57,6 +58,9 @@ export default (
 
     case actionTypes.LOGOUT:
       return logout(state);
+
+    case actionTypes.RESET_ERROR:
+      return resetError(state);
 
     default:
       return state;

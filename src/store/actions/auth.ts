@@ -6,6 +6,10 @@ export const login = (userId: string, password: string) => ({
   password,
 });
 
+export const resetError = () => ({
+  type: actionTypes.RESET_ERROR,
+});
+
 export const logout = () => ({
   type: logout,
 });

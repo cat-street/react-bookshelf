@@ -11,6 +11,7 @@ enum BookShelfActionTypes {
 enum AuthActionTypes {
   LOGIN = 'LOGIN',
   LOGOUT = 'LOGOUT',
+  RESET_ERROR = 'RESET_ERROR',
 }
 
 export { BookShelfActionTypes, AuthActionTypes };

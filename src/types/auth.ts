@@ -1,7 +1,6 @@
 export type User = { userId: string, password: string };
 
 export interface AuthState {
-  loggedIn: boolean,
   userId: string | null,
   error: string | null,
   users: User[],

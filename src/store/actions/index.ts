@@ -11,4 +11,5 @@ export {
 export {
   login,
   logout,
+  resetError,
 } from './auth';

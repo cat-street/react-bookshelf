@@ -1,4 +1,7 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import {
+  FC, SyntheticEvent, useEffect, useState,
+} from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Card,
@@ -9,21 +12,26 @@ import {
   Toast,
 } from 'react-bootstrap';
 
-import { login } from '../../store/actions/index';
+import { login, resetError } from '../../store/actions/index';
 import { AuthState, User } from '../../types/auth';
 
 type Props = {
-  // loggedIn: boolean,
+  userId: string | null,
   error: string | null,
   onLogin: (userId: string, password: string) => void,
+  onResetError: () => void,
 };
 
 // eslint-disable-next-line arrow-body-style
-const Login: FC<Props> = ({ error, onLogin }: Props) => {
+const Login: FC<Props> = ({
+  userId, error, onLogin, onResetError,
+}: Props) => {
   const [input, setInput] = useState<User>({
     userId: '',
     password: '',
   });
+  const [toast, showToast] = useState(false);
+  const history = useHistory();
 
   const handleChange = (evt: SyntheticEvent) => {
     const { name, value } = evt.target as HTMLTextAreaElement;
@@ -36,6 +44,24 @@ const Login: FC<Props> = ({ error, onLogin }: Props) => {
       onLogin(input.userId, input.password);
     }
   };
+
+  const hideToast = () => {
+    onResetError();
+    showToast(false);
+  };
+
+  useEffect(() => {
+    if (userId) {
+      history.push('/');
+    }
+  });
+
+  useEffect(() => {
+    if (error) showToast(true);
+    return () => {
+      showToast(false);
+    };
+  }, [error, onResetError]);
 
   return (
     <Container>
@@ -72,8 +98,8 @@ const Login: FC<Props> = ({ error, onLogin }: Props) => {
             </Form>
           </Card.Body>
         </Card>
-        {error && (
-          <Toast className="mx-auto">
+        {toast && (
+          <Toast className="mx-auto" onClose={hideToast}>
             <Toast.Header className="bg-danger text-light">
               <strong className="mr-auto">Error!</strong>
             </Toast.Header>
@@ -86,12 +112,12 @@ const Login: FC<Props> = ({ error, onLogin }: Props) => {
 };
 
 const mapStateToProps = (state: Record<string, AuthState>) => ({
-  loggedIn: state.auth.loggedIn,
   error: state.auth.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   onLogin: (userId: string, password: string) => dispatch(login(userId, password)),
+  onResetError: () => dispatch(resetError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
