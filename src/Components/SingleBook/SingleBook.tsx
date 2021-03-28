@@ -98,12 +98,12 @@ const SingleBook: FC<Props> = ({
                   <Badge variant="info" className="mr-3">
                     {currentBook.category}
                   </Badge>
-                  {userId
-                    && (
+                  {userId && (userId === currentBook.ownerId)
+                    ? (
                       <Button size="sm" variant="outline-success">
                         Edit
                       </Button>
-                    )}
+                    ) : null}
                 </h2>
                 <h3 className="text-muted">
                   <Button
