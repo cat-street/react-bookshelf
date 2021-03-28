@@ -16,13 +16,14 @@ import { login, resetError } from '../../store/actions/index';
 import { AuthState, User } from '../../types/auth';
 
 type Props = {
+  userId: string | null,
   error: string | null,
   onLogin: (userId: string, password: string) => void,
   onResetError: () => void,
 };
 
 const Login: FC<Props> = ({
-  error, onLogin, onResetError,
+  userId, error, onLogin, onResetError,
 }: Props) => {
   const [input, setInput] = useState<User>({
     userId: '',
@@ -49,10 +50,10 @@ const Login: FC<Props> = ({
   };
 
   useEffect(() => {
-    if (localStorage.getItem('bookShelfId')) {
+    if (userId || localStorage.getItem('bookShelfId')) {
       history.push('/');
     }
-  }, [history]);
+  }, [history, userId]);
 
   useEffect(() => {
     if (error) showToast(true);
@@ -111,6 +112,7 @@ const Login: FC<Props> = ({
 
 const mapStateToProps = (state: Record<string, AuthState>) => ({
   error: state.auth.error,
+  userId: state.auth.userId,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
