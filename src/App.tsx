@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { setBooks } from './store/actions/index';
+import { checkId, setBooks } from './store/actions/index';
 import BookShelf from './components/BookShelf/BookShelf';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
@@ -11,12 +11,18 @@ import './App.css';
 
 type Props = {
   onSetBooks: () => void;
+  onCheckId: (tokenId: string) => void;
 };
 
-const App: FC<Props> = ({ onSetBooks }: Props) => {
+const App: FC<Props> = ({ onSetBooks, onCheckId }: Props) => {
   useEffect(() => {
     onSetBooks();
   }, [onSetBooks]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('bookShelfId');
+    if (token) onCheckId(token);
+  }, [onCheckId]);
 
   return (
     <div className="app">
@@ -35,6 +41,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: any) => ({
   onSetBooks: () => dispatch(setBooks()),
+  onCheckId: (tokenId: string) => dispatch(checkId(tokenId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

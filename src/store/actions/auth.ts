@@ -11,5 +11,10 @@ export const resetError = () => ({
 });
 
 export const logout = () => ({
-  type: logout,
+  type: actionTypes.LOGOUT,
+});
+
+export const checkId = (tokenId: string) => ({
+  type: actionTypes.CHECK_ID,
+  tokenId,
 });

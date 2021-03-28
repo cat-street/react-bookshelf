@@ -16,15 +16,13 @@ import { login, resetError } from '../../store/actions/index';
 import { AuthState, User } from '../../types/auth';
 
 type Props = {
-  userId: string | null,
   error: string | null,
   onLogin: (userId: string, password: string) => void,
   onResetError: () => void,
 };
 
-// eslint-disable-next-line arrow-body-style
 const Login: FC<Props> = ({
-  userId, error, onLogin, onResetError,
+  error, onLogin, onResetError,
 }: Props) => {
   const [input, setInput] = useState<User>({
     userId: '',
@@ -51,7 +49,7 @@ const Login: FC<Props> = ({
   };
 
   useEffect(() => {
-    if (userId) {
+    if (localStorage.getItem('bookShelfId')) {
       history.push('/');
     }
   });

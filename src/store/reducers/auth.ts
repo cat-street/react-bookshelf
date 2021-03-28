@@ -24,8 +24,9 @@ const login = (state: AuthState, userId: string, password: string) => {
       error: 'Password is incorrect',
     };
   } else {
+    // Side effect - this would go into Saga on real database use
+    localStorage.setItem('bookShelfId', userId);
     newState = {
-      loggedIn: true,
       userId,
       error: null,
     };
@@ -34,8 +35,8 @@ const login = (state: AuthState, userId: string, password: string) => {
 };
 
 const logout = (state: AuthState) => {
+  localStorage.removeItem('BookShelfId');
   const newState = {
-    loggedIn: false,
     userId: null,
     error: null,
   };
@@ -44,12 +45,20 @@ const logout = (state: AuthState) => {
 
 const resetError = (state: AuthState) => ({ ...state, error: null });
 
+const checkId = (state: AuthState, tokenId: string) => {
+  if (state.users.some((el) => el.userId === tokenId)) {
+    return { ...state, userId: tokenId };
+  }
+  return state;
+};
+
 export default (
   state = initialState,
   {
     type,
     userId,
     password,
+    tokenId,
   }: Reducer,
 ): AuthState => {
   switch (type) {
@@ -61,6 +70,9 @@ export default (
 
     case actionTypes.RESET_ERROR:
       return resetError(state);
+
+    case actionTypes.CHECK_ID:
+      return checkId(state, tokenId);
 
     default:
       return state;

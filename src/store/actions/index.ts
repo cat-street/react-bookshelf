@@ -12,4 +12,5 @@ export {
   login,
   logout,
   resetError,
+  checkId,
 } from './auth';

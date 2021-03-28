@@ -10,4 +10,5 @@ export interface Reducer {
   type: string,
   userId: string,
   password: string,
+  tokenId: string,
 }

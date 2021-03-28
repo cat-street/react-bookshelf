@@ -12,6 +12,7 @@ enum AuthActionTypes {
   LOGIN = 'LOGIN',
   LOGOUT = 'LOGOUT',
   RESET_ERROR = 'RESET_ERROR',
+  CHECK_ID = 'CHECK_ID',
 }
 
 export { BookShelfActionTypes, AuthActionTypes };
