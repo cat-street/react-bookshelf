@@ -8,7 +8,7 @@ import {
   SearchType,
   Reducer,
   UserStar,
-} from '../../types/bookShelf';
+} from '../../types/bookShelf.js';
 import { sortBooks } from '../../utils/actionHelpers';
 import * as mockData from '../../mock/mockDB.json';
 import { calculateRating } from '../../utils/bookShelfHelpers';
