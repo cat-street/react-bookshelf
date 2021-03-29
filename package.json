@@ -67,7 +67,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cat-street/test-andrey-kudryavtsev.git"
+    "url": "git+https://github.com/cat-street/react-bookshelf.git"
   },
   "author": "Andrey Kudryavtsev <catlogic@ya.ru>",
   "license": "ISC",
