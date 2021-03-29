@@ -70,5 +70,6 @@
     "url": "git+https://github.com/cat-street/test-andrey-kudryavtsev.git"
   },
   "author": "Andrey Kudryavtsev <catlogic@ya.ru>",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "/"
 }
