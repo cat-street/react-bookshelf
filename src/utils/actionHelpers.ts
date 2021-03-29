@@ -1,4 +1,4 @@
-import { BooksArray, Sort } from '../types/bookShelf';
+import { BooksArray, Sort } from '../types/books';
 
 const sortBooks = (arr: BooksArray, arg: string, sort: Sort) => {
   const order = sort === Sort.ASC ? [1, -1] : [-1, 1];

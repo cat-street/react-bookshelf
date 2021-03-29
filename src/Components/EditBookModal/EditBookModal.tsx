@@ -4,7 +4,7 @@ import {
 import {
   Modal, Button, Form, Col, Row,
 } from 'react-bootstrap';
-import { Book } from '../../types/bookShelf';
+import { Book } from '../../types/books';
 
 type Props = {
   book: Book;

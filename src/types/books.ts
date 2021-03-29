@@ -1,4 +1,4 @@
-export enum Sort { ASC, DESC }
+export enum Sort { DESC, ASC }
 
 export type UserStar = { user: string, vote: number };
 export type SortBy = ('author' | 'title' | 'rating');

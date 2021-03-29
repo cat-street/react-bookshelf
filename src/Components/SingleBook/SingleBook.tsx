@@ -20,7 +20,7 @@ import {
   Book,
   SearchType,
   UserStar,
-} from '../../types/bookShelf';
+} from '../../types/books';
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
 import { calculateRating } from '../../utils/bookShelfHelpers';

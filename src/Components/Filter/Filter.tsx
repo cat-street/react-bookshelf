@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Nav } from 'react-bootstrap';
-import { SortBy } from '../../types/bookShelf';
+import { SortBy } from '../../types/books';
 import './Filter.css';
 
 type Props = {

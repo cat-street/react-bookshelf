@@ -7,7 +7,7 @@ import {
   BooksArray,
   BooksState,
   SortBy,
-} from '../../types/bookShelf';
+} from '../../types/books';
 import BookCard from '../BookCard/BookCard';
 import Filter from '../Filter/Filter';
 

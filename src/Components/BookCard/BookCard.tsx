@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
 import { updateRating } from '../../store/actions/index';
-import { Book, UserStar } from '../../types/bookShelf';
+import { Book, UserStar } from '../../types/books';
 import { AuthState } from '../../types/auth';
 
 import BookRating from '../BookRating/BookRating';

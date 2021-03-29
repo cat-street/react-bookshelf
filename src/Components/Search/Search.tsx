@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap';
 
 import { searchBook } from '../../store/actions/index';
-import { SearchType } from '../../types/bookShelf';
+import { SearchType } from '../../types/books';
 
 type Props = {
   onSearchBook: (query: string, searchType: SearchType) => void;
