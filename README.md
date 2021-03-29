@@ -1,5 +1,5 @@
 # React Bookshelf
-**Test assignment project**
+**A sample frontend project on React-TypeScript-Redux**
 
 ![Anyway Kanban](./bookshelf_gh.png)
 
@@ -37,5 +37,6 @@ A frontend for a sample electronic library application with pagination, search, 
 * A /category route
 * Forms validation
 * Ability to delete comments
+* Ability to add new books
 * Refactoring
 * Design improvements
