@@ -10,7 +10,7 @@ import {
   UserStar,
 } from '../../types/books';
 import { sortBooks } from '../../utils/actionHelpers';
-import * as mockData from '../../mock/mockDB.json';
+import * as mockData from '../../mock/mock.json';
 import { calculateRating } from '../../utils/bookShelfHelpers';
 
 const initialState: BooksState = {
