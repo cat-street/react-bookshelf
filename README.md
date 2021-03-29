@@ -5,7 +5,7 @@
 
 A frontend for a sample electronic library application with pagination, search, sorting and authentication.
 
-* Current live version at [https://cat-street.github.io/test-andrey-kudryavtsev/](https://cat-street.github.io/test-andrey-kudryavtsev/)
+* Current live version at [https://zen-austin-25d292.netlify.app](https://zen-austin-25d292.netlify.app)
 
 ---
 ## Features
