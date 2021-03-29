@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { checkId, logout, setBooks } from './store/actions/index';
-import Books from './components/Books/Books';
-import Navigation from './components/Navigation/Navigation';
-import SingleBook from './components/SingleBook/SingleBook';
-import Login from './components/Login/Login';
+import Books from './component/Books/Books';
+import Navigation from './component/Navigation/Navigation';
+import SingleBook from './component/SingleBook/SingleBook';
+import Login from './component/Login/Login';
 import './App.css';
 import { AuthState } from './types/auth';
 
