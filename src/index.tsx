@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import bookShelfReducer from './store/reducers/bookShelf';
+import booksReducer from './store/reducers/books';
 import authReducer from './store/reducers/auth';
 
 import App from './App';
@@ -17,7 +17,7 @@ declare global {
 }
 
 const rootReducer = combineReducers({
-  bookShelf: bookShelfReducer,
+  books: booksReducer,
   auth: authReducer,
 });
 

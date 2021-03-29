@@ -1,13 +1,13 @@
 export {
   setBooks,
-  sortBookShelf,
+  sortBooks,
   updateRating,
   searchBook,
   setPage,
   getBook,
   addComment,
   editBook,
-} from './bookShelf';
+} from './books';
 
 export {
   login,

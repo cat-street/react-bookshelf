@@ -50,7 +50,7 @@ const Login: FC<Props> = ({
   };
 
   useEffect(() => {
-    if (userId || localStorage.getItem('bookShelfId')) {
+    if (userId || localStorage.getItem('bookshelfId')) {
       history.push('/');
     }
   }, [history, userId]);

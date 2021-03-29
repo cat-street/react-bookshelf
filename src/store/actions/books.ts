@@ -1,11 +1,11 @@
-import { BookShelfActionTypes as actionTypes } from './actionTypes';
+import { BooksActionTypes as actionTypes } from './actionTypes';
 import { SortBy, SearchType, UserStar } from '../../types/books';
 
 export const setBooks = () => ({
   type: actionTypes.SET_BOOKS,
 });
 
-export const sortBookShelf = (sortBy: SortBy) => ({
+export const sortBooks = (sortBy: SortBy) => ({
   type: actionTypes.SORT_BOOKS,
   sortBy,
 });

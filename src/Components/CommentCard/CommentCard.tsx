@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Card } from 'react-bootstrap';
 import { Comment } from '../../types/books';
-import { formatDate } from '../../utils/bookShelfHelpers';
+import { formatDate } from '../../utils/booksHelpers';
 
 type Props = {
   comment: Comment,

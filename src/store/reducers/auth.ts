@@ -25,7 +25,7 @@ const login = (state: AuthState, userId: string, password: string) => {
     };
   } else {
     // Side effect - this would go into Saga on real database use
-    localStorage.setItem('bookShelfId', userId);
+    localStorage.setItem('bookshelfId', userId);
     newState = {
       userId,
       error: null,
@@ -35,7 +35,7 @@ const login = (state: AuthState, userId: string, password: string) => {
 };
 
 const logout = (state: AuthState) => {
-  localStorage.removeItem('bookShelfId');
+  localStorage.removeItem('bookshelfId');
   const newState = {
     userId: null,
     error: null,

@@ -23,7 +23,7 @@ import {
 } from '../../types/books';
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
-import { calculateRating } from '../../utils/bookShelfHelpers';
+import { calculateRating } from '../../utils/booksHelpers';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 
@@ -177,7 +177,7 @@ const SingleBook: FC<Props> = ({
 };
 
 const mapStateToProps = (state: Record<string, any>) => ({
-  currentBook: state.bookShelf.currentBook,
+  currentBook: state.books.currentBook,
   userId: state.auth.userId,
 });
 

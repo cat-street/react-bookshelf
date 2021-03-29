@@ -1,6 +1,6 @@
 import { BooksArray, Sort } from '../types/books';
 
-const sortBooks = (arr: BooksArray, arg: string, sort: Sort) => {
+const sortBooksArray = (arr: BooksArray, arg: string, sort: Sort) => {
   const order = sort === Sort.ASC ? [1, -1] : [-1, 1];
   return [...arr].sort((a, b) => {
     if (a[arg] > b[arg]) {
@@ -14,4 +14,4 @@ const sortBooks = (arr: BooksArray, arg: string, sort: Sort) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { sortBooks };
+export { sortBooksArray };

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
-import { sortBookShelf, setPage } from '../../store/actions/index';
+import { sortBooks, setPage } from '../../store/actions/index';
 import {
   BooksArray,
   BooksState,
@@ -22,7 +22,7 @@ type Props = {
   onSetPage: (page: number) => void;
 };
 
-const BookShelf: FC<Props> = ({
+const Books: FC<Props> = ({
   allBooks,
   books,
   searchResults,
@@ -67,17 +67,17 @@ const BookShelf: FC<Props> = ({
 };
 
 const mapStateToProps = (state: Record<string, BooksState>) => ({
-  allBooks: state.bookShelf.initialBooks,
-  books: state.bookShelf.currentBooks,
-  searchResults: state.bookShelf.searchResults,
-  page: state.bookShelf.page,
-  booksPerPage: state.bookShelf.booksPerPage,
-  searching: state.bookShelf.searching,
+  allBooks: state.books.initialBooks,
+  books: state.books.currentBooks,
+  searchResults: state.books.searchResults,
+  page: state.books.page,
+  booksPerPage: state.books.booksPerPage,
+  searching: state.books.searching,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onSortBooks: (sortBy: SortBy) => dispatch(sortBookShelf(sortBy)),
+  onSortBooks: (sortBy: SortBy) => dispatch(sortBooks(sortBy)),
   onSetPage: (page: number) => dispatch(setPage(page)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookShelf);
+export default connect(mapStateToProps, mapDispatchToProps)(Books);

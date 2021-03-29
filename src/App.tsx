@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { checkId, logout, setBooks } from './store/actions/index';
-import BookShelf from './components/BookShelf/BookShelf';
+import Books from './components/Books/Books';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
 import Login from './components/Login/Login';
@@ -29,7 +29,7 @@ const App: FC<Props> = ({
   }, [onSetBooks]);
 
   useEffect(() => {
-    const token = localStorage.getItem('bookShelfId');
+    const token = localStorage.getItem('bookshelfId');
     if (token) onCheckId(token);
   }, [onCheckId]);
 
@@ -39,7 +39,7 @@ const App: FC<Props> = ({
       <Switch>
         <Route path="/:genre/:id" component={SingleBook} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={BookShelf} />
+        <Route exact path="/" component={Books} />
         <Redirect to="/" />
       </Switch>
     </div>

@@ -8,7 +8,7 @@ import { Book, UserStar } from '../../types/books';
 import { AuthState } from '../../types/auth';
 
 import BookRating from '../BookRating/BookRating';
-import { calculateRating } from '../../utils/bookShelfHelpers';
+import { calculateRating } from '../../utils/booksHelpers';
 import './BookCard.css';
 
 type Props = {

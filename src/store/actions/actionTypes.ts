@@ -1,4 +1,4 @@
-enum BookShelfActionTypes {
+enum BooksActionTypes {
   SET_BOOKS = 'SET_BOOKS',
   SORT_BOOKS = 'SORT_BOOKS',
   UPDATE_RATING = 'UPDATE_RATING',
@@ -16,4 +16,4 @@ enum AuthActionTypes {
   CHECK_ID = 'CHECK_ID',
 }
 
-export { BookShelfActionTypes, AuthActionTypes };
+export { BooksActionTypes, AuthActionTypes };

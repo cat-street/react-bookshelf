@@ -1,4 +1,4 @@
-import { BookShelfActionTypes as actionTypes } from '../actions/actionTypes';
+import { BooksActionTypes as actionTypes } from '../actions/actionTypes';
 import {
   Book,
   BooksState,
@@ -9,9 +9,9 @@ import {
   Reducer,
   UserStar,
 } from '../../types/books';
-import { sortBooks } from '../../utils/actionHelpers';
+import { sortBooksArray } from '../../utils/actionHelpers';
 import * as mockData from '../../mock/mock.json';
-import { calculateRating } from '../../utils/bookShelfHelpers';
+import { calculateRating } from '../../utils/booksHelpers';
 
 const initialState: BooksState = {
   initialBooks: [],
@@ -39,7 +39,7 @@ const setBooks = (state: BooksState) => {
     rating: calculateRating(el.votes),
     comments: el.comments,
   }));
-  const sortedBooks = sortBooks(books, 'title', Sort.ASC);
+  const sortedBooks = sortBooksArray(books, 'title', Sort.ASC);
 
   const newState = {
     initialBooks: state.initialBooks.concat(sortedBooks),
@@ -49,11 +49,11 @@ const setBooks = (state: BooksState) => {
   return { ...state, ...newState };
 };
 
-const sortBookShelf = (state: BooksState, sortBy: SortBy) => {
+const sortBooks = (state: BooksState, sortBy: SortBy) => {
   const sortOrder = sortBy === 'rating' ? Sort.DESC : Sort.ASC;
-  const sortedBooks = sortBooks(state.initialBooks, sortBy, sortOrder);
+  const sortedBooks = sortBooksArray(state.initialBooks, sortBy, sortOrder);
   const searchResults = state.searchResults.length > 0
-    ? sortBooks(state.searchResults, sortBy, state.sort)
+    ? sortBooksArray(state.searchResults, sortBy, state.sort)
     : [];
   const currentBooks = state.searching
     ? searchResults.slice(0, state.booksPerPage)
@@ -196,7 +196,7 @@ export default (
       return setBooks(state);
 
     case actionTypes.SORT_BOOKS:
-      return sortBookShelf(state, sortBy);
+      return sortBooks(state, sortBy);
 
     case actionTypes.UPDATE_RATING:
       return updateRating(state, id, rating, user);
