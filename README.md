@@ -1,7 +1,7 @@
 # React Bookshelf
 **A sample frontend project on React-TypeScript-Redux**
 
-![Anyway Kanban](./bookshelf_gh.png)
+![React Bookshelf](./bookshelf_gh.png)
 
 A frontend for a sample electronic library application with pagination, search, sorting and authentication.
 
@@ -32,6 +32,7 @@ A frontend for a sample electronic library application with pagination, search, 
 * Airbnb-typescript ESLint codestyle
 
 ## To Do
+* TOTAL REDUX STORE REDESIGN (I know, I know)
 * Ascending/Descending sorting by multiple clicks
 * A separate /search route
 * A /category route
