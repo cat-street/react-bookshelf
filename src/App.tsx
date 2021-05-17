@@ -26,7 +26,7 @@ const App: FC<Props> = ({
   };
 
   useEffect(() => {
-    fetch('/api/books?sorting=title')
+    fetch('/api/books?sorting=title&order=desc')
       .then((response) => response.json())
       .then((json) => console.log(json));
   }, []);

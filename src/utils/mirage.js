@@ -4,6 +4,7 @@ import {
 } from 'miragejs';
 
 import mockBooks from '../mock/mock.json';
+import compareFunc from './mirageHelpers';
 
 export default function makeServer({ environment = 'test' } = {}) {
   const server = createServer({
@@ -27,20 +28,9 @@ export default function makeServer({ environment = 'test' } = {}) {
         return book.comments;
       });
       this.get('/books', (schema, request) => {
-        const { type } = request.queryParams;
-        let compareFunc;
-        switch (type) {
-          case 'author':
-            compareFunc = (a, b) => a.author < b.author;
-            break;
-          case 'rating':
-            compareFunc = (a, b) => a.rating > b.rating;
-            break;
-          default:
-            compareFunc = (a, b) => a.title > b.title;
-        }
-        const books = schema.books.all().sort((a, b) => b.title < a.title);
-        return books;
+        const type = request.queryParams.sorting;
+        const { order } = request.queryParams;
+        return schema.books.all().sort(compareFunc(type, order));
       });
     },
   });
