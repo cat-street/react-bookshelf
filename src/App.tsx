@@ -7,8 +7,9 @@ import Books from './components/Books/Books';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
 import Login from './components/Login/Login';
-import './App.css';
 import { AuthState } from './types/auth';
+
+import './App.css';
 
 type Props = {
   userId: string | null;
@@ -23,6 +24,12 @@ const App: FC<Props> = ({
   const handleLogout = () => {
     onLogout();
   };
+
+  useEffect(() => {
+    fetch('/api/books?sorting=title')
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }, []);
 
   useEffect(() => {
     onSetBooks();
