@@ -1,5 +1,5 @@
 import {
-  createServer, Model,
+  createServer, Model, Response, RestSerializer,
 // eslint-disable-next-line import/no-extraneous-dependencies
 } from 'miragejs';
 
@@ -12,10 +12,23 @@ export default function makeServer({ environment = 'test' } = {}) {
 
     models: {
       book: Model,
+      user: Model,
     },
 
     fixtures: {
       books: mockBooks.items,
+    },
+
+    serializers: {
+      book: RestSerializer.extend({
+        root: false,
+        embed: true,
+      }),
+    },
+
+    seeds(serv) {
+      serv.loadFixtures();
+      serv.create('user', { userId: 'test-user', password: '12345' });
     },
 
     routes() {
@@ -53,6 +66,18 @@ export default function makeServer({ environment = 'test' } = {}) {
         const book = schema.books.find(request.params.id);
         const comments = JSON.parse(request.requestBody);
         return book.update({ comments });
+      });
+
+      this.post('/login', (schema, request) => {
+        const { userId, password } = JSON.parse(request.requestBody);
+        const user = schema.users.findBy({ userId });
+        if (!user) {
+          return new Response(401, {}, { message: 'Username or password is incorrect' });
+        }
+        if (user.password !== password) {
+          return new Response(401, {}, { message: 'Password is incorrect' });
+        }
+        return { id: user.id, userId: user.userId };
       });
     },
   });

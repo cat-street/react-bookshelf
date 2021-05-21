@@ -26,7 +26,10 @@ const App: FC<Props> = ({
   };
 
   useEffect(() => {
-    fetch('/api/books/')
+    fetch('/api/login/', {
+      method: 'POST',
+      body: JSON.stringify({ userId: 'test-user', password: '12345' }),
+    })
       .then((response) => response.json())
       .then((json) => console.log(json));
   }, []);
