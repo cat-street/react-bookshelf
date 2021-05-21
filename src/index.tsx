@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 import booksReducer from './store/reducers/books';
 import authReducer from './store/reducers/auth';
-import makeServer from './utils/mirage';
+import makeServer from './mock/mirage';
 
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
