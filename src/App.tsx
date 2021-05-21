@@ -1,8 +1,11 @@
 import { FC, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { checkId, logout, setBooks } from './store/actions/index';
+import { useAppDispatch } from './hooks/storeHooks';
+import { setInitialBooks, setPage } from './store/slices/bookSlice';
+
+// import { checkId, logout, setBooks } from './store/actions/index';
 import Books from './components/Books/Books';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
@@ -11,41 +14,47 @@ import { AuthState } from './types/auth';
 
 import './App.css';
 
-type Props = {
-  userId: string | null;
-  onSetBooks: () => void;
-  onCheckId: (tokenId: string) => void;
-  onLogout: () => void;
-};
+// type Props = {
+//   userId: string | null;
+//   onSetBooks: () => void;
+//   onCheckId: (tokenId: string) => void;
+//   onLogout: () => void;
+// };
 
-const App: FC<Props> = ({
-  userId, onSetBooks, onCheckId, onLogout,
-}: Props) => {
-  const handleLogout = () => {
-    onLogout();
-  };
+// const App: FC<Props> = ({
+//   userId, onSetBooks, onCheckId, onLogout,
+// }: Props) => {
+const App: FC = () => {
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    fetch('/api/login/', {
-      method: 'POST',
-      body: JSON.stringify({ userId: 'test-user', password: '12345' }),
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-  }, []);
+  // const handleLogout = () => {
+  //   onLogout();
+  // };
 
   useEffect(() => {
-    onSetBooks();
-  }, [onSetBooks]);
+    const setBooks = async () => {
+      await dispatch(setInitialBooks());
+      dispatch(setPage(1));
+    };
+    setBooks();
+    // fetch('/api/books')
+    //   .then((response) => response.json())
+    //   .then((json) => console.log(json));
+  }, [dispatch]);
 
-  useEffect(() => {
-    const token = localStorage.getItem('bookshelfId');
-    if (token) onCheckId(token);
-  }, [onCheckId]);
+  // useEffect(() => {
+  //   onSetBooks();
+  // }, [onSetBooks]);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('bookshelfId');
+  //   if (token) onCheckId(token);
+  // }, [onCheckId]);
 
   return (
     <div className="app">
-      <Navigation userId={userId} onLogout={handleLogout} />
+      {/* <Navigation userId={userId} onLogout={handleLogout} /> */}
+      <Navigation userId={null} onLogout={() => {}} />
       <Switch>
         <Route path="/:genre/:id" component={SingleBook} />
         <Route exact path="/login" component={Login} />
@@ -56,14 +65,16 @@ const App: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: Record<string, AuthState>) => ({
-  userId: state.auth.userId,
-});
+export default App;
 
-const mapDispatchToProps = (dispatch: any) => ({
-  onSetBooks: () => dispatch(setBooks()),
-  onCheckId: (tokenId: string) => dispatch(checkId(tokenId)),
-  onLogout: () => dispatch(logout()),
-});
+// const mapStateToProps = (state: Record<string, AuthState>) => ({
+//   userId: state.auth.userId,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = (dispatch: any) => ({
+//   onSetBooks: () => dispatch(setBooks()),
+//   onCheckId: (tokenId: string) => dispatch(checkId(tokenId)),
+//   onLogout: () => dispatch(logout()),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

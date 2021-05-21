@@ -35,10 +35,9 @@ export default function makeServer({ environment = 'test' } = {}) {
       this.namespace = 'api';
 
       this.get('/books', (schema, request) => {
-        const type = request.queryParams.sorting;
+        const type = request.queryParams.sorting || 'title';
         const { order } = request.queryParams;
-        return (type) ? schema.books.all().sort(compareFunc(type, order))
-          : schema.books.all();
+        return schema.books.all().sort(compareFunc(type, order));
       });
 
       this.get('/books/:id');
