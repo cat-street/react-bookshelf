@@ -25,9 +25,10 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     setPage(state, action: PayloadAction<number>) {
+      const start = (action.payload - 1) * state.booksPerPage;
       state.currentBooks = state.initialBooks.slice(
-        (action.payload - 1) * state.booksPerPage,
-        state.booksPerPage,
+        start,
+        start + state.booksPerPage,
       );
       state.page = action.payload;
     },

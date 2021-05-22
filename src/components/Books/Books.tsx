@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
+import { setPage } from '../../store/slices/bookSlice';
 
-import { sortBooks, setPage } from '../../store/actions/index';
+// import { sortBooks, setPage } from '../../store/actions/index';
 import {
   BooksArray,
   BooksState,
@@ -41,6 +42,21 @@ const Books: FC = () => {
   const booksPerPage = useAppSelector((state) => state.books.booksPerPage);
   const dispatch = useAppDispatch();
 
+  const pageCount = Math.ceil(initialBooks.length / booksPerPage);
+  const pages = [];
+
+  for (let number = 1; number <= pageCount; number += 1) {
+    pages.push(
+      <Pagination.Item
+        key={number}
+        active={page === number}
+        onClick={() => dispatch(setPage(number))}
+      >
+        {number}
+      </Pagination.Item>,
+    );
+  }
+
   // const setPages = () => {
   //   const items = [];
   //   const currentBooks = searching ? searchResults : allBooks;
@@ -62,14 +78,13 @@ const Books: FC = () => {
 
   return (
     <Container fluid className="px-4">
+      <Row>{/* <Filter onSort={onSortBooks} /> */}</Row>
       <Row>
-        {/* <Filter onSort={onSortBooks} /> */}
-      </Row>
-      <Row>
-        {currentBooks && currentBooks.map((el) => <BookCard key={el.id} book={el} />)}
+        {currentBooks && currentBooks.map((el) =>
+          <BookCard key={el.id} book={el} />)}
       </Row>
       <Row className="justify-content-center mb-3">
-        {/* <Pagination>{setPages()}</Pagination> */}
+        {pageCount > 1 ? <Pagination>{pages}</Pagination> : null}
       </Row>
     </Container>
   );
