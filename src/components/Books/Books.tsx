@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
-import { useAppDispatch } from '../../hooks/storeHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 
 import { sortBooks, setPage } from '../../store/actions/index';
 import {
@@ -35,6 +35,10 @@ import Filter from '../Filter/Filter';
 //   onSetPage,
 // }: Props) => {
 const Books: FC = () => {
+  const initialBooks = useAppSelector((state) => state.books.initialBooks);
+  const currentBooks = useAppSelector((state) => state.books.currentBooks);
+  const page = useAppSelector((state) => state.books.page);
+  const booksPerPage = useAppSelector((state) => state.books.booksPerPage);
   const dispatch = useAppDispatch();
 
   // const setPages = () => {
@@ -62,7 +66,7 @@ const Books: FC = () => {
         {/* <Filter onSort={onSortBooks} /> */}
       </Row>
       <Row>
-        {/* {books && books.map((el) => <BookCard key={el.id} book={el} />)} */}
+        {currentBooks && currentBooks.map((el) => <BookCard key={el.id} book={el} />)}
       </Row>
       <Row className="justify-content-center mb-3">
         {/* <Pagination>{setPages()}</Pagination> */}

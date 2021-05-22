@@ -29,6 +29,7 @@ const bookSlice = createSlice({
         (action.payload - 1) * state.booksPerPage,
         state.booksPerPage,
       );
+      state.page = action.payload;
     },
   },
   extraReducers: (builder) => {

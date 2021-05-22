@@ -12,15 +12,15 @@ import { calculateRating } from '../../utils/booksHelpers';
 import './BookCard.css';
 
 type Props = {
-  userId: string | null;
   book: Book;
-  onUpdateRating: (id: string, rating: number, user: UserStar) => void;
+  // userId: string | null;
+  // onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
-const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
-  const handleUpdateRating = (vote: number, rating: number) => {
-    onUpdateRating(book.id, rating, { user: 'test-user', vote });
-  };
+const BookCard: FC<Props> = ({ book }: Props) => {
+  // const handleUpdateRating = (vote: number, rating: number) => {
+  //   onUpdateRating(book.id, rating, { user: 'test-user', vote });
+  // };
 
   return (
     <Col
@@ -35,7 +35,7 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
         <Link to={`/${book.category}/${book.id}`} className="w-75 mx-auto mt-3">
           <Card.Img
             variant="top"
-            src={book.cover ? book.cover : '/images/cover.jpg'}
+            src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
             className="card__image"
           />
         </Link>
@@ -51,13 +51,13 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
         </Card.Body>
         <ListGroup variant="flush">
           <ListGroup.Item>
-            <BookRating
+            {/* <BookRating
               userId={userId}
               rating={calculateRating(book.votes)}
               votes={Object.keys(book.votes).length}
               ownVote={book.votes['test-user'] || 0}
               onUpdate={handleUpdateRating}
-            />
+            /> */}
           </ListGroup.Item>
         </ListGroup>
       </Card>
@@ -65,13 +65,15 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
   );
 };
 
-const mapStateToProps = (state: Record<string, AuthState>) => ({
-  userId: state.auth.userId,
-});
+export default memo(BookCard);
 
-const mapDispatchToProps = (dispatch: any) => ({
-  onUpdateRating: (id: string, rating: number, user: UserStar) =>
-    dispatch(updateRating(id, rating, user)),
-});
+// const mapStateToProps = (state: Record<string, AuthState>) => ({
+//   userId: state.auth.userId,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));
+// const mapDispatchToProps = (dispatch: any) => ({
+//   onUpdateRating: (id: string, rating: number, user: UserStar) =>
+//     dispatch(updateRating(id, rating, user)),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));
