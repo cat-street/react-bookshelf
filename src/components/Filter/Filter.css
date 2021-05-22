@@ -1,3 +1,7 @@
+.filter a {
+  text-transform: capitalize;
+}
+
 .filter a.active {
   text-decoration: underline;
 }

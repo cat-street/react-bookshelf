@@ -1,38 +1,38 @@
 import { FC, useState } from 'react';
 import { Nav } from 'react-bootstrap';
+
+import { useAppDispatch } from '../../hooks/storeHooks';
+import { setPage, sortBooks } from '../../store/slices/bookSlice';
 import { SortBy } from '../../types/books';
 import './Filter.css';
 
 type Props = {
-  onSort: (sortBy: SortBy) => void;
+  page: number;
 };
 
-const Filter: FC<Props> = ({ onSort }: Props) => {
+const Filter: FC<Props> = ({ page } : Props) => {
   const [active, setActive] = useState<string>('title');
+  const dispatch = useAppDispatch();
 
-  const sortBooks = (sortBy: SortBy): void => {
+  const sortTypes: SortBy[] = ['title', 'author', 'rating'];
+
+  const handleSort = async (sortBy: SortBy) => {
     setActive(sortBy);
-    onSort(sortBy);
+    const order = sortBy === 'rating' ? 'desc' : 'asc';
+    await dispatch(sortBooks({ type: sortBy, order }));
+    dispatch(setPage(page));
   };
 
   return (
     <Nav className="w-100 justify-content-center filter" activeKey={active}>
       <p className="m-0 pt-2 pr-2">Sort by:</p>
-      <Nav.Item>
-        <Nav.Link onClick={() => sortBooks('title')} eventKey="title">
-          Title
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link onClick={() => sortBooks('author')} eventKey="author">
-          Author
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link onClick={() => sortBooks('rating')} eventKey="rating">
-          Rating
-        </Nav.Link>
-      </Nav.Item>
+      {sortTypes.map((el) => (
+        <Nav.Item key={el}>
+          <Nav.Link onClick={() => handleSort(el)} eventKey={el}>
+            {el}
+          </Nav.Link>
+        </Nav.Item>
+      ))}
     </Nav>
   );
 };

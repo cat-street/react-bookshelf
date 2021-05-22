@@ -43,48 +43,33 @@ const Books: FC = () => {
   const dispatch = useAppDispatch();
 
   const pageCount = Math.ceil(initialBooks.length / booksPerPage);
-  const pages = [];
-
-  for (let number = 1; number <= pageCount; number += 1) {
-    pages.push(
-      <Pagination.Item
-        key={number}
-        active={page === number}
-        onClick={() => dispatch(setPage(number))}
-      >
-        {number}
-      </Pagination.Item>,
-    );
-  }
-
-  // const setPages = () => {
-  //   const items = [];
-  //   const currentBooks = searching ? searchResults : allBooks;
-  //   const pageCount = Math.ceil(currentBooks.length / booksPerPage);
-  //   if (pageCount === 1) return null;
-  //   for (let number = 1; number <= pageCount; number += 1) {
-  //     items.push(
-  //       <Pagination.Item
-  //         key={number}
-  //         active={page === number}
-  //         onClick={() => onSetPage(number)}
-  //       >
-  //         {number}
-  //       </Pagination.Item>,
-  //     );
-  //   }
-  //   return items;
-  // };
+  const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
 
   return (
     <Container fluid className="px-4">
-      <Row>{/* <Filter onSort={onSortBooks} /> */}</Row>
       <Row>
-        {currentBooks && currentBooks.map((el) =>
-          <BookCard key={el.id} book={el} />)}
+        <Filter page={page} />
       </Row>
+
+      <Row>
+        {currentBooks
+          && currentBooks.map((el) => <BookCard key={el.id} book={el} />)}
+      </Row>
+
       <Row className="justify-content-center mb-3">
-        {pageCount > 1 ? <Pagination>{pages}</Pagination> : null}
+        {pageCount > 1 ? (
+          <Pagination>
+            {pages.map((el) => (
+              <Pagination.Item
+                key={el}
+                active={page === el}
+                onClick={() => dispatch(setPage(el))}
+              >
+                {el}
+              </Pagination.Item>
+            ))}
+          </Pagination>
+        ) : null}
       </Row>
     </Container>
   );

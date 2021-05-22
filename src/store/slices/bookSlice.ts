@@ -20,6 +20,14 @@ const setInitialBooks = createAsyncThunk('books/fetchAll', async () => {
   return (await response.json()) as BooksArray;
 });
 
+const sortBooks = createAsyncThunk(
+  'books/sortBy',
+  async ({ type, order }: { type: string; order: string }) => {
+    const response = await fetch(`/api/books?sorting=${type}&order=${order}`);
+    return (await response.json()) as BooksArray;
+  },
+);
+
 const bookSlice = createSlice({
   name: 'books',
   initialState,
@@ -37,10 +45,13 @@ const bookSlice = createSlice({
     builder.addCase(setInitialBooks.fulfilled, (state, action) => {
       state.initialBooks = action.payload;
     });
+    builder.addCase(sortBooks.fulfilled, (state, action) => {
+      state.initialBooks = action.payload;
+    });
   },
 });
 
 export const { setPage } = bookSlice.actions;
-export { setInitialBooks };
+export { setInitialBooks, sortBooks };
 
 export default bookSlice.reducer;
