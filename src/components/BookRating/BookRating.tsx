@@ -4,34 +4,35 @@ import {
 import { Star, StarFill, StarHalf } from 'react-bootstrap-icons';
 
 import './BookRating.css';
+import StarWrapper from './StarWrapper';
 
 type Props = {
   userId: string | null;
   rating: number;
   votes: number;
   ownVote: number;
-  onUpdate: (vote: number, rating: number) => void;
+  onUpdate: (vote: Record<string, number>) => void;
 };
 
 const BookRating: FC<Props> = ({
   userId, rating, votes, ownVote, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
-  const [state, setState] = useState({
-    rating: 0,
-    votes: 0,
-    previousVote: 0,
-  });
+  // const [state, setState] = useState({
+  //   rating: 0,
+  //   votes: 0,
+  //   previousVote: 0,
+  // });
 
-  const setRating: Array<number> = useMemo(() => {
+  const setStarRating: Array<number> = useMemo(() => {
     const ratingArr = Array(5).fill(0);
-    const ratingInt = Math.floor(state.rating);
-    const remainder = state.rating - ratingInt;
+    const ratingInt = Math.floor(rating);
+    const remainder = rating - ratingInt;
     if (remainder >= 0.45 && remainder <= 0.95) ratingArr[ratingInt] = 1;
     else if (remainder > 0.95) ratingArr[ratingInt] = 2;
     ratingArr.fill(2, 0, ratingInt);
     return ratingArr;
-  }, [state.rating]);
+  }, [rating]);
 
   let timeOut: number;
 
@@ -45,80 +46,71 @@ const BookRating: FC<Props> = ({
 
   const onOut = () => {
     timeOut = window.setTimeout(() => {
-      setStars(setRating);
+      setStars(setStarRating);
     }, 100);
   };
 
-  const calculateRating = (vote: number) => {
+  const updateRating = (score: number) => {
     if (!userId) return;
-    let newRating: number;
-    let currentVotes = state.votes;
-    if (state.previousVote) {
-      newRating = ((state.rating * currentVotes - state.previousVote + vote)
-        / currentVotes);
-    } else {
-      newRating = ((state.rating * currentVotes + vote)
-        / (currentVotes + 1));
-      currentVotes += 1;
-    }
-    setState((prevState) => ({
-      ...prevState,
-      rating: newRating,
-      votes: currentVotes,
-      previousVote: vote,
-    }));
-    onUpdate(vote, newRating);
+    onUpdate({ [userId]: score });
   };
 
-  useEffect(() => {
-    setState({ rating, votes, previousVote: ownVote });
-  }, [rating, votes, ownVote]);
+  // const calculateRating = (vote: number) => {
+  //   if (!userId) return;
+  //   let newRating: number;
+  //   let currentVotes = state.votes;
+  //   if (state.previousVote) {
+  //     newRating = ((state.rating * currentVotes - state.previousVote + vote)
+  //       / currentVotes);
+  //   } else {
+  //     newRating = ((state.rating * currentVotes + vote)
+  //       / (currentVotes + 1));
+  //     currentVotes += 1;
+  //   }
+  //   setState((prevState) => ({
+  //     ...prevState,
+  //     rating: newRating,
+  //     votes: currentVotes,
+  //     previousVote: vote,
+  //   }));
+  //   onUpdate(vote, newRating);
+  // };
+
+  // useEffect(() => {
+  //   setState({ rating, votes, previousVote: ownVote });
+  // }, [rating, votes, ownVote]);
 
   useEffect(() => {
-    setStars(setRating);
-  }, [setRating]);
+    setStars(setStarRating);
+  }, [setStarRating]);
 
   return (
     <div className="d-flex align-items-center">
       {stars.map((el, i) => {
+        let star;
         switch (el) {
           case 2:
-            return (
-              <StarFill
-                size={18}
-                key={Math.random()}
-                onMouseEnter={() => onHover(i)}
-                onMouseLeave={onOut}
-                onClick={() => calculateRating(i + 1)}
-                className={userId ? 'star' : ''}
-              />
-            );
+            star = StarFill;
+            break;
           case 1:
-            return (
-              <StarHalf
-                size={18}
-                key={Math.random()}
-                onMouseEnter={() => onHover(i)}
-                onMouseLeave={onOut}
-                onClick={() => calculateRating(i + 1)}
-                className={userId ? 'star' : ''}
-              />
-            );
+            star = StarHalf;
+            break;
           default:
-            return (
-              <Star
-                size={18}
-                key={Math.random()}
-                onMouseEnter={() => onHover(i)}
-                onMouseLeave={onOut}
-                onClick={() => calculateRating(i + 1)}
-                className={userId ? 'star' : ''}
-              />
-            );
+            star = Star;
         }
+        return (
+          <StarWrapper
+            key={Math.random()}
+            component={star}
+            userId={userId}
+            score={i}
+            onHover={onHover}
+            onOut={onOut}
+            onClick={updateRating}
+          />
+        );
       })}
-      {' '}
-      <strong className="ml-2">{state.rating.toFixed(1)}</strong>
+      <strong className="ml-2">{rating.toFixed(1)}</strong>
     </div>
   );
 };

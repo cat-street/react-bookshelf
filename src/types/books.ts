@@ -1,4 +1,4 @@
-export enum Sort { DESC, ASC }
+// export enum Sort { DESC, ASC }
 
 export type UserStar = { user: string, vote: number };
 export type SortBy = ('author' | 'title' | 'rating');
@@ -29,27 +29,34 @@ export interface Book {
 export interface BooksArray extends Array<Book> {}
 
 export interface BooksState {
-  initialBooks: BooksArray,
-  searchResults: BooksArray,
-  currentBooks: BooksArray,
-  searching: boolean,
-  page: number,
-  sort: Sort,
-  sortBy: SortBy,
-  booksPerPage: number,
-  currentBook: Book,
+  initialBooks: BooksArray;
+  currentBooks: BooksArray;
+  page: number;
+  booksPerPage: number;
 }
 
-export interface Reducer {
-  type: string,
-  sortBy: SortBy,
-  id: string,
-  rating: number,
-  user: UserStar,
-  ownerId: string,
-  query: string,
-  searchType: SearchType,
-  page: number,
-  comment: string,
-  book: Record<string, string>,
-}
+// export interface BooksState {
+//   initialBooks: BooksArray,
+//   searchResults: BooksArray,
+//   currentBooks: BooksArray,
+//   searching: boolean,
+//   page: number,
+//   sort: Sort,
+//   sortBy: SortBy,
+//   booksPerPage: number,
+//   currentBook: Book,
+// }
+
+// export interface Reducer {
+//   type: string,
+//   sortBy: SortBy,
+//   id: string,
+//   rating: number,
+//   user: UserStar,
+//   ownerId: string,
+//   query: string,
+//   searchType: SearchType,
+//   page: number,
+//   comment: string,
+//   book: Record<string, string>,
+// }

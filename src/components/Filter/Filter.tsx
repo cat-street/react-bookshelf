@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { Nav } from 'react-bootstrap';
 
 import { useAppDispatch } from '../../hooks/storeHooks';
-import { setPage, sortBooks } from '../../store/slices/bookSlice';
+import { setPage, sortBooks } from '../../store/store';
 import { SortBy } from '../../types/books';
 import './Filter.css';
 

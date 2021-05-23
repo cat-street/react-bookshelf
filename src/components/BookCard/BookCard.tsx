@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
+import { setRating } from '../../store/store';
+
 import { updateRating } from '../../store/actions/index';
 import { Book, UserStar } from '../../types/books';
 import { AuthState } from '../../types/auth';
 
 import BookRating from '../BookRating/BookRating';
+
+import { useAppDispatch } from '../../hooks/storeHooks';
 import { calculateRating } from '../../utils/booksHelpers';
 import './BookCard.css';
 
@@ -18,9 +22,12 @@ type Props = {
 };
 
 const BookCard: FC<Props> = ({ book }: Props) => {
-  // const handleUpdateRating = (vote: number, rating: number) => {
-  //   onUpdateRating(book.id, rating, { user: 'test-user', vote });
-  // };
+  const dispatch = useAppDispatch();
+
+  const handleUpdateRating = (vote: Record<string, number>) => {
+    dispatch(setRating({ id: book.id, vote }));
+    // onUpdateRating(book.id, rating, { user: 'test-user', vote });
+  };
 
   return (
     <Col
@@ -51,13 +58,13 @@ const BookCard: FC<Props> = ({ book }: Props) => {
         </Card.Body>
         <ListGroup variant="flush">
           <ListGroup.Item>
-            {/* <BookRating
-              userId={userId}
-              rating={calculateRating(book.votes)}
+            <BookRating
+              userId="test-user"
+              rating={book.rating}
               votes={Object.keys(book.votes).length}
               ownVote={book.votes['test-user'] || 0}
               onUpdate={handleUpdateRating}
-            /> */}
+            />
           </ListGroup.Item>
         </ListGroup>
       </Card>

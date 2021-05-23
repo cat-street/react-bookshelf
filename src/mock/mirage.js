@@ -43,10 +43,13 @@ export default function makeServer({ environment = 'test' } = {}) {
       this.get('/books/:id');
 
       this.patch('/books/:id', (schema, request) => {
-        const { rating, votes } = JSON.parse(request.requestBody);
+        const vote = JSON.parse(request.requestBody);
         const book = schema.books.find(request.params.id);
+        const newVotes = { ...book.votes, ...vote };
+        const votesArr = Object.values(newVotes);
+        const rating = votesArr.reduce((red, el) => red + el) / votesArr.length;
+        book.update('votes', newVotes);
         book.update('rating', rating);
-        book.update('votes', votes);
         return book;
       });
 

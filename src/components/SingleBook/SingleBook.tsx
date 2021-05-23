@@ -57,8 +57,8 @@ const SingleBook: FC<Props> = ({
     history.push('/');
   };
 
-  const handleUpdateRating = (vote: number, rating: number) => {
-    onUpdateRating(currentBook.id, rating, { user: userId!, vote });
+  const handleUpdateRating = (vote: Record<string, number>) => {
+    // onUpdateRating(currentBook.id, rating, { user: userId!, vote });
   };
 
   const handleAddComment = (comment: string) => {

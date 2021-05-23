@@ -1,32 +1,14 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { BooksArray } from '../../types/books';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface SliceState {
-  initialBooks: BooksArray;
-  currentBooks: BooksArray;
-  page: number;
-  booksPerPage: number;
-}
+import { setInitialBooks, setRating, sortBooks } from '../thunks/bookThunks';
+import { BooksState } from '../../types/books';
 
-const initialState: SliceState = {
+const initialState: BooksState = {
   initialBooks: [],
   currentBooks: [],
   page: 0,
   booksPerPage: 10,
 };
-
-const setInitialBooks = createAsyncThunk('books/fetchAll', async () => {
-  const response = await fetch('/api/books');
-  return (await response.json()) as BooksArray;
-});
-
-const sortBooks = createAsyncThunk(
-  'books/sortBy',
-  async ({ type, order }: { type: string; order: string }) => {
-    const response = await fetch(`/api/books?sorting=${type}&order=${order}`);
-    return (await response.json()) as BooksArray;
-  },
-);
 
 const bookSlice = createSlice({
   name: 'books',
@@ -48,10 +30,16 @@ const bookSlice = createSlice({
     builder.addCase(sortBooks.fulfilled, (state, action) => {
       state.initialBooks = action.payload;
     });
+    builder.addCase(setRating.fulfilled, (state, action) => {
+      const updatedBook = action.payload;
+      const index = state.currentBooks.findIndex(
+        (el) => el.id === updatedBook.id,
+      );
+      state.currentBooks[index] = updatedBook;
+    });
   },
 });
 
 export const { setPage } = bookSlice.actions;
-export { setInitialBooks, sortBooks };
 
 export default bookSlice.reducer;

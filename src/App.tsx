@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { useAppDispatch } from './hooks/storeHooks';
-import { setInitialBooks, setPage } from './store/slices/bookSlice';
+import { setInitialBooks, setPage } from './store/store';
 
 // import { checkId, logout, setBooks } from './store/actions/index';
 import Books from './components/Books/Books';
