@@ -1,29 +1,35 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import {
   Form, FormControl, Button, Col,
 } from 'react-bootstrap';
 
-import { searchBook } from '../../store/actions/index';
-import { SearchType } from '../../types/books';
+import { useAppDispatch } from '../../hooks/storeHooks';
+import {
+  setPage, searchBooks, setInitialBooks, sortBooks, setSort,
+} from '../../store/store';
 
-type Props = {
-  onSearchBook: (query: string, searchType: SearchType) => void;
-};
-
-const Search: FC<Props> = ({ onSearchBook }: Props) => {
+const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const history = useHistory();
+  const dispatch = useAppDispatch();
 
   const handleChange = (evt: SyntheticEvent) => {
     const target = evt.target as HTMLInputElement;
     setSearchQuery(target.value);
   };
 
-  const handleSubmit = (evt: SyntheticEvent) => {
+  const handleSubmit = async (evt: SyntheticEvent) => {
     evt.preventDefault();
-    onSearchBook(searchQuery, 'title');
+    if (searchQuery) {
+      await dispatch(searchBooks({ query: searchQuery, where: 'all' }));
+      setSearchQuery('');
+    } else {
+      await dispatch(setInitialBooks());
+    }
+    dispatch(sortBooks({ type: 'title', order: 'asc' }));
+    dispatch(setPage(1));
+    dispatch(setSort('title'));
     history.push('/');
   };
 
@@ -52,12 +58,4 @@ const Search: FC<Props> = ({ onSearchBook }: Props) => {
   );
 };
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  onSearchBook: (
-    query: string, searchType: SearchType,
-  ) => dispatch(searchBook(query, searchType)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;

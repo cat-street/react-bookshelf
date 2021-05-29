@@ -1,7 +1,4 @@
-import {
-  FC, useEffect, useState,
-} from 'react';
-import { connect } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -13,63 +10,65 @@ import {
   Spinner,
 } from 'react-bootstrap';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import {
-  getBook, searchBook, updateRating, addComment, editBook,
-} from '../../store/actions/index';
-import {
-  Book,
-  SearchType,
-  UserStar,
-} from '../../types/books';
+  addComment,
+  clearBook,
+  editBook,
+  getBook,
+  searchBooks,
+  setPage,
+  setRating,
+  sortBooks,
+} from '../../store/store';
+
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
-import { calculateRating } from '../../utils/booksHelpers';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 
-type Props = {
-  currentBook: Book;
-  userId: string | null;
-  onGetBook: (id: string) => void;
-  onSearchBook: (query: string, searchType: SearchType) => void;
-  onUpdateRating: (id: string, rating: number, user: UserStar) => void;
-  onAddComment: (ownerId: string, comment: string) => void;
-  onEditBook: (book: Record<string, string>) => void;
-};
+import { Book } from '../../types/books';
 
-const SingleBook: FC<Props> = ({
-  currentBook,
-  userId,
-  onGetBook,
-  onSearchBook,
-  onUpdateRating,
-  onAddComment,
-  onEditBook,
-}: Props) => {
-  const [loading, setLoading] = useState(true);
+const SingleBook = () => {
   const [commentOpen, setCommentOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  const currentBook = useAppSelector((state) => state.books.openedBook);
+  const loading = useAppSelector((state) => state.books.loading);
+  const userId = useAppSelector((state) => state.auth.userId);
+  const dispatch = useAppDispatch();
+
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
 
-  const searchByAuthor = () => {
-    onSearchBook(currentBook.author, 'title');
+  const searchByAuthor = async () => {
+    await dispatch(searchBooks({ query: currentBook!.author, where: 'author' }));
+    dispatch(sortBooks({ type: 'title', order: 'asc' }));
+    dispatch(setPage(1));
     history.push('/');
   };
 
-  const handleUpdateRating = (vote: number, rating: number) => {
-    onUpdateRating(currentBook.id, rating, { user: userId!, vote });
-  };
-
-  const handleAddComment = (comment: string) => {
-    if (userId) {
-      onAddComment(userId, comment);
-      setCommentOpen(false);
-    }
+  const handleUpdateRating = (vote: Record<string, number>) => {
+    dispatch(setRating({ id, vote }));
   };
 
   const handleEditClick = () => {
     setShowModal(true);
+  };
+
+  const handleEdit = (fields: Record<string, string>) => {
+    dispatch(editBook({ id, fields }));
+  };
+
+  const handleAddCommentClick = () => {
+    setCommentOpen(true);
+  };
+
+  const handleAddComment = (text: string) => {
+    if (userId) {
+      dispatch(addComment({ id, ownerId: userId, text }));
+      setCommentOpen(false);
+    }
   };
 
   const hideModal = () => {
@@ -77,20 +76,22 @@ const SingleBook: FC<Props> = ({
   };
 
   useEffect(() => {
-    onGetBook(id);
-    setLoading(false);
-  }, [id, onGetBook]);
+    dispatch(getBook(id));
+    return () => {
+      dispatch(clearBook());
+    };
+  }, [dispatch, id]);
 
   return (
     <Container className="p-4 pt-5">
       {showModal && (
         <EditBookModal
-          book={currentBook}
+          book={currentBook as Book}
           onHide={hideModal}
-          onEdit={onEditBook}
+          onEdit={handleEdit}
         />
       )}
-      {loading ? (
+      {loading || !currentBook ? (
         <Row className="d-flex justify-content-center">
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -102,7 +103,9 @@ const SingleBook: FC<Props> = ({
             <Col xs={12} sm={6} md={4} className="mb-3">
               <Image
                 src={
-                  currentBook.cover ? currentBook.cover : '/images/cover.jpg'
+                  currentBook.cover
+                    ? `/images/books/${currentBook.cover}`
+                    : '/images/cover.jpg'
                 }
                 rounded
                 className="w-100"
@@ -136,10 +139,9 @@ const SingleBook: FC<Props> = ({
                 </Button>
               </h3>
               <BookRating
-                userId={userId}
-                rating={calculateRating(currentBook.votes)}
+                userId="test-user"
+                rating={currentBook.rating}
                 votes={Object.keys(currentBook.votes).length}
-                ownVote={currentBook.votes.userId || 0}
                 onUpdate={handleUpdateRating}
               />
               <p className="my-4">{currentBook.description}</p>
@@ -163,7 +165,7 @@ const SingleBook: FC<Props> = ({
                 <Button
                   variant="outline-success"
                   className="mx-auto px-5"
-                  onClick={() => setCommentOpen(true)}
+                  onClick={handleAddCommentClick}
                 >
                   Add comment
                 </Button>
@@ -176,21 +178,4 @@ const SingleBook: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: Record<string, any>) => ({
-  currentBook: state.books.currentBook,
-  userId: state.auth.userId,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  onGetBook: (id: string) => dispatch(getBook(id)),
-  onSearchBook: (query: string, searchType: SearchType) =>
-    dispatch(searchBook(query, searchType)),
-  onUpdateRating: (id: string, rating: number, user: UserStar) =>
-    dispatch(updateRating(id, rating, user)),
-  onAddComment: (ownerId: string, comment: string) =>
-    dispatch(addComment(ownerId, comment)),
-  onEditBook: (book: Record<string, string>) =>
-    dispatch(editBook(book)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);
+export default SingleBook;

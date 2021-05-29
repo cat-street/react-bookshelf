@@ -1,11 +1,11 @@
-import { FC, SyntheticEvent, useRef } from 'react';
+import { SyntheticEvent, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 type Props = {
   onAdd: (comment: string) => void;
 };
 
-const CommentForm: FC<Props> = ({ onAdd }: Props) => {
+const CommentForm = ({ onAdd }: Props) => {
   const comment = useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = (evt: SyntheticEvent) => {

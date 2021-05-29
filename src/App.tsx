@@ -1,37 +1,43 @@
-import { FC, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { checkId, logout, setBooks } from './store/actions/index';
+import { useAppDispatch, useAppSelector } from './hooks/storeHooks';
+import {
+  checkUser,
+  logout,
+  setInitialBooks,
+  setPage,
+  sortBooks,
+} from './store/store';
+
 import Books from './components/Books/Books';
 import Navigation from './components/Navigation/Navigation';
 import SingleBook from './components/SingleBook/SingleBook';
 import Login from './components/Login/Login';
+
 import './App.css';
-import { AuthState } from './types/auth';
 
-type Props = {
-  userId: string | null;
-  onSetBooks: () => void;
-  onCheckId: (tokenId: string) => void;
-  onLogout: () => void;
-};
+function App() {
+  const userId = useAppSelector((state) => state.auth.userId);
+  const dispatch = useAppDispatch();
 
-const App: FC<Props> = ({
-  userId, onSetBooks, onCheckId, onLogout,
-}: Props) => {
   const handleLogout = () => {
-    onLogout();
+    dispatch(logout());
   };
 
   useEffect(() => {
-    onSetBooks();
-  }, [onSetBooks]);
+    const setBooks = async () => {
+      await dispatch(setInitialBooks());
+      dispatch(sortBooks({ type: 'title', order: 'asc' }));
+      dispatch(setPage(1));
+    };
+    setBooks();
+  }, [dispatch]);
 
   useEffect(() => {
     const token = localStorage.getItem('bookshelfId');
-    if (token) onCheckId(token);
-  }, [onCheckId]);
+    if (token) dispatch(checkUser(token));
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -44,16 +50,6 @@ const App: FC<Props> = ({
       </Switch>
     </div>
   );
-};
+}
 
-const mapStateToProps = (state: Record<string, AuthState>) => ({
-  userId: state.auth.userId,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  onSetBooks: () => dispatch(setBooks()),
-  onCheckId: (tokenId: string) => dispatch(checkId(tokenId)),
-  onLogout: () => dispatch(logout()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

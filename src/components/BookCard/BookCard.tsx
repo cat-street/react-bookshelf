@@ -1,25 +1,26 @@
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
-import { updateRating } from '../../store/actions/index';
-import { Book, UserStar } from '../../types/books';
-import { AuthState } from '../../types/auth';
+import { setRating } from '../../store/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 
 import BookRating from '../BookRating/BookRating';
-import { calculateRating } from '../../utils/booksHelpers';
+
+import { Book } from '../../types/books';
+
 import './BookCard.css';
 
 type Props = {
-  userId: string | null;
   book: Book;
-  onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
-const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
-  const handleUpdateRating = (vote: number, rating: number) => {
-    onUpdateRating(book.id, rating, { user: 'test-user', vote });
+const BookCard = ({ book }: Props) => {
+  const userId = useAppSelector((state) => state.auth.userId);
+  const dispatch = useAppDispatch();
+
+  const handleUpdateRating = (vote: Record<string, number>) => {
+    dispatch(setRating({ id: book.id, vote }));
   };
 
   return (
@@ -32,13 +33,11 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
       className="px-1 mb-3 d-flex align-items-stretch"
     >
       <Card>
-        <Link to={`/${book.category}/${book.id}`} className="w-75 mx-auto mt-3">
-          <Card.Img
-            variant="top"
-            src={book.cover ? book.cover : '/images/cover.jpg'}
-            className="card__image"
-          />
-        </Link>
+        <Card.Img
+          variant="top"
+          src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
+          className="card__image px-3 mt-3"
+        />
         <Card.Body>
           <Card.Title className="text-uppercase">{book.title}</Card.Title>
           <Card.Subtitle className="text-muted mb-3">
@@ -53,9 +52,9 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
           <ListGroup.Item>
             <BookRating
               userId={userId}
-              rating={calculateRating(book.votes)}
+              rating={book.rating}
               votes={Object.keys(book.votes).length}
-              ownVote={book.votes['test-user'] || 0}
+              ownVote={userId ? book.votes[userId] : 0}
               onUpdate={handleUpdateRating}
             />
           </ListGroup.Item>
@@ -65,13 +64,4 @@ const BookCard: FC<Props> = ({ userId, book, onUpdateRating }: Props) => {
   );
 };
 
-const mapStateToProps = (state: Record<string, AuthState>) => ({
-  userId: state.auth.userId,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  onUpdateRating: (id: string, rating: number, user: UserStar) =>
-    dispatch(updateRating(id, rating, user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));
+export default memo(BookCard);
