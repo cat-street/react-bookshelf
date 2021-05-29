@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -16,7 +16,10 @@ import {
   clearBook,
   editBook,
   getBook,
+  searchBooks,
+  setPage,
   setRating,
+  sortBooks,
 } from '../../store/store';
 
 import BookRating from '../BookRating/BookRating';
@@ -37,21 +40,17 @@ const SingleBook = () => {
 
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
+  const commentButton = useRef<HTMLButtonElement>(null);
 
-  // const searchByAuthor = () => {
-  //   onSearchBook(currentBook.author, 'title');
-  //   history.push('/');
-  // };
+  const searchByAuthor = async () => {
+    await dispatch(searchBooks({ query: currentBook!.author, where: 'author' }));
+    dispatch(sortBooks({ type: 'title', order: 'asc' }));
+    dispatch(setPage(1));
+    history.push('/');
+  };
 
   const handleUpdateRating = (vote: Record<string, number>) => {
     dispatch(setRating({ id, vote }));
-  };
-
-  const handleAddComment = (text: string) => {
-    if (userId) {
-      dispatch(addComment({ id, ownerId: userId, text }));
-      setCommentOpen(false);
-    }
   };
 
   const handleEditClick = () => {
@@ -60,6 +59,18 @@ const SingleBook = () => {
 
   const handleEdit = (fields: Record<string, string>) => {
     dispatch(editBook({ id, fields }));
+  };
+
+  const handleAddCommentClick = () => {
+    setCommentOpen(true);
+    commentButton.current?.scrollIntoView();
+  };
+
+  const handleAddComment = (text: string) => {
+    if (userId) {
+      dispatch(addComment({ id, ownerId: userId, text }));
+      setCommentOpen(false);
+    }
   };
 
   const hideModal = () => {
@@ -124,7 +135,7 @@ const SingleBook = () => {
                   type="button"
                   size="lg"
                   className="p-0 m-0 mb-2"
-                  // onClick={searchByAuthor}
+                  onClick={searchByAuthor}
                 >
                   {currentBook.author}
                 </Button>
@@ -157,7 +168,8 @@ const SingleBook = () => {
                 <Button
                   variant="outline-success"
                   className="mx-auto px-5"
-                  onClick={() => setCommentOpen(true)}
+                  ref={commentButton}
+                  onClick={handleAddCommentClick}
                 >
                   Add comment
                 </Button>

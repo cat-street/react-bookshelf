@@ -35,8 +35,8 @@ export default function makeServer({ environment = 'test' } = {}) {
 
       this.get('/books', (schema, request) => {
         const { search, where } = request.queryParams;
-        const scope = where === 'all' ? ['title', 'author', 'description'] : [where];
-        return search
+        if (!search) return schema.books.all();
+        return where === 'all'
           ? schema.books
             .all()
             .filter(
@@ -45,7 +45,11 @@ export default function makeServer({ environment = 'test' } = {}) {
                 || el.author.toLowerCase().includes(search.toLowerCase())
                 || el.description.toLowerCase().includes(search.toLowerCase()),
             )
-          : schema.books.all();
+          : schema.books
+            .all()
+            .filter(
+              (el) => el[where].toLowerCase().includes(search.toLowerCase()),
+            );
       });
 
       this.get('/books/:id');
