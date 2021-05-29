@@ -5,7 +5,7 @@ import { User, UserData, AuthError } from '../../types/auth';
 const login = createAsyncThunk<UserData, User, { rejectValue: AuthError }>(
   'auth/login',
   async ({ userId, password }, thunkApi) => {
-    const response = await fetch('api/login', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       body: JSON.stringify({ userId, password }),
     });
@@ -26,7 +26,7 @@ const logout = createAsyncThunk(
 const checkUser = createAsyncThunk(
   'auth/checkUser',
   async (userId: string, thunkApi) => {
-    const response = await fetch(`api/login/${userId}`);
+    const response = await fetch(`/api/login/${userId}`);
     if (!response.ok) {
       return thunkApi.rejectWithValue((await response.json()));
     }
