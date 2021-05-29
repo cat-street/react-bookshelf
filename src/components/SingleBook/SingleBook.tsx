@@ -90,7 +90,7 @@ const SingleBook = () => {
   useEffect(() => {
     dispatch(getBook(id));
     setLoading(false);
-  }, [dispatch, id]);
+  }, [dispatch, id, currentBook]);
 
   return (
     <Container className="p-4 pt-5">
