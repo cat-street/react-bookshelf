@@ -40,7 +40,7 @@ const Navigation = ({ userId, onLogout }: Props) => {
                 <BoxArrowRight className="ml-2" />
               </Button>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link onClick={() => history.push('/login')}>Login</Nav.Link>
             )}
           </Nav>
           <Search />

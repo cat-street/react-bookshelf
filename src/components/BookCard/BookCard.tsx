@@ -12,7 +12,6 @@ import { AuthState } from '../../types/auth';
 import BookRating from '../BookRating/BookRating';
 
 import { useAppDispatch } from '../../hooks/storeHooks';
-import { calculateRating } from '../../utils/booksHelpers';
 import './BookCard.css';
 
 type Props = {

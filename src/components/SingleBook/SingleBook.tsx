@@ -21,7 +21,6 @@ import {
 } from '../../types/books';
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
-import { calculateRating } from '../../utils/booksHelpers';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';

@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   setInitialBooks, setRating, searchBooks, getBook,
 } from '../thunks/bookThunks';
-import { BooksState, SortBy, Book } from '../../types/books';
-import compareFunc from '../../utils/mirageHelpers';
+import { BooksState, SortBy } from '../../types/books';
+import compareFunc from '../../utils/storeHelpers';
 
 const initialState: BooksState = {
   initialBooks: [],

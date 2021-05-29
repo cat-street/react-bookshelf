@@ -4,7 +4,6 @@ import {
 } from 'miragejs';
 
 import mockBooks from './mock.json';
-import compareFunc from '../utils/mirageHelpers';
 
 export default function makeServer({ environment = 'test' } = {}) {
   const server = createServer({

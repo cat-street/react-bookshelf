@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap';
 import { Comment } from '../../types/books';
-import { formatDate } from '../../utils/booksHelpers';
+import formatDate from '../../utils/booksHelpers';
 
 type Props = {
   comment: Comment,
