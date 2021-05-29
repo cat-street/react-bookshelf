@@ -22,7 +22,7 @@ const Search = () => {
   const handleSubmit = async (evt: SyntheticEvent) => {
     evt.preventDefault();
     if (searchQuery) {
-      await dispatch(searchBooks(searchQuery));
+      await dispatch(searchBooks({ query: searchQuery, where: 'all' }));
       setSearchQuery('');
     } else {
       await dispatch(setInitialBooks());

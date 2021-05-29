@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -11,22 +10,21 @@ import {
   Spinner,
 } from 'react-bootstrap';
 
-// import {
-//   getBook, searchBook, updateRating, addComment, editBook,
-// } from '../../store/actions/index';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import {
-  Book,
-  SearchType,
-} from '../../types/books';
+  addComment,
+  clearBook,
+  editBook,
+  getBook,
+  setRating,
+} from '../../store/store';
+
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
-import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
-import {
-  addComment,
-  clearBook, editBook, getBook, setRating,
-} from '../../store/store';
+
+import { Book } from '../../types/books';
 
 const SingleBook = () => {
   const [commentOpen, setCommentOpen] = useState(false);

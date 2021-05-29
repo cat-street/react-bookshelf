@@ -18,10 +18,13 @@ const setRating = createAsyncThunk(
   },
 );
 
-const searchBooks = createAsyncThunk('books/search', async (query: string) => {
-  const response = await fetch(`/api/books?search=${query}`);
-  return (await response.json()) as BooksArray;
-});
+const searchBooks = createAsyncThunk(
+  'books/search',
+  async ({ where, query }: { where: string; query: string }) => {
+    const response = await fetch(`/api/books?search=${query}&where=${where}`);
+    return (await response.json()) as BooksArray;
+  },
+);
 
 const getBook = createAsyncThunk('books/fetchOne', async (id: string) => {
   const response = await fetch(`/api/books/${id}`);

@@ -34,7 +34,8 @@ export default function makeServer({ environment = 'test' } = {}) {
       this.namespace = 'api';
 
       this.get('/books', (schema, request) => {
-        const { search } = request.queryParams;
+        const { search, where } = request.queryParams;
+        const scope = where === 'all' ? ['title', 'author', 'description'] : [where];
         return search
           ? schema.books
             .all()

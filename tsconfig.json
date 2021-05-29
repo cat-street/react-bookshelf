@@ -24,8 +24,4 @@
   "include": [
     "src"
   ],
-  "exclude": [
-    "src/store/reducers",
-    "src/utils/actionHelpers.ts"
-  ]
 }
