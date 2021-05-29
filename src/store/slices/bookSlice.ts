@@ -1,7 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 import {
-  setInitialBooks, setRating, searchBooks, getBook, editBook,
+  setInitialBooks,
+  setRating,
+  searchBooks,
+  getBook,
+  editBook,
+  addComment,
 } from '../thunks/bookThunks';
 import { BooksState, SortBy } from '../../types/books';
 import compareFunc from '../../utils/storeHelpers';
@@ -14,6 +19,13 @@ const initialState: BooksState = {
   sort: 'title',
   openedBook: null,
   loading: false,
+};
+
+const updateBook = (state: Draft<BooksState>, action: PayloadAction<any>) => {
+  const updatedBook = action.payload;
+  const index = state.currentBooks.findIndex((el) => el.id === updatedBook.id);
+  state.currentBooks[index] = updatedBook;
+  if (state.openedBook) state.openedBook = updatedBook;
 };
 
 const bookSlice = createSlice({
@@ -49,14 +61,9 @@ const bookSlice = createSlice({
         state.initialBooks = action.payload;
         state.loading = false;
       })
-      .addCase(setRating.fulfilled, (state, action) => {
-        const updatedBook = action.payload;
-        const index = state.currentBooks.findIndex(
-          (el) => el.id === updatedBook.id,
-        );
-        state.currentBooks[index] = updatedBook;
-        if (state.openedBook) state.openedBook = updatedBook;
-      })
+      .addCase(
+        setRating.fulfilled, (state, action) => updateBook(state, action),
+      )
       .addCase(searchBooks.pending, (state) => {
         state.loading = true;
       })
@@ -71,14 +78,10 @@ const bookSlice = createSlice({
         state.openedBook = action.payload;
         state.loading = false;
       })
-      .addCase(editBook.fulfilled, (state, action) => {
-        const updatedBook = action.payload;
-        const index = state.currentBooks.findIndex(
-          (el) => el.id === updatedBook.id,
-        );
-        state.currentBooks[index] = updatedBook;
-        state.openedBook = updatedBook;
-      });
+      .addCase(editBook.fulfilled, (state, action) => updateBook(state, action))
+      .addCase(
+        addComment.fulfilled, (state, action) => updateBook(state, action),
+      );
   },
 });
 

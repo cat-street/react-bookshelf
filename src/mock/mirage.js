@@ -66,15 +66,11 @@ export default function makeServer({ environment = 'test' } = {}) {
         return book.update(fields);
       });
 
-      this.get('/books/:id/comments', (schema, request) => {
-        const book = schema.books.find(request.params.id);
-        return book.comments;
-      });
-
       this.post('/books/:id/comments', (schema, request) => {
         const book = schema.books.find(request.params.id);
-        const comments = JSON.parse(request.requestBody);
-        return book.update({ comments });
+        const comment = JSON.parse(request.requestBody);
+        book.comments.push(comment);
+        return book;
       });
 
       this.post('/login', (schema, request) => {

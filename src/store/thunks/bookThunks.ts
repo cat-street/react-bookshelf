@@ -9,7 +9,7 @@ const setInitialBooks = createAsyncThunk('books/fetchAll', async () => {
 
 const setRating = createAsyncThunk(
   'books/setRating',
-  async ({ id, vote }: { id: string, vote: Record<string, number> }) => {
+  async ({ id, vote }: { id: string; vote: Record<string, number> }) => {
     const response = await fetch(`/api/books/${id}/rating`, {
       method: 'PATCH',
       body: JSON.stringify(vote),
@@ -18,13 +18,10 @@ const setRating = createAsyncThunk(
   },
 );
 
-const searchBooks = createAsyncThunk(
-  'books/search',
-  async (query: string) => {
-    const response = await fetch(`/api/books?search=${query}`);
-    return (await response.json()) as BooksArray;
-  },
-);
+const searchBooks = createAsyncThunk('books/search', async (query: string) => {
+  const response = await fetch(`/api/books?search=${query}`);
+  return (await response.json()) as BooksArray;
+});
 
 const getBook = createAsyncThunk('books/fetchOne', async (id: string) => {
   const response = await fetch(`/api/books/${id}`);
@@ -42,10 +39,28 @@ const editBook = createAsyncThunk(
   },
 );
 
+const addComment = createAsyncThunk(
+  'books/addComment',
+  async ({ id, ownerId, text }: { id: string; ownerId: string, text: string }) => {
+    const comment = {
+      id: Math.random().toString(36).substr(2, 9),
+      ownerId,
+      date: (new Date()).toDateString(),
+      text,
+    };
+    const response = await fetch(`/api/books/${id}/comments`, {
+      method: 'POST',
+      body: JSON.stringify(comment),
+    });
+    return (await response.json()) as Book;
+  },
+);
+
 export {
   setInitialBooks,
   setRating,
   searchBooks,
   getBook,
   editBook,
+  addComment,
 };

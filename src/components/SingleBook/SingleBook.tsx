@@ -24,6 +24,7 @@ import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import {
+  addComment,
   clearBook, editBook, getBook, setRating,
 } from '../../store/store';
 
@@ -48,12 +49,12 @@ const SingleBook = () => {
     dispatch(setRating({ id, vote }));
   };
 
-  // const handleAddComment = (comment: string) => {
-  //   if (userId) {
-  //     onAddComment(userId, comment);
-  //     setCommentOpen(false);
-  //   }
-  // };
+  const handleAddComment = (text: string) => {
+    if (userId) {
+      dispatch(addComment({ id, ownerId: userId, text }));
+      setCommentOpen(false);
+    }
+  };
 
   const handleEditClick = () => {
     setShowModal(true);
@@ -150,7 +151,7 @@ const SingleBook = () => {
               <CommentCard key={el.id} comment={el} />
             ))}
           </Row>
-          {/* {userId && (
+          {userId && (
             <Row>
               {commentOpen ? (
                 <CommentForm onAdd={handleAddComment} />
@@ -164,7 +165,7 @@ const SingleBook = () => {
                 </Button>
               )}
             </Row>
-          )} */}
+          )}
         </>
       )}
     </Container>

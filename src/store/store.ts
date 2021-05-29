@@ -25,6 +25,7 @@ export {
   searchBooks,
   getBook,
   editBook,
+  addComment,
 } from './thunks/bookThunks';
 
 export { resetError } from './slices/authSlice';
