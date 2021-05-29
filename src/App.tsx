@@ -37,9 +37,6 @@ const App: FC = () => {
       dispatch(setPage(1));
     };
     setBooks();
-    // fetch('/api/books')
-    //   .then((response) => response.json())
-    //   .then((json) => console.log(json));
   }, [dispatch]);
 
   // useEffect(() => {

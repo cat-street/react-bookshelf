@@ -24,19 +24,20 @@ const bookSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(setInitialBooks.fulfilled, (state, action) => {
-      state.initialBooks = action.payload;
-    });
-    builder.addCase(sortBooks.fulfilled, (state, action) => {
-      state.initialBooks = action.payload;
-    });
-    builder.addCase(setRating.fulfilled, (state, action) => {
-      const updatedBook = action.payload;
-      const index = state.currentBooks.findIndex(
-        (el) => el.id === updatedBook.id,
-      );
-      state.currentBooks[index] = updatedBook;
-    });
+    builder
+      .addCase(setInitialBooks.fulfilled, (state, action) => {
+        state.initialBooks = action.payload;
+      })
+      .addCase(sortBooks.fulfilled, (state, action) => {
+        state.initialBooks = action.payload;
+      })
+      .addCase(setRating.fulfilled, (state, action) => {
+        const updatedBook = action.payload;
+        const index = state.currentBooks.findIndex(
+          (el) => el.id === updatedBook.id,
+        );
+        state.currentBooks[index] = updatedBook;
+      });
   },
 });
 

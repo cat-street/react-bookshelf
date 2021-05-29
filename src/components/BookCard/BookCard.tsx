@@ -39,13 +39,11 @@ const BookCard: FC<Props> = ({ book }: Props) => {
       className="px-1 mb-3 d-flex align-items-stretch"
     >
       <Card>
-        <Link to={`/${book.category}/${book.id}`} className="w-75 mx-auto mt-3">
-          <Card.Img
-            variant="top"
-            src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
-            className="card__image"
-          />
-        </Link>
+        <Card.Img
+          variant="top"
+          src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
+          className="card__image px-3 mt-3"
+        />
         <Card.Body>
           <Card.Title className="text-uppercase">{book.title}</Card.Title>
           <Card.Subtitle className="text-muted mb-3">
