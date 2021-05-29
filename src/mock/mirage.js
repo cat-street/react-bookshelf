@@ -41,7 +41,8 @@ export default function makeServer({ environment = 'test' } = {}) {
             .filter(
               (el) =>
                 el.title.toLowerCase().includes(search.toLowerCase())
-                || el.author.toLowerCase().includes(search.toLowerCase()),
+                || el.author.toLowerCase().includes(search.toLowerCase())
+                || el.description.toLowerCase().includes(search.toLowerCase()),
             )
           : schema.books.all();
       });
