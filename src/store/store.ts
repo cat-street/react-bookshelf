@@ -13,7 +13,7 @@ export type AppDispatch = typeof store.dispatch;
 
 export { setPage, sortBooks, setSort } from './slices/bookSlice';
 export {
-  setInitialBooks, setRating, searchBooks,
+  setInitialBooks, setRating, searchBooks, getBook,
 } from './thunks/bookThunks';
 
 export default store;

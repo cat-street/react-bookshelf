@@ -26,6 +26,11 @@ const searchBooks = createAsyncThunk(
   },
 );
 
+const getBook = createAsyncThunk('book/get', async (id: string) => {
+  const response = await fetch(`/api/books/${id}`);
+  return (await response.json()) as Book;
+});
+
 export {
-  setInitialBooks, setRating, searchBooks,
+  setInitialBooks, setRating, searchBooks, getBook,
 };

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import {
-  setInitialBooks, setRating, searchBooks,
+  setInitialBooks, setRating, searchBooks, getBook,
 } from '../thunks/bookThunks';
-import { BooksState, SortBy } from '../../types/books';
+import { BooksState, SortBy, Book } from '../../types/books';
 import compareFunc from '../../utils/mirageHelpers';
 
 const initialState: BooksState = {
@@ -12,6 +12,7 @@ const initialState: BooksState = {
   page: 0,
   booksPerPage: 10,
   sort: 'title',
+  openedBook: null,
 };
 
 const bookSlice = createSlice({
@@ -49,6 +50,9 @@ const bookSlice = createSlice({
       })
       .addCase(searchBooks.fulfilled, (state, action) => {
         state.initialBooks = action.payload;
+      })
+      .addCase(getBook.fulfilled, (state, action) => {
+        state.openedBook = action.payload;
       });
   },
 });
