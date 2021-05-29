@@ -35,6 +35,7 @@ export interface BooksState {
   booksPerPage: number;
   sort: SortBy;
   openedBook: Book | null;
+  loading: boolean;
 }
 
 // export interface BooksState {

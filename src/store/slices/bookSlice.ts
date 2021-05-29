@@ -13,6 +13,7 @@ const initialState: BooksState = {
   booksPerPage: 10,
   sort: 'title',
   openedBook: null,
+  loading: false,
 };
 
 const bookSlice = createSlice({
@@ -35,11 +36,18 @@ const bookSlice = createSlice({
     setSort(state, action: PayloadAction<SortBy>) {
       state.sort = action.payload;
     },
+    clearBook(state) {
+      state.openedBook = null;
+    },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(setInitialBooks.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(setInitialBooks.fulfilled, (state, action) => {
         state.initialBooks = action.payload;
+        state.loading = false;
       })
       .addCase(setRating.fulfilled, (state, action) => {
         const updatedBook = action.payload;
@@ -47,16 +55,27 @@ const bookSlice = createSlice({
           (el) => el.id === updatedBook.id,
         );
         state.currentBooks[index] = updatedBook;
+        if (state.openedBook) state.openedBook = updatedBook;
+      })
+      .addCase(searchBooks.pending, (state) => {
+        state.loading = true;
       })
       .addCase(searchBooks.fulfilled, (state, action) => {
         state.initialBooks = action.payload;
+        state.loading = false;
+      })
+      .addCase(getBook.pending, (state) => {
+        state.loading = true;
       })
       .addCase(getBook.fulfilled, (state, action) => {
         state.openedBook = action.payload;
+        state.loading = false;
       });
   },
 });
 
-export const { setPage, sortBooks, setSort } = bookSlice.actions;
+export const {
+  setPage, sortBooks, setSort, clearBook,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;

@@ -11,7 +11,9 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export { setPage, sortBooks, setSort } from './slices/bookSlice';
+export {
+  setPage, sortBooks, setSort, clearBook,
+} from './slices/bookSlice';
 export {
   setInitialBooks, setRating, searchBooks, getBook,
 } from './thunks/bookThunks';

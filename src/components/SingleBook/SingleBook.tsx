@@ -25,7 +25,7 @@ import { calculateRating } from '../../utils/booksHelpers';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
-import { getBook, setRating } from '../../store/store';
+import { clearBook, getBook, setRating } from '../../store/store';
 
 // type Props = {
 //   currentBook: Book;
@@ -48,11 +48,12 @@ import { getBook, setRating } from '../../store/store';
 // }: Props) => {
 
 const SingleBook = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [commentOpen, setCommentOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const currentBook = useAppSelector((state) => state.books.openedBook);
+  const loading = useAppSelector((state) => state.books.loading);
   const dispatch = useAppDispatch();
 
   const history = useHistory();
@@ -89,8 +90,10 @@ const SingleBook = () => {
 
   useEffect(() => {
     dispatch(getBook(id));
-    setLoading(false);
-  }, [dispatch, id, currentBook]);
+    return () => {
+      dispatch(clearBook());
+    };
+  }, [dispatch, id]);
 
   return (
     <Container className="p-4 pt-5">
