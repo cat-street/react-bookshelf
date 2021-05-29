@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Card } from 'react-bootstrap';
 import { Comment } from '../../types/books';
 import { formatDate } from '../../utils/booksHelpers';
@@ -7,7 +6,7 @@ type Props = {
   comment: Comment,
 };
 
-const CommentCard: FC<Props> = ({ comment }: Props) => (
+const CommentCard = ({ comment }: Props) => (
   <Card bg="light" className="w-100 mb-2">
     <Card.Body>
       <Card.Title>

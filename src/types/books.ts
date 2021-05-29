@@ -33,6 +33,7 @@ export interface BooksState {
   currentBooks: BooksArray;
   page: number;
   booksPerPage: number;
+  sort: SortBy;
 }
 
 // export interface BooksState {

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Icon } from 'react-bootstrap-icons';
 
 type Props = {
@@ -10,7 +9,7 @@ type Props = {
   onClick: (score: number) => void;
 };
 
-const StarWrapper: FC<Props> = ({
+const StarWrapper = ({
   component: Component,
   userId,
   score,

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
@@ -21,7 +21,7 @@ type Props = {
   // onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
-const BookCard: FC<Props> = ({ book }: Props) => {
+const BookCard = ({ book }: Props) => {
   const dispatch = useAppDispatch();
 
   const handleUpdateRating = (vote: Record<string, number>) => {

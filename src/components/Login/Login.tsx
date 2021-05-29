@@ -1,6 +1,4 @@
-import {
-  FC, SyntheticEvent, useEffect, useState,
-} from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
@@ -22,7 +20,7 @@ type Props = {
   onResetError: () => void,
 };
 
-const Login: FC<Props> = ({
+const Login = ({
   userId, error, onLogin, onResetError,
 }: Props) => {
   const [input, setInput] = useState<User>({

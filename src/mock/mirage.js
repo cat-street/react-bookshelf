@@ -35,9 +35,16 @@ export default function makeServer({ environment = 'test' } = {}) {
       this.namespace = 'api';
 
       this.get('/books', (schema, request) => {
-        const type = request.queryParams.sorting || 'title';
-        const { order } = request.queryParams;
-        return schema.books.all().sort(compareFunc(type, order));
+        const { search } = request.queryParams;
+        return search
+          ? schema.books
+            .all()
+            .filter(
+              (el) =>
+                el.title.toLowerCase().includes(search.toLowerCase())
+                || el.author.toLowerCase().includes(search.toLowerCase()),
+            )
+          : schema.books.all();
       });
 
       this.get('/books/:id');

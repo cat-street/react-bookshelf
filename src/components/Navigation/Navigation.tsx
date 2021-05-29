@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import {
   Navbar,
   Nav,
@@ -13,7 +12,7 @@ type Props = {
   onLogout: () => void;
 };
 
-const Navigation: FC<Props> = ({ userId, onLogout }: Props) => (
+const Navigation = ({ userId, onLogout }: Props) => (
   <Navbar bg="dark" expand="md" variant="dark" className="py-3" fixed="top">
     <Container>
       <Navbar.Brand href="/">React Bookshelf</Navbar.Brand>

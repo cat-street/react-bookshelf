@@ -1,6 +1,4 @@
-import {
-  FC, useEffect, useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import {
@@ -37,7 +35,7 @@ type Props = {
   onEditBook: (book: Record<string, string>) => void;
 };
 
-const SingleBook: FC<Props> = ({
+const SingleBook = ({
   currentBook,
   userId,
   onGetBook,

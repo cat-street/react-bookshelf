@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { connect } from 'react-redux';
 import { Container, Pagination, Row } from 'react-bootstrap';
 
@@ -35,7 +34,7 @@ import Filter from '../Filter/Filter';
 //   onSortBooks,
 //   onSetPage,
 // }: Props) => {
-const Books: FC = () => {
+const Books = () => {
   const initialBooks = useAppSelector((state) => state.books.initialBooks);
   const currentBooks = useAppSelector((state) => state.books.currentBooks);
   const page = useAppSelector((state) => state.books.page);

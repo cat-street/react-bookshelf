@@ -1,6 +1,4 @@
-import {
-  FC, useEffect, useState, useMemo,
-} from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Star, StarFill, StarHalf } from 'react-bootstrap-icons';
 
 import './BookRating.css';
@@ -14,7 +12,7 @@ type Props = {
   onUpdate: (vote: Record<string, number>) => void;
 };
 
-const BookRating: FC<Props> = ({
+const BookRating = ({
   userId, rating, votes, ownVote, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
@@ -110,7 +108,7 @@ const BookRating: FC<Props> = ({
           />
         );
       })}
-      <strong className="ml-2">{rating.toFixed(1)}</strong>
+      <strong className="ml-2">{`${rating.toFixed(1)} (${votes})`}</strong>
     </div>
   );
 };

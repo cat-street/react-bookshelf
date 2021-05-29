@@ -1,9 +1,9 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { useAppDispatch } from './hooks/storeHooks';
-import { setInitialBooks, setPage } from './store/store';
+import { setInitialBooks, setPage, sortBooks } from './store/store';
 
 // import { checkId, logout, setBooks } from './store/actions/index';
 import Books from './components/Books/Books';
@@ -24,7 +24,7 @@ import './App.css';
 // const App: FC<Props> = ({
 //   userId, onSetBooks, onCheckId, onLogout,
 // }: Props) => {
-const App: FC = () => {
+function App() {
   const dispatch = useAppDispatch();
 
   // const handleLogout = () => {
@@ -34,6 +34,7 @@ const App: FC = () => {
   useEffect(() => {
     const setBooks = async () => {
       await dispatch(setInitialBooks());
+      dispatch(sortBooks({ type: 'title', order: 'asc' }));
       dispatch(setPage(1));
     };
     setBooks();
@@ -60,7 +61,7 @@ const App: FC = () => {
       </Switch>
     </div>
   );
-};
+}
 
 export default App;
 

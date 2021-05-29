@@ -1,6 +1,4 @@
-import {
-  FC, SyntheticEvent, useEffect, useState,
-} from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import {
   Modal, Button, Form, Col, Row,
 } from 'react-bootstrap';
@@ -12,7 +10,7 @@ type Props = {
   onEdit: (book: Record<string, string>) => void;
 };
 
-const EditBookModal: FC<Props> = ({ book, onHide, onEdit }: Props) => {
+const EditBookModal = ({ book, onHide, onEdit }: Props) => {
   const [currentBook, setCurrentBook] = useState({
     id: '',
     title: '',

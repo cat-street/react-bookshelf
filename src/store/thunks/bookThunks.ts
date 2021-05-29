@@ -7,14 +7,6 @@ const setInitialBooks = createAsyncThunk('books/fetchAll', async () => {
   return (await response.json()) as BooksArray;
 });
 
-const sortBooks = createAsyncThunk(
-  'books/sortBy',
-  async ({ type, order }: { type: string; order: string }) => {
-    const response = await fetch(`/api/books?sorting=${type}&order=${order}`);
-    return (await response.json()) as BooksArray;
-  },
-);
-
 const setRating = createAsyncThunk(
   'books/setRating',
   async ({ id, vote }: { id: string, vote: Record<string, number> }) => {
@@ -26,4 +18,14 @@ const setRating = createAsyncThunk(
   },
 );
 
-export { setInitialBooks, sortBooks, setRating };
+const searchBooks = createAsyncThunk(
+  'books/search',
+  async (query: string) => {
+    const response = await fetch(`/api/books?search=${query}`);
+    return (await response.json()) as BooksArray;
+  },
+);
+
+export {
+  setInitialBooks, setRating, searchBooks,
+};
