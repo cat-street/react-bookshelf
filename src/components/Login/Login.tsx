@@ -10,25 +10,31 @@ import {
   Toast,
 } from 'react-bootstrap';
 
-import { login, resetError } from '../../store/actions/index';
+// import { login, resetError } from '../../store/actions/index';
 import { AuthState, User } from '../../types/auth';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
+import { login, resetError } from '../../store/store';
 
-type Props = {
-  userId: string | null,
-  error: string | null,
-  onLogin: (userId: string, password: string) => void,
-  onResetError: () => void,
-};
+// type Props = {
+//   userId: string | null,
+//   error: string | null,
+//   onLogin: (userId: string, password: string) => void,
+//   onResetError: () => void,
+// };
 
-const Login = ({
-  userId, error, onLogin, onResetError,
-}: Props) => {
+// const Login = ({
+//   userId, error, onLogin, onResetError,
+// }: Props) => {
+const Login = () => {
   const [input, setInput] = useState<User>({
     userId: '',
     password: '',
   });
   const [toast, showToast] = useState(false);
   const history = useHistory();
+  const error = useAppSelector((state) => state.auth.error);
+  const userId = useAppSelector((state) => state.auth.userId);
+  const dispatch = useAppDispatch();
 
   const handleChange = (evt: SyntheticEvent) => {
     const { name, value } = evt.target as HTMLTextAreaElement;
@@ -38,12 +44,13 @@ const Login = ({
   const handleSubmit = (evt: SyntheticEvent) => {
     evt.preventDefault();
     if (input.userId) {
-      onLogin(input.userId, input.password);
+      // onLogin(input.userId, input.password);
+      dispatch(login({ userId: input.userId, password: input.password }));
     }
   };
 
   const hideToast = () => {
-    onResetError();
+    dispatch(resetError());
     showToast(false);
   };
 
@@ -58,7 +65,7 @@ const Login = ({
     return () => {
       showToast(false);
     };
-  }, [error, onResetError]);
+  }, [error]);
 
   return (
     <Container>
@@ -108,14 +115,16 @@ const Login = ({
   );
 };
 
-const mapStateToProps = (state: Record<string, AuthState>) => ({
-  error: state.auth.error,
-  userId: state.auth.userId,
-});
+export default Login;
 
-const mapDispatchToProps = (dispatch: any) => ({
-  onLogin: (userId: string, password: string) => dispatch(login(userId, password)),
-  onResetError: () => dispatch(resetError()),
-});
+// const mapStateToProps = (state: Record<string, AuthState>) => ({
+//   error: state.auth.error,
+//   userId: state.auth.userId,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+// const mapDispatchToProps = (dispatch: any) => ({
+//   onLogin: (userId: string, password: string) => dispatch(login(userId, password)),
+//   onResetError: () => dispatch(resetError()),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Login);

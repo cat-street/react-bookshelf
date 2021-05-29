@@ -1,6 +1,5 @@
 // export enum Sort { DESC, ASC }
 
-export type UserStar = { user: string, vote: number };
 export type SortBy = ('author' | 'title' | 'rating');
 export type SearchType = ('title' | 'genre');
 

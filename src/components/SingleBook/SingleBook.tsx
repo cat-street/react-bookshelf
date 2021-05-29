@@ -17,7 +17,6 @@ import {
 import {
   Book,
   SearchType,
-  UserStar,
 } from '../../types/books';
 import BookRating from '../BookRating/BookRating';
 import CommentForm from '../CommentForm/CommentForm';
@@ -25,26 +24,6 @@ import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { clearBook, getBook, setRating } from '../../store/store';
-
-// type Props = {
-//   currentBook: Book;
-//   userId: string | null;
-//   onGetBook: (id: string) => void;
-//   onSearchBook: (query: string, searchType: SearchType) => void;
-//   onUpdateRating: (id: string, rating: number, user: UserStar) => void;
-//   onAddComment: (ownerId: string, comment: string) => void;
-//   onEditBook: (book: Record<string, string>) => void;
-// };
-
-// const SingleBook = ({
-//   currentBook,
-//   userId,
-//   onGetBook,
-//   onSearchBook,
-//   onUpdateRating,
-//   onAddComment,
-//   onEditBook,
-// }: Props) => {
 
 const SingleBook = () => {
   // const [loading, setLoading] = useState(true);
@@ -192,22 +171,3 @@ const SingleBook = () => {
 };
 
 export default SingleBook;
-
-// const mapStateToProps = (state: Record<string, any>) => ({
-//   currentBook: state.books.currentBook,
-//   userId: state.auth.userId,
-// });
-
-// const mapDispatchToProps = (dispatch: any) => ({
-//   onGetBook: (id: string) => dispatch(getBook(id)),
-//   onSearchBook: (query: string, searchType: SearchType) =>
-//     dispatch(searchBook(query, searchType)),
-//   onUpdateRating: (id: string, rating: number, user: UserStar) =>
-//     dispatch(updateRating(id, rating, user)),
-//   onAddComment: (ownerId: string, comment: string) =>
-//     dispatch(addComment(ownerId, comment)),
-//   onEditBook: (book: Record<string, string>) =>
-//     dispatch(editBook(book)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(SingleBook);

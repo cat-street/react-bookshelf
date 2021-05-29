@@ -16,11 +16,6 @@ const BookRating = ({
   userId, rating, votes, ownVote, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
-  // const [state, setState] = useState({
-  //   rating: 0,
-  //   votes: 0,
-  //   previousVote: 0,
-  // });
 
   const setStarRating: Array<number> = useMemo(() => {
     const ratingArr = Array(5).fill(0);
@@ -52,31 +47,6 @@ const BookRating = ({
     if (!userId) return;
     onUpdate({ [userId]: score });
   };
-
-  // const calculateRating = (vote: number) => {
-  //   if (!userId) return;
-  //   let newRating: number;
-  //   let currentVotes = state.votes;
-  //   if (state.previousVote) {
-  //     newRating = ((state.rating * currentVotes - state.previousVote + vote)
-  //       / currentVotes);
-  //   } else {
-  //     newRating = ((state.rating * currentVotes + vote)
-  //       / (currentVotes + 1));
-  //     currentVotes += 1;
-  //   }
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     rating: newRating,
-  //     votes: currentVotes,
-  //     previousVote: vote,
-  //   }));
-  //   onUpdate(vote, newRating);
-  // };
-
-  // useEffect(() => {
-  //   setState({ rating, votes, previousVote: ownVote });
-  // }, [rating, votes, ownVote]);
 
   useEffect(() => {
     setStars(setStarRating);

@@ -1,31 +1,26 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
 import { setRating } from '../../store/store';
-
-import { updateRating } from '../../store/actions/index';
-import { Book, UserStar } from '../../types/books';
-import { AuthState } from '../../types/auth';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 
 import BookRating from '../BookRating/BookRating';
 
-import { useAppDispatch } from '../../hooks/storeHooks';
+import { Book } from '../../types/books';
+
 import './BookCard.css';
 
 type Props = {
   book: Book;
-  // userId: string | null;
-  // onUpdateRating: (id: string, rating: number, user: UserStar) => void;
 };
 
 const BookCard = ({ book }: Props) => {
+  const userId = useAppSelector((state) => state.auth.userId);
   const dispatch = useAppDispatch();
 
   const handleUpdateRating = (vote: Record<string, number>) => {
     dispatch(setRating({ id: book.id, vote }));
-    // onUpdateRating(book.id, rating, { user: 'test-user', vote });
   };
 
   return (
@@ -56,10 +51,10 @@ const BookCard = ({ book }: Props) => {
         <ListGroup variant="flush">
           <ListGroup.Item>
             <BookRating
-              userId="test-user"
+              userId={userId}
               rating={book.rating}
               votes={Object.keys(book.votes).length}
-              ownVote={book.votes['test-user'] || 0}
+              ownVote={userId ? book.votes[userId] : 0}
               onUpdate={handleUpdateRating}
             />
           </ListGroup.Item>
@@ -70,14 +65,3 @@ const BookCard = ({ book }: Props) => {
 };
 
 export default memo(BookCard);
-
-// const mapStateToProps = (state: Record<string, AuthState>) => ({
-//   userId: state.auth.userId,
-// });
-
-// const mapDispatchToProps = (dispatch: any) => ({
-//   onUpdateRating: (id: string, rating: number, user: UserStar) =>
-//     dispatch(updateRating(id, rating, user)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(memo(BookCard));

@@ -5,7 +5,6 @@ import {
   Form, FormControl, Button, Col,
 } from 'react-bootstrap';
 
-import { searchBook, setBooks } from '../../store/actions/index';
 import { SearchType } from '../../types/books';
 import { useAppDispatch } from '../../hooks/storeHooks';
 import {

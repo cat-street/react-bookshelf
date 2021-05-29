@@ -88,6 +88,14 @@ export default function makeServer({ environment = 'test' } = {}) {
         }
         return { id: user.id, userId: user.userId };
       });
+
+      this.get('/login/:id', (schema, request) => {
+        const existingUser = schema.users.findBy({ userId: request.params.id });
+        if (!existingUser) {
+          return new Response(401, {}, { message: 'Not authorized' });
+        }
+        return { userId: existingUser.userId };
+      });
     },
   });
 

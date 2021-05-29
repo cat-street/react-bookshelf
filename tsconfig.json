@@ -26,7 +26,6 @@
   ],
   "exclude": [
     "src/store/reducers",
-    "src/store/actions",
     "src/utils/actionHelpers.ts"
   ]
 }
