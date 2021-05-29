@@ -22,20 +22,23 @@ A frontend for a sample electronic library application with pagination, search, 
 * Users can log in/log out by the link of the top of the page (test id: *test-user*, test password: *12345*). Credentials are hardcoded into a global state. Errors are shown, if the username or the password is incorrect.
 * Authentication is checked by a token created in a browser during the successful sign in.
 
+## Updates
+
+* 29.05.2021 - total Redux store refactor, now it's on hooks with Toolkit
+
 ## Technology
 
 * React (functional components, hooks, router)
-* Redux
+* Redux (hooks, toolkit)
 * TypeScript
 * JavaScript (ES6)
 * Bootstrap (bootstrap-react)
 * Airbnb-typescript ESLint codestyle
 
 ## To Do
-* TOTAL REDUX STORE REDESIGN (I know, I know)
 * Ascending/Descending sorting by multiple clicks
-* A separate /search route
-* A /category route
+* A separate '/search' route
+* A '/category' route
 * Forms validation
 * Ability to delete comments
 * Ability to add new books

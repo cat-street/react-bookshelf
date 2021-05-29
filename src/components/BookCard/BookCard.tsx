@@ -54,7 +54,6 @@ const BookCard = ({ book }: Props) => {
               userId={userId}
               rating={book.rating}
               votes={Object.keys(book.votes).length}
-              ownVote={userId ? book.votes[userId] : 0}
               onUpdate={handleUpdateRating}
             />
           </ListGroup.Item>
