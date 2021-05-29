@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import {
   Container, Pagination, Row, Spinner,
 } from 'react-bootstrap';
@@ -6,36 +5,9 @@ import {
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { setPage } from '../../store/slices/bookSlice';
 
-// import { sortBooks, setPage } from '../../store/actions/index';
-import {
-  BooksArray,
-  BooksState,
-  SortBy,
-} from '../../types/books';
 import BookCard from '../BookCard/BookCard';
 import Filter from '../Filter/Filter';
 
-// type Props = {
-//   allBooks: BooksArray;
-//   books: BooksArray;
-//   searchResults: BooksArray;
-//   page: number;
-//   booksPerPage: number;
-//   searching: boolean;
-//   onSortBooks: (sortBy: SortBy) => void;
-//   onSetPage: (page: number) => void;
-// };
-
-// const Books: FC<Props> = ({
-//   allBooks,
-//   books,
-//   searchResults,
-//   page,
-//   booksPerPage,
-//   searching,
-//   onSortBooks,
-//   onSetPage,
-// }: Props) => {
 const Books = () => {
   const initialBooks = useAppSelector((state) => state.books.initialBooks);
   const currentBooks = useAppSelector((state) => state.books.currentBooks);
@@ -88,19 +60,3 @@ const Books = () => {
 };
 
 export default Books;
-
-// const mapStateToProps = (state: Record<string, BooksState>) => ({
-//   allBooks: state.books.initialBooks,
-//   books: state.books.currentBooks,
-//   searchResults: state.books.searchResults,
-//   page: state.books.page,
-//   booksPerPage: state.books.booksPerPage,
-//   searching: state.books.searching,
-// });
-
-// const mapDispatchToProps = (dispatch: any) => ({
-//   onSortBooks: (sortBy: SortBy) => dispatch(sortBooks(sortBy)),
-//   onSetPage: (page: number) => dispatch(setPage(page)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Books);

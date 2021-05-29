@@ -8,12 +8,11 @@ type Props = {
   userId: string | null;
   rating: number;
   votes: number;
-  ownVote: number;
   onUpdate: (vote: Record<string, number>) => void;
 };
 
 const BookRating = ({
-  userId, rating, votes, ownVote, onUpdate,
+  userId, rating, votes, onUpdate,
 }: Props) => {
   const [stars, setStars] = useState([0, 0, 0, 0, 0]);
 

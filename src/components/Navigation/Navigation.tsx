@@ -2,9 +2,11 @@ import {
   Navbar, Nav, Container, Button,
 } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
+
 import { useHistory } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/storeHooks';
 import { setInitialBooks, setPage, sortBooks } from '../../store/store';
+
 import Search from '../Search/Search';
 
 type Props = {

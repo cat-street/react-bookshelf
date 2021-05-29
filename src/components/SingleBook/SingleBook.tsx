@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
   Container,
@@ -40,7 +40,6 @@ const SingleBook = () => {
 
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
-  const commentButton = useRef<HTMLButtonElement>(null);
 
   const searchByAuthor = async () => {
     await dispatch(searchBooks({ query: currentBook!.author, where: 'author' }));
@@ -63,7 +62,6 @@ const SingleBook = () => {
 
   const handleAddCommentClick = () => {
     setCommentOpen(true);
-    commentButton.current?.scrollIntoView();
   };
 
   const handleAddComment = (text: string) => {
@@ -144,7 +142,6 @@ const SingleBook = () => {
                 userId="test-user"
                 rating={currentBook.rating}
                 votes={Object.keys(currentBook.votes).length}
-                ownVote={currentBook.votes['test-user'] || 0}
                 onUpdate={handleUpdateRating}
               />
               <p className="my-4">{currentBook.description}</p>
@@ -168,7 +165,6 @@ const SingleBook = () => {
                 <Button
                   variant="outline-success"
                   className="mx-auto px-5"
-                  ref={commentButton}
                   onClick={handleAddCommentClick}
                 >
                   Add comment

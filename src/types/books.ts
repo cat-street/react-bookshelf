@@ -1,7 +1,4 @@
-// export enum Sort { DESC, ASC }
-
 export type SortBy = ('author' | 'title' | 'rating');
-export type SearchType = ('title' | 'genre');
 
 export type Comment = {
   id: string,
@@ -36,29 +33,3 @@ export interface BooksState {
   openedBook: Book | null;
   loading: boolean;
 }
-
-// export interface BooksState {
-//   initialBooks: BooksArray,
-//   searchResults: BooksArray,
-//   currentBooks: BooksArray,
-//   searching: boolean,
-//   page: number,
-//   sort: Sort,
-//   sortBy: SortBy,
-//   booksPerPage: number,
-//   currentBook: Book,
-// }
-
-// export interface Reducer {
-//   type: string,
-//   sortBy: SortBy,
-//   id: string,
-//   rating: number,
-//   user: UserStar,
-//   ownerId: string,
-//   query: string,
-//   searchType: SearchType,
-//   page: number,
-//   comment: string,
-//   book: Record<string, string>,
-// }
