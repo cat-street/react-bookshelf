@@ -10,7 +10,7 @@ const setInitialBooks = createAsyncThunk('books/fetchAll', async () => {
 const setRating = createAsyncThunk(
   'books/setRating',
   async ({ id, vote }: { id: string, vote: Record<string, number> }) => {
-    const response = await fetch(`/api/books/${id}`, {
+    const response = await fetch(`/api/books/${id}/rating`, {
       method: 'PATCH',
       body: JSON.stringify(vote),
     });
@@ -31,6 +31,21 @@ const getBook = createAsyncThunk('books/fetchOne', async (id: string) => {
   return (await response.json()) as Book;
 });
 
+const editBook = createAsyncThunk(
+  'books/editOne',
+  async ({ id, fields }: { id: string; fields: Record<string, string> }) => {
+    const response = await fetch(`/api/books/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(fields),
+    });
+    return (await response.json()) as Book;
+  },
+);
+
 export {
-  setInitialBooks, setRating, searchBooks, getBook,
+  setInitialBooks,
+  setRating,
+  searchBooks,
+  getBook,
+  editBook,
 };

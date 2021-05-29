@@ -23,15 +23,17 @@ import CommentForm from '../CommentForm/CommentForm';
 import CommentCard from '../CommentCard/CommentCard';
 import EditBookModal from '../EditBookModal/EditBookModal';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
-import { clearBook, getBook, setRating } from '../../store/store';
+import {
+  clearBook, editBook, getBook, setRating,
+} from '../../store/store';
 
 const SingleBook = () => {
-  // const [loading, setLoading] = useState(true);
   const [commentOpen, setCommentOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const currentBook = useAppSelector((state) => state.books.openedBook);
   const loading = useAppSelector((state) => state.books.loading);
+  const userId = useAppSelector((state) => state.auth.userId);
   const dispatch = useAppDispatch();
 
   const history = useHistory();
@@ -57,14 +59,13 @@ const SingleBook = () => {
     setShowModal(true);
   };
 
+  const handleEdit = (fields: Record<string, string>) => {
+    dispatch(editBook({ id, fields }));
+  };
+
   const hideModal = () => {
     setShowModal(false);
   };
-
-  // useEffect(() => {
-  //   onGetBook(id);
-  //   setLoading(false);
-  // }, [id, onGetBook]);
 
   useEffect(() => {
     dispatch(getBook(id));
@@ -75,13 +76,13 @@ const SingleBook = () => {
 
   return (
     <Container className="p-4 pt-5">
-      {/* {showModal && (
+      {showModal && (
         <EditBookModal
-          book={currentBook}
+          book={currentBook as Book}
           onHide={hideModal}
-          onEdit={onEditBook}
+          onEdit={handleEdit}
         />
-      )} */}
+      )}
       {loading || !currentBook ? (
         <Row className="d-flex justify-content-center">
           <Spinner animation="border" role="status">
@@ -108,7 +109,7 @@ const SingleBook = () => {
                 <Badge variant="info" className="mr-3">
                   {currentBook.category || 'Uncategorized'}
                 </Badge>
-                {/* {userId && userId === currentBook.ownerId ? (
+                {userId && userId === currentBook.ownerId ? (
                   <Button
                     size="sm"
                     variant="outline-success"
@@ -116,7 +117,7 @@ const SingleBook = () => {
                   >
                     Edit
                   </Button>
-                ) : null} */}
+                ) : null}
               </h2>
               <h3 className="text-muted">
                 <Button

@@ -49,7 +49,7 @@ export default function makeServer({ environment = 'test' } = {}) {
 
       this.get('/books/:id');
 
-      this.patch('/books/:id', (schema, request) => {
+      this.patch('/books/:id/rating', (schema, request) => {
         const vote = JSON.parse(request.requestBody);
         const book = schema.books.find(request.params.id);
         const newVotes = { ...book.votes, ...vote };
@@ -60,10 +60,10 @@ export default function makeServer({ environment = 'test' } = {}) {
         return book;
       });
 
-      this.post('/books/:id', (schema, request) => {
-        const editedBook = JSON.parse(request.requestBody);
+      this.patch('/books/:id', (schema, request) => {
+        const fields = JSON.parse(request.requestBody);
         const book = schema.books.find(request.params.id);
-        return book.update(editedBook);
+        return book.update(fields);
       });
 
       this.get('/books/:id/comments', (schema, request) => {

@@ -24,6 +24,7 @@ export {
   setRating,
   searchBooks,
   getBook,
+  editBook,
 } from './thunks/bookThunks';
 
 export { resetError } from './slices/authSlice';

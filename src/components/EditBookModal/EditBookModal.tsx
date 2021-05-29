@@ -7,7 +7,7 @@ import { Book } from '../../types/books';
 type Props = {
   book: Book;
   onHide: () => void,
-  onEdit: (book: Record<string, string>) => void;
+  onEdit: (fields: Record<string, string>) => void;
 };
 
 const EditBookModal = ({ book, onHide, onEdit }: Props) => {

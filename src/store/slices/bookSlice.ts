@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import {
-  setInitialBooks, setRating, searchBooks, getBook,
+  setInitialBooks, setRating, searchBooks, getBook, editBook,
 } from '../thunks/bookThunks';
 import { BooksState, SortBy } from '../../types/books';
 import compareFunc from '../../utils/storeHelpers';
@@ -70,6 +70,14 @@ const bookSlice = createSlice({
       .addCase(getBook.fulfilled, (state, action) => {
         state.openedBook = action.payload;
         state.loading = false;
+      })
+      .addCase(editBook.fulfilled, (state, action) => {
+        const updatedBook = action.payload;
+        const index = state.currentBooks.findIndex(
+          (el) => el.id === updatedBook.id,
+        );
+        state.currentBooks[index] = updatedBook;
+        state.openedBook = updatedBook;
       });
   },
 });
