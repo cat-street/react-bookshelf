@@ -109,6 +109,7 @@ const SingleBook = () => {
                 }
                 rounded
                 className="w-100"
+                alt={currentBook.title}
               />
             </Col>
             <Col>

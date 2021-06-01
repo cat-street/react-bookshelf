@@ -37,6 +37,7 @@ const BookCard = ({ book }: Props) => {
           variant="top"
           src={book.cover ? `/images/books/${book.cover}` : '/images/cover.jpg'}
           className="card__image px-3 mt-3"
+          alt={book.title}
         />
         <Card.Body>
           <Card.Title className="text-uppercase">{book.title}</Card.Title>

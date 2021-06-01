@@ -10,17 +10,17 @@ A frontend for a sample electronic library application with pagination, search, 
 ---
 ## Features
 
-* Books are loaded from a JSON file into a global state (database emulation)
+* Books are loaded from a mock backend server (JSON data file is used) into a global state (database access emulation)
 * If there are more than 10 books to load, a pagination at the bottom of the page appears
-* Users can search the library by an author or by a title (search for both fields in one query)
-* Users can sort the library by a title, by an author, or by rating
+* Users can do a basic library search (title/author/description fields are used)
+* Users can sort the library by title/author/rating
 * The main library page features a basic info of every book and a rating, authenticated users can vote here
-* A click on a cover or on a 'Read more' link leads to a single book page view
-* A single book is loaded from a JSON file (not from a state, hence edits are not saved globally)
+* A click on a 'Read more' link leads to a single book page view
 * There is a detailed info on a single book page, as well as comments section
-* Authenticated users can vote, leave comments or edit info of the book they added (user ID is set as 'owner' in the mock database)
-* Users can log in/log out by the link of the top of the page (test id: *test-user*, test password: *12345*). Credentials are hardcoded into a global state. Errors are shown, if the username or the password is incorrect.
-* Authentication is checked by a token created in a browser during the successful sign in.
+* Authenticated users can vote, leave comments or edit fields of the book they added ('test-user' is binded to some books from the mock database)
+* Users can log in/log out by the link of the top of the page (test id: *test-user*, test password: *12345*). Errors are shown, if the username or the password is incorrect.
+* Authentication is checked by a token created in a browser's local storage during the successful sign in.
+* Edits, ratings and comments are saved during the session unless the page is refreshed.
 
 ## Updates
 
@@ -33,6 +33,7 @@ A frontend for a sample electronic library application with pagination, search, 
 * TypeScript
 * JavaScript (ES6)
 * Bootstrap (bootstrap-react)
+* Mirage.js backend emulation
 * Airbnb-typescript ESLint codestyle
 
 ## To Do

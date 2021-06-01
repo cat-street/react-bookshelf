@@ -42,12 +42,14 @@ function App() {
   return (
     <div className="app">
       <Navigation userId={userId} onLogout={handleLogout} />
-      <Switch>
-        <Route path="/:genre/:id" component={SingleBook} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={Books} />
-        <Redirect to="/" />
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/:genre/:id" component={SingleBook} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Books} />
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </div>
   );
 }

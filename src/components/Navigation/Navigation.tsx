@@ -26,29 +26,33 @@ const Navigation = ({ userId, onLogout }: Props) => {
   };
 
   return (
-    <Navbar bg="dark" expand="md" variant="dark" className="py-3" fixed="top">
-      <Container>
-        <Navbar.Brand>React Bookshelf</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          className="justify-content-end"
-        >
-          <Nav className="mr-0 mb-3 mr-md-4 mb-md-0">
-            <Nav.Link onClick={handleHomeClick}>Home</Nav.Link>
-            {userId ? (
-              <Button onClick={onLogout} variant="outline-info px-3">
-                {userId}
-                <BoxArrowRight className="ml-2" />
-              </Button>
-            ) : (
-              <Nav.Link onClick={() => history.push('/login')}>Login</Nav.Link>
-            )}
-          </Nav>
-          <Search />
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header>
+      <Navbar bg="dark" expand="md" variant="dark" className="py-3" fixed="top">
+        <Container>
+          <Navbar.Brand>React Bookshelf</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav className="mr-0 mb-3 mr-md-4 mb-md-0">
+              <Nav.Link onClick={handleHomeClick}>Home</Nav.Link>
+              {userId ? (
+                <Button onClick={onLogout} variant="outline-info px-3">
+                  {userId}
+                  <BoxArrowRight className="ml-2" />
+                </Button>
+              ) : (
+                <Nav.Link onClick={() => history.push('/login')}>
+                  Login
+                </Nav.Link>
+              )}
+            </Nav>
+            <Search />
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
   );
 };
 
